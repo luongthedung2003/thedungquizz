@@ -45,6 +45,12 @@
             padding: 0;
         }
 
+        @media (max-width: 768px) {
+            body {
+                zoom: 0.85;
+            }
+        }
+
         .material-symbols-outlined {
             font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
         }
@@ -253,7 +259,7 @@
                                     class="material-symbols-outlined text-sm hidden dark:block text-yellow-400">dark_mode</span>
                             </button>
                             <a href=""
-                                class="flex h-9 items-center justify-center gap-2 px-3 border border-white/30 text-[9px] uppercase tracking-[0.2em]">
+                                class="flex h-9 items-center justify-center gap-1.5 px-3 border border-white/30 text-[9px] uppercase tracking-[0.2em] whitespace-nowrap">
                                 <span class="material-symbols-outlined text-sm">person</span> SINH VIÊN
                             </a>
                             <button onclick="toggleMenu()"
@@ -317,7 +323,7 @@
         </header>
 
         <main
-            class="mt-24 md:mt-28 lg:mt-24 flex-grow max-w-[1600px] mx-auto w-full px-6 md:px-12 py-8 transition-all duration-500">
+            class="mt-32 md:mt-28 lg:mt-24 flex-grow max-w-[1600px] mx-auto w-full px-6 md:px-12 py-8 transition-all duration-500">
             <div id="main-layout" class="flex flex-col lg:flex-row gap-10">
 
                 <div id="content-area" class="w-full">
