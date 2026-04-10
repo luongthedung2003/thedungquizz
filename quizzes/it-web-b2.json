@@ -1,0 +1,386 @@
+[
+  {
+    "question": "CSS là viết tắt của?",
+    "A": "Cascading Style Sheets",
+    "B": "Creative Style System",
+    "C": "Central Style Syntax",
+    "D": "Colorful Styling Sheets",
+    "correct": "A"
+  },
+  {
+    "question": "Thuộc tính nào dùng để đổi màu chữ?",
+    "A": "font-color",
+    "B": "text-color",
+    "C": "color",
+    "D": "font-style",
+    "correct": "C"
+  },
+  {
+    "question": "Thuộc tính nào dùng để đổi kích thước chữ?",
+    "A": "font-size",
+    "B": "text-size",
+    "C": "size",
+    "D": "font-weight",
+    "correct": "A"
+  },
+  {
+    "question": "Thuộc tính nào dùng để căn giữa chữ?",
+    "A": "align",
+    "B": "text-align",
+    "C": "center",
+    "D": "justify-content",
+    "correct": "B"
+  },
+  {
+    "question": "Thuộc tính nào thay đổi màu nền?",
+    "A": "color",
+    "B": "background-color",
+    "C": "bg-color",
+    "D": "background-style",
+    "correct": "B"
+  },
+  {
+    "question": "Để tạo viền, dùng thuộc tính nào?",
+    "A": "border",
+    "B": "outline",
+    "C": "frame",
+    "D": "line",
+    "correct": "A"
+  },
+  {
+    "question": "Thuộc tính nào tạo khoảng cách bên ngoài?",
+    "A": "padding",
+    "B": "margin",
+    "C": "space",
+    "D": "gap",
+    "correct": "B"
+  },
+  {
+    "question": "Thuộc tính nào tạo khoảng cách bên trong?",
+    "A": "padding",
+    "B": "margin",
+    "C": "inner-space",
+    "D": "gap",
+    "correct": "A"
+  },
+  {
+    "question": "Đơn vị nào trong CSS đại diện cho phần trăm kích thước phần tử cha?",
+    "A": "px",
+    "B": "%",
+    "C": "em",
+    "D": "vh",
+    "correct": "B"
+  },
+  {
+    "question": "Thuộc tính nào thay đổi chiều rộng phần tử?",
+    "A": "width",
+    "B": "height",
+    "C": "size",
+    "D": "max-size",
+    "correct": "A"
+  },
+  {
+    "question": "Thuộc tính nào thay đổi chiều cao phần tử?",
+    "A": "max-height",
+    "B": "height",
+    "C": "top",
+    "D": "size",
+    "correct": "B"
+  },
+  {
+    "question": "Thuộc tính nào làm tròn góc?",
+    "A": "corner-radius",
+    "B": "border-round",
+    "C": "radius",
+    "D": "border-radius",
+    "correct": "D"
+  },
+  {
+    "question": "Có mấy cách chèn CSS vào HTML?",
+    "A": "1",
+    "B": "2",
+    "C": "3",
+    "D": "4",
+    "correct": "C"
+  },
+  {
+    "question": "Cách nào KHÔNG phải cách chèn CSS?",
+    "A": "Internal",
+    "B": "External",
+    "C": "Inline",
+    "D": "Module CSS",
+    "correct": "D"
+  },
+  {
+    "question": "Thuộc tính nào đặt kiểu chữ?",
+    "A": "font-family",
+    "B": "font-type",
+    "C": "text-font",
+    "D": "family-text",
+    "correct": "A"
+  },
+  {
+    "question": "Thuộc tính nào viết hoa toàn bộ văn bản?",
+    "A": "text-style: upper;",
+    "B": "font-case: upper;",
+    "C": "text-transform: uppercase;",
+    "D": "transform: uppercase;",
+    "correct": "C"
+  },
+  {
+    "question": "Thuộc tính nào dùng để ẩn phần tử?",
+    "A": "display: none;",
+    "B": "visibility: hide;",
+    "C": "opacity: 0;",
+    "D": "remove: true;",
+    "correct": "A"
+  },
+  {
+    "question": "Thuộc tính nào dùng để đổi con trỏ chuột?",
+    "A": "cursor",
+    "B": "pointer",
+    "C": "mouse",
+    "D": "cursor-style",
+    "correct": "A"
+  },
+  {
+    "question": "CSS selector nào chọn phần tử theo ID?",
+    "A": ".idname",
+    "B": "#idname",
+    "C": "id=idname",
+    "D": "*idname",
+    "correct": "B"
+  },
+  {
+    "question": "CSS selector nào chọn theo class?",
+    "A": "#class",
+    "B": ".classname",
+    "C": "class=classname",
+    "D": "*classname",
+    "correct": "B"
+  },
+  {
+    "question": "Thuộc tính nào tạo bóng cho phần tử?",
+    "A": "box-shadow",
+    "B": "shadow",
+    "C": "element-shadow",
+    "D": "outer-shadow",
+    "correct": "A"
+  },
+  {
+    "question": "Thuộc tính nào tạo bóng cho chữ?",
+    "A": "font-shadow",
+    "B": "text-shadow",
+    "C": "shadow-text",
+    "D": "char-shadow",
+    "correct": "B"
+  },
+  {
+    "question": "Thuộc tính nào kiểm soát hiển thị theo hàng ngang?",
+    "A": "display: block;",
+    "B": "display: inline;",
+    "C": "display: inline-block;",
+    "D": "flex-direction",
+    "correct": "B"
+  },
+  {
+    "question": "Giá trị nào làm phần tử chiếm toàn bộ chiều ngang?",
+    "A": "inline",
+    "B": "inline-block",
+    "C": "block",
+    "D": "flex",
+    "correct": "C"
+  },
+  {
+    "question": "Flexbox được kích hoạt bằng?",
+    "A": "display: row;",
+    "B": "display: flex;",
+    "C": "flex: true;",
+    "D": "layout: flex;",
+    "correct": "B"
+  },
+  {
+    "question": "Thuộc tính nào căn giữa theo trục chính trong Flexbox?",
+    "A": "align-items",
+    "B": "justify-content",
+    "C": "flex-center",
+    "D": "align-content",
+    "correct": "B"
+  },
+  {
+    "question": "Thuộc tính nào căn giữa theo trục phụ trong Flexbox?",
+    "A": "justify-content",
+    "B": "center-items",
+    "C": "align-items",
+    "D": "flex-align",
+    "correct": "C"
+  },
+  {
+    "question": "Thuộc tính nào dùng để đặt khoảng cách giữa các phần tử flex?",
+    "A": "gap",
+    "B": "space-between",
+    "C": "margin-all",
+    "D": "padding-flex",
+    "correct": "A"
+  },
+  {
+    "question": "Thuộc tính nào đặt hình nền?",
+    "A": "background-image",
+    "B": "image-bg",
+    "C": "background-src",
+    "D": "bg-img",
+    "correct": "A"
+  },
+  {
+    "question": "Giá trị nào giúp hình nền lặp lại?",
+    "A": "background-repeat: yes;",
+    "B": "background-repeat: repeat;",
+    "C": "bg-repeat: auto;",
+    "D": "image-loop: true;",
+    "correct": "B"
+  },
+  {
+    "question": "Thuộc tính nào cố định hình nền?",
+    "A": "background-attachment: fixed;",
+    "B": "bg-fixed: true;",
+    "C": "background-lock: on;",
+    "D": "img-fixed: yes;",
+    "correct": "A"
+  },
+  {
+    "question": "Thuộc tính nào bo viền bên ngoài (nhưng không chiếm chỗ)?",
+    "A": "border",
+    "B": "outline",
+    "C": "frame",
+    "D": "outer-line",
+    "correct": "B"
+  },
+  {
+    "question": "Thuộc tính nào đặt độ mờ?",
+    "A": "visibility",
+    "B": "opacity",
+    "C": "fade",
+    "D": "alpha",
+    "correct": "B"
+  },
+  {
+    "question": "Pseudo-class nào áp dụng khi rê chuột?",
+    "A": ":hover",
+    "B": ":active",
+    "C": ":focus",
+    "D": ":move",
+    "correct": "A"
+  },
+  {
+    "question": "Pseudo-class nào áp dụng khi click?",
+    "A": ":hover",
+    "B": ":focus",
+    "C": ":clicked",
+    "D": ":active",
+    "correct": "D"
+  },
+  {
+    "question": "Thuộc tính nào điều chỉnh khoảng cách giữa các chữ?",
+    "A": "letter-spacing",
+    "B": "word-spacing",
+    "C": "space-char",
+    "D": "font-gap",
+    "correct": "A"
+  },
+  {
+    "question": "Thuộc tính nào điều chỉnh khoảng cách giữa các từ?",
+    "A": "char-gap",
+    "B": "letter-spacing",
+    "C": "word-spacing",
+    "D": "text-padding",
+    "correct": "C"
+  },
+  {
+    "question": "Thuộc tính nào làm đậm chữ?",
+    "A": "font-bold",
+    "B": "text-weight",
+    "C": "font-weight",
+    "D": "weight",
+    "correct": "C"
+  },
+  {
+    "question": "Thuộc tính nào tạo gạch chân?",
+    "A": "text-decoration",
+    "B": "underline",
+    "C": "font-underline",
+    "D": "line",
+    "correct": "A"
+  },
+  {
+    "question": "Thuộc tính nào đổi kiểu hiển thị sang lưới?",
+    "A": "display: flex;",
+    "B": "display: grid;",
+    "C": "display: table;",
+    "D": "display: block;",
+    "correct": "B"
+  },
+  {
+    "question": "Thuộc tính nào thiết lập số cột trong grid?",
+    "A": "grid-rows",
+    "B": "grid-template-columns",
+    "C": "grid-columns",
+    "D": "column-template",
+    "correct": "B"
+  },
+  {
+    "question": "Thuộc tính nào đặt khoảng cách giữa các items grid?",
+    "A": "row-gap",
+    "B": "column-gap",
+    "C": "grid-gap",
+    "D": "gap",
+    "correct": "D"
+  },
+  {
+    "question": "Thuộc tính nào canh text theo chiều dọc?",
+    "A": "vertical-align",
+    "B": "line-height",
+    "C": "text-top",
+    "D": "align-vertical",
+    "correct": "A"
+  },
+  {
+    "question": "Thuộc tính nào dùng để cố định phần tử khi cuộn?",
+    "A": "position: static;",
+    "B": "position: relative;",
+    "C": "position: sticky;",
+    "D": "position: fixed;",
+    "correct": "D"
+  },
+  {
+    "question": "Z-index dùng để?",
+    "A": "đặt vị trí trái/phải",
+    "B": "điều chỉnh độ ưu tiên lớp",
+    "C": "căn khoảng cách",
+    "D": "đổi chiều cao",
+    "correct": "B"
+  },
+  {
+    "question": "Thuộc tính nào đặt độ cong chữ?",
+    "A": "font-style",
+    "B": "text-italic",
+    "C": "font-italic",
+    "D": "font-style: italic;",
+    "correct": "D"
+  },
+  {
+    "question": "Thuộc tính nào dùng để tạo hiệu ứng chuyển động?",
+    "A": "@motion",
+    "B": "transition",
+    "C": "animate",
+    "D": "style-change",
+    "correct": "B"
+  },
+  {
+    "question": "Media query dùng để?",
+    "A": "tối ưu giao diện theo kích thước màn hình",
+    "B": "tối ưu tốc độ tải trang",
+    "C": "tăng tốc CSS",
+    "D": "xử lý dữ liệu server",
+    "correct": "A"
+  }
+]

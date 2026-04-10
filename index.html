@@ -1,0 +1,1065 @@
+<!doctype html>
+
+<html class="light" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>TheDung Learning: Empowering Your Future</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;900&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings:
+        "FILL" 0,
+        "wght" 400,
+        "GRAD" 0,
+        "opsz" 24;
+    }
+
+    /* Slider Styles */
+    .slider-container {
+      position: relative;
+      overflow: hidden;
+      border-radius: 0;
+    }
+
+    .slider-track {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .slide {
+      min-width: 100%;
+      height: 500px;
+      position: relative;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .slider-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 50%;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slider-prev {
+      left: 20px;
+    }
+
+    .slider-next {
+      right: 20px;
+    }
+
+    .slider-dots {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .dot.active {
+      background: white;
+    }
+
+    /* Mobile Menu Styles */
+    #mobileMenu {
+      transition: transform 0.3s ease-in-out;
+      transform: translateX(100%);
+    }
+
+    #mobileMenu.active {
+      transform: translateX(0);
+    }
+  </style>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#04ae70",
+            "background-light": "#f5f8f7",
+            "background-dark": "#0f231c",
+          },
+          fontFamily: {
+            display: ["Be Vietnam Pro", "sans-serif"],
+          },
+          borderRadius: {
+            DEFAULT: "1rem",
+            lg: "2rem",
+            xl: "3rem",
+            full: "9999px",
+          },
+        },
+      },
+    };
+  </script>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-[#111815] dark:text-background-light">
+  <div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+    <div class="layout-container flex h-full grow flex-col">
+      <header class="fixed top-0 left-0 right-0 z-50 bg-black/60 backdrop-blur-xl border-b border-white/10">
+        <div class="max-w-[1600px] mx-auto px-6 md:px-12 text-white">
+          <div
+            class="hidden md:flex justify-between text-[10px] tracking-[0.4em] uppercase text-white/60 py-2 border-b border-white/10">
+            <p class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-base"> · 24/7</span>Đà Nẵng · GMT+7
+            </p>
+            <p class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-base">cloud</span>26°
+            </p>
+            <p class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-base">call</span>Đường dây nóng +84 919 844 429
+            </p>
+          </div>
+          <style>
+            .no-scrollbar::-webkit-scrollbar { display: none; }
+            .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+          </style>
+          <div class="flex flex-col lg:flex-row lg:items-center py-4 gap-4">
+            <!-- Row 1: Logo and Buttons (On Mobile) -->
+            <div class="flex items-center justify-between w-full lg:w-auto">
+              <div class="flex items-center gap-3">
+                <div class="size-10 md:size-12 border border-white/30 flex items-center justify-center p-1">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Logo_dhktdn.png"
+                    alt="Logo Học viện" class="w-full h-full object-contain" />
+                </div>
+                <div>
+                  <p class="text-[9px] md:text-[11px] uppercase tracking-[0.5em] text-white/60">HỌC TẬP</p>
+                  <h1 class="text-lg md:text-xl font-semibold tracking-[0.2em]">HỌC VIỆN</h1>
+                </div>
+              </div>
+
+              <!-- Buttons on right for mobile -->
+              <div class="flex lg:hidden items-center gap-2">
+                <button onclick="toggleTheme()" class="size-9 flex items-center justify-center border border-white/30 hover:bg-white/10 transition-colors" title="Đổi giao diện">
+                  <span class="material-symbols-outlined text-sm block dark:hidden">light_mode</span>
+                  <span class="material-symbols-outlined text-sm hidden dark:block text-yellow-400">dark_mode</span>
+                </button>
+                <a href="" class="flex h-9 items-center justify-center gap-2 px-3 border border-white/30 text-[9px] uppercase tracking-[0.2em]">
+                  <span class="material-symbols-outlined text-sm">person</span>
+                  SINH VIÊN
+                </a>
+                <button onclick="toggleMenu()" class="size-9 flex items-center justify-center border border-white/30">
+                  <span class="material-symbols-outlined text-sm">menu</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Row 2: Nav (Separate row on mobile, same row on lg) -->
+            <nav class="flex items-center gap-4 md:gap-6 lg:mx-auto text-[9px] md:text-[11px] uppercase tracking-[0.2em] md:tracking-[0.45em] overflow-x-auto no-scrollbar whitespace-nowrap px-0 lg:px-4 border-t border-white/5 lg:border-none pt-3 lg:pt-0">
+              <a class="hover:text-primary transition-colors" href="#overview">TRANG CHỦ</a>
+              <a class="hover:text-primary transition-colors" href="courses.html">KHÓA HỌC</a>
+              <a class="hover:text-primary transition-colors" href="#cuisine">THƯ VIỆN</a>
+              <a class="hover:text-primary transition-colors" href="#destinations">TIN TỨC</a>
+              <a class="hover:text-primary transition-colors" href="#gallery">LIÊN HỆ</a>
+            </nav>
+
+            <!-- Action Buttons (Desktop only) -->
+            <div class="hidden lg:flex items-center gap-3 ml-auto">
+              <button onclick="toggleTheme()" class="size-11 flex items-center justify-center border border-white/30 hover:bg-white/10 transition-colors" title="Đổi giao diện">
+                <span class="material-symbols-outlined text-base block dark:hidden">light_mode</span>
+                <span class="material-symbols-outlined text-base hidden dark:block text-yellow-400">dark_mode</span>
+              </button>
+              <a href="" class="flex h-11 min-w-[150px] items-center justify-center gap-2 px-5 border border-white/30 text-[11px] uppercase tracking-[0.3em]">
+                <span class="material-symbols-outlined text-base">person</span>
+                SINH VIÊN
+              </a>
+              <a href="" class="flex h-11 min-w-[150px] px-5 bg-primary text-black font-semibold uppercase tracking-[0.4em] text-[11px] items-center justify-center">
+                GIẢNG VIÊN
+              </a>
+              <a href="" class="flex h-11 min-w-[150px] items-center justify-center gap-2 px-5 border border-white/30 text-[11px] uppercase tracking-[0.3em]">
+                <span class="material-symbols-outlined text-base">app_registration</span>
+                ĐĂNG KÝ
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobileMenu" class="fixed inset-0 z-50 lg:hidden flex flex-col p-8 pt-32 space-y-6 text-white"
+          style="background-color: #0f231c;">
+          <button onclick="toggleMenu()"
+            class="absolute top-6 right-6 size-12 border border-white/20 flex items-center justify-center">
+            <span class="material-symbols-outlined">close</span>
+          </button>
+          <nav class="flex flex-col space-y-4 text-sm uppercase tracking-[0.2em] font-medium">
+            <a onclick="toggleMenu()" class="hover:text-primary transition-colors" href="#overview">TRANG CHỦ</a>
+            <a onclick="toggleMenu()" class="hover:text-primary transition-colors" href="courses.html">KHÓA HỌC</a>
+            <a onclick="toggleMenu()" class="hover:text-primary transition-colors" href="#cuisine">THƯ VIỆN</a>
+            <a onclick="toggleMenu()" class="hover:text-primary transition-colors" href="#destinations">TIN TỨC</a>
+            <a onclick="toggleMenu()" class="hover:text-primary transition-colors" href="#gallery">LIÊN HỆ</a>
+          </nav>
+          <div class="pt-8 border-t border-white/10 flex flex-col gap-3">
+            <a href=""
+              class="h-12 flex items-center justify-center bg-primary text-black font-bold uppercase tracking-[0.2em] text-xs">GIẢNG
+              VIÊN</a>
+            <a href=""
+              class="h-12 flex items-center justify-center border border-white/30 uppercase tracking-[0.2em] text-xs">ĐĂNG
+              KÝ</a>
+          </div>
+        </div>
+      </header>
+      <main>
+        <section class="relative w-full min-h-[90vh] text-white mt-[50px]">
+          <div class="absolute inset-0">
+            <div class="w-full h-full bg-cover bg-center"
+              data-alt="A stunning aerial view of Ha Long Bay in Vietnam, with its iconic limestone karsts and emerald waters at sunset."
+              style="
+                  background-image: url(&quot;https://i.pinimg.com/1200x/d4/4a/30/d44a30d645d6e8f821d70b0425349f5b.jpg&quot;);
+                "></div>
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-black/10"></div>
+          <div class="relative z-10 px-6 md:px-12 lg:px-24 py-32">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+              <div class="lg:col-span-7 space-y-8" data-aos="fade-up">
+                <p class="text-sm uppercase tracking-[0.5em] text-primary/80">
+                  Kỹ năng số · Tư duy sáng tạo · Sự nghiệp thành công...
+                </p>
+                <h1 class="text-4xl md:text-6xl font-black leading-[1.1] tracking-tight text-white">
+                  Học Viện TheDung
+                </h1>
+                <p class="text-lg text-white/80 max-w-2xl">
+                  TheDung Academy là hệ thống đào tạo trực tuyến hàng đầu, giúp bạn làm chủ công nghệ, trang bị kỹ năng
+                  thực chiến và kết nối cơ hội nghề nghiệp toàn cầu.
+                </p>
+                <div class="flex flex-wrap gap-6 text-xs md:text-sm uppercase tracking-[0.3em] text-white/70">
+                  <div>
+                    <p class="text-2xl font-bold text-white uppercase tracking-normal">5,000+</p>
+                    <p>Học viên năng động</p>
+                  </div>
+                  <div>
+                    <p class="text-2xl font-bold text-white uppercase tracking-normal">120+</p>
+                    <p>Khóa học thực tế</p>
+                  </div>
+                  <div>
+                    <p class="text-2xl font-bold text-white uppercase tracking-normal">50+</p>
+                    <p>Chuyên gia hàng đầu</p>
+                  </div>
+                </div>
+                <div class="flex flex-wrap gap-4">
+                  <a href="courses.html"
+                    class="px-8 py-4 bg-primary text-black font-black tracking-widest uppercase text-[10px] rounded-full inline-block hover:scale-105 transition-all">
+                    Khám phá ngay
+                  </a>
+                  <button
+                    class="px-8 py-4 border-2 border-white/40 text-white font-black tracking-widest uppercase text-[10px] rounded-full backdrop-blur hover:bg-white/10 transition-all">
+                    Tư vấn lộ trình
+                  </button>
+                </div>
+              </div>
+              <div class="lg:col-span-5 w-full" data-aos="fade-left" data-aos-delay="150">
+                <div class="bg-white/10 backdrop-blur-xl border border-white/20 p-8 space-y-6 rounded-[2rem]">
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <p class="text-[10px] uppercase tracking-[0.3em] text-white/60">
+                        Cổng học tập trực tuyến
+                      </p>
+                      <p class="text-2xl font-black">Hệ thống đào tạo toàn diện</p>
+                    </div>
+                    <span class="material-symbols-outlined text-white/70">explore</span>
+                  </div>
+                  <div class="grid grid-cols-3 gap-4 text-center">
+                    <div>
+                      <p class="text-2xl font-black">15,000+</p>
+                      <p class="text-[9px] uppercase tracking-wide text-white/70">
+                        Đã học viên
+                      </p>
+                    </div>
+                    <div>
+                      <p class="text-2xl font-black">100+</p>
+                      <p class="text-[9px] uppercase tracking-wide text-white/70">
+                        Đối tác lớn
+                      </p>
+                    </div>
+                    <div>
+                      <p class="text-2xl font-black">Premium</p>
+                      <p class="text-[9px] uppercase tracking-wide text-white/70">
+                        Chất lượng cao
+                      </p>
+                    </div>
+                  </div>
+                  <div class="space-y-4">
+                    <div class="flex items-start gap-3 border-l-2 border-primary pl-4">
+                      <div>
+                        <p class="font-bold text-sm">Đăng ký linh hoạt</p>
+                        <p class="text-[11px] text-white/70">
+                          Học mọi lúc mọi nơi trên mọi thiết bị.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="flex items-start gap-3 border-l-2 border-white/20 pl-4">
+                      <div>
+                        <p class="font-bold text-sm">Lộ trình cá nhân</p>
+                        <p class="text-[11px] text-white/70">
+                          Theo sát năng lực từng học viên.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="flex items-start gap-3 border-l-2 border-white/20 pl-4">
+                      <div>
+                        <p class="font-bold text-sm">Kết nối chuyên gia</p>
+                        <p class="text-[11px] text-white/70">
+                          Học từ những người giỏi nhất ngành.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flex items-center justify-between text-[11px] text-white/70 pt-2 uppercase tracking-widest font-black">
+                    <p>Chứng chỉ uy tín</p>
+                    <button class="text-primary hover:underline">
+                      Xem chi tiết →
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="absolute bottom-10 left-6 md:left-12 flex items-center gap-4 text-white/40 text-[9px] uppercase tracking-[0.5em] font-black">
+              <div class="w-12 h-px bg-white/20"></div>
+              TRẢI NGHIỆM ĐỂ VƯƠN XA
+            </div>
+          </div>
+        </section>
+
+        <div class="px-6 md:px-12 lg:px-24 w-full max-w-none py-10 min-h-screen">
+          <!-- Section: Overview -->
+          <div id="overview" class="py-10" data-aos="fade-up" data-aos-offset="200">
+            <div class="grid grid-cols-1 xl:grid-cols-12 gap-12 items-start">
+              <div class="xl:col-span-4 space-y-6">
+                <p class="text-sm uppercase tracking-[0.3em] text-primary">
+                  Kiến thức thực tế · Kỹ năng chuyên sâu · Tương lai rộng mở
+                </p>
+                <h2 class="text-4xl font-bold leading-tight tracking-[-0.02em] text-left dark:text-white">
+                  Hành trình chinh phục tri thức
+                </h2>
+                <p class="text-base leading-relaxed text-gray-700 dark:text-gray-300">
+                  Bắt đầu hành trình cùng TheDung Academy. Chúng tôi mang đến môi trường học tập năng động, kết hợp
+                  nhuần nhuyễn giữa kiến thức và thực hành thực tế.
+                </p>
+                <ul class="space-y-3 border-l-4 border-primary pl-4 text-gray-700 dark:text-gray-300">
+                  <li>
+                    <span class="font-semibold text-primary">Đội ngũ chuyên gia</span>
+                    giàu kinh nghiệm, luôn tận tâm đồng hành và định hướng.
+                  </li>
+                  <li>
+                    <span class="font-semibold text-primary">Hệ sinh thái học tập</span>
+                    hiện đại với kho học liệu đa dạng và nền tảng tương tác mạnh mẽ.
+                  </li>
+                  <li>
+                    <span class="font-semibold text-primary">Chứng chỉ giá trị</span>
+                    được công nhận bởi các đối tác chiến lược và doanh nghiệp lớn.
+                  </li>
+                </ul>
+              </div>
+              <div class="xl:col-span-8 space-y-12">
+                <div
+                  class="grid grid-cols-1 md:grid-cols-3 border border-gray-200 dark:border-gray-700 divide-y md:divide-y-0 md:divide-x divide-gray-200 dark:divide-gray-700 bg-white dark:bg-gray-900"
+                  data-aos="fade-up" data-aos-delay="150">
+                  <div class="p-8">
+                    <span class="material-symbols-outlined text-4xl text-primary mb-4 block">school</span>
+                    <h3 class="text-xl font-bold mb-2">Đào tạo chuyên sâu</h3>
+                    <p class="text-gray-600 dark:text-gray-400">
+                      Chương trình học chuẩn quốc tế, cập nhật liên tục theo xu hướng ngành.
+                    </p>
+                  </div>
+                  <div class="p-8">
+                    <span class="material-symbols-outlined text-4xl text-primary mb-4 block">psychology</span>
+                    <h3 class="text-xl font-bold mb-2">Tư duy sáng tạo</h3>
+                    <p class="text-gray-600 dark:text-gray-400">
+                      Khơi dậy tiềm năng, rèn luyện kỹ năng giải quyết vấn đề thực tế.
+                    </p>
+                  </div>
+                  <div class="p-8">
+                    <span class="material-symbols-outlined text-4xl text-primary mb-4 block">groups</span>
+                    <h3 class="text-xl font-bold mb-2">
+                      Cộng đồng năng động
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-400">
+                      Nơi giao lưu, chia sẻ và kết nối cùng hàng ngàn học viên khác.
+                    </p>
+                  </div>
+                </div>
+
+                <section
+                  class="relative overflow-hidden h-[420px] flex items-center justify-center text-center text-white">
+                  <div class="absolute inset-0 bg-cover bg-center" style="
+                        background-image:
+                          linear-gradient(
+                            rgba(0, 0, 0, 0.6),
+                            rgba(0, 0, 0, 0.4)
+                          ),
+                          url(&quot;https://media.dau.edu.vn/Media/1_TH1057/FolderFunc/202502/Images/tuyen-sinh-ktd-20250219092920-e.png&quot;);
+                      "></div>
+                  <div class="relative z-10 max-w-3xl px-6">
+                    <h3 class="text-4xl font-bold">Đột phá mọi giới hạn</h3>
+                    <p class="mt-4 text-lg">
+                      Không chỉ là kiến thức, chúng tôi trang bị cho bạn bản lĩnh để đối mặt với những thách thức của kỷ
+                      nguyên số, giúp bạn tự tin vươn xa trên con đường sự nghiệp.
+                    </p>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section: Culture -->
+          <div id="culture" class="py-10 border-t border-gray-200 dark:border-gray-800" data-aos="fade-up"
+            data-aos-offset="200">
+            <div class="grid grid-cols-1 xl:grid-cols-12 gap-12 items-start">
+              <div class="xl:col-span-4 space-y-5">
+                <p class="text-sm uppercase tracking-[0.3em] text-primary">
+                  Giá trị cốt lõi
+                </p>
+                <h2 class="text-4xl font-bold leading-tight tracking-[-0.02em] dark:text-white">
+                  Triết lý đào tạo
+                </h2>
+                <p class="text-gray-700 dark:text-gray-300">
+                  Chúng tôi tập trung vào sự thành công của học viên thông qua lộ trình cá nhân hóa và sự hỗ trợ tận tâm
+                  từ đội ngũ chuyên gia hàng đầu.
+                </p>
+                <div class="grid grid-cols-2 gap-4 text-sm text-gray-700 dark:text-gray-300">
+                  <div class="border border-gray-200 dark:border-gray-700 p-4">
+                    <p class="text-2xl font-bold text-primary">500+</p>
+                    <p>Bài giảng chất lượng</p>
+                  </div>
+                  <div class="border border-gray-200 dark:border-gray-700 p-4">
+                    <p class="text-2xl font-bold text-primary">15+</p>
+                    <p>Đối tác đào tạo quốc tế</p>
+                  </div>
+                </div>
+              </div>
+              <div class="xl:col-span-8 space-y-16">
+                <!-- Ao Dai Section -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center" data-aos="fade-up"
+                  data-aos-delay="100">
+                  <div class="overflow-hidden h-80 border border-gray-200 dark:border-gray-700" data-aos="zoom-in"
+                    data-aos-delay="150">
+                    <img
+                      src="https://duaelbluiumc3.cloudfront.net/Media/Images/InboundImages/Blog/ao-dai-from-royals-to-everyday-life-the-ao-dais-transformation.jpg"
+                      alt="Vietnamese women in Ao Dai"
+                      class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                  </div>
+                  <div>
+                    <h3 class="text-2xl font-bold text-primary mb-4">
+                      Học tập linh hoạt (Flexible Learning)
+                    </h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                      Chúng tôi hiểu rằng mỗi người có một nhịp sống riêng. Nền tảng của chúng tôi cho phép bạn học mọi
+                      lúc, mọi nơi, trên mọi thiết bị. Bạn hoàn toàn chủ động trong việc sắp xếp thời gian để vừa đảm
+                      bảo công việc, vừa phát triển bản thân.
+                    </p>
+                    <p class="text-gray-700 dark:text-gray-300">
+                      Dù bạn là sinh viên hay người đã đi làm, lộ trình học tập linh hoạt sẽ giúp bạn tối ưu hóa hiệu
+                      quả và không bỏ lỡ bất kỳ cơ hội nào.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Tet Holiday Section -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center" data-aos="fade-up"
+                  data-aos-delay="150">
+                  <div class="lg:order-2 overflow-hidden h-80 border border-gray-200 dark:border-gray-700"
+                    data-aos="zoom-in" data-aos-delay="200">
+                    <img src="https://vietdreamtravel.vn/wp-content/uploads/2020/04/Tet-Nguyen-Dan-1.jpeg.webp"
+                      alt="Tet Holiday Decorations"
+                      class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                  </div>
+                  <div class="lg:order-1">
+                    <h3 class="text-2xl font-bold text-primary mb-4">
+                      Lộ trình bài bản (Structured Roadmap)
+                    </h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                      Thiếu định hướng là rào cản lớn nhất của người học. Tại TheDung Academy, mỗi khóa học đều được
+                      thiết kế theo lộ trình chuẩn từ cơ bản đến nâng cao, đảm bảo học viên nắm vững nền tảng trước khi
+                      đi vào chuyên sâu.
+                    </p>
+                    <p class="text-gray-700 dark:text-gray-300">
+                      Hệ thống theo dõi tiến độ giúp bạn biết mình đang đứng ở đâu và cần làm gì tiếp theo để đạt được
+                      mục tiêu cuối cùng một cách nhanh nhất.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Water Puppetry -->
+                <div class="bg-primary/5 dark:bg-primary/10 p-10 border border-primary/30 dark:border-primary/40"
+                  data-aos="fade-up" data-aos-delay="200">
+                  <h3 class="text-2xl font-bold text-primary mb-6">
+                    Hỗ trợ 1-1 & Mentorship
+                  </h3>
+                  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="col-span-2">
+                      <p class="text-gray-700 dark:text-gray-300 mb-4">
+                        Học viên không bao giờ đơn độc trên hành trình của mình. Chúng tôi cung cấp dịch vụ hỗ trợ trực
+                        tiếp từ đội ngũ mentor là những chuyên gia đang làm việc tại các tập đoàn lớn. Mọi thắc mắc của
+                        bạn sẽ được giải đáp kịp thời và chi tiết.
+                      </p>
+                      <p class="text-gray-700 dark:text-gray-300">
+                        Các buổi livestream Q&A hàng tuần và cộng đồng Slack/Discord là nơi bạn có thể trao đổi kinh
+                        nghiệm và nhận những lời khuyên thực tế nhất.
+                      </p>
+                    </div>
+                    <div class="overflow-hidden h-48 border border-gray-200 dark:border-gray-700">
+                      <img src="https://hoangthanhthanglong.vn/en/wp-content/uploads/sites/2/2018/12/mua-roi-nuoc.jpg"
+                        alt="Water Puppetry" class="w-full h-full object-cover" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section: Cuisine -->
+          <div id="cuisine" class="py-10 border-t border-gray-200 dark:border-gray-800" data-aos="fade-up"
+            data-aos-offset="200">
+            <div class="grid grid-cols-1 xl:grid-cols-12 gap-12 items-start">
+              <div class="xl:col-span-4 space-y-5">
+                <p class="text-sm uppercase tracking-[0.3em] text-primary">
+                  Danh mục đào tạo
+                </p>
+                <h2 class="text-4xl font-bold leading-tight tracking-[-0.02em] text-primary">
+                  Khám phá đam mê
+                </h2>
+                <p class="text-gray-700 dark:text-gray-300">
+                  Chương trình đào tạo đa dạng, bao quát các lĩnh vực trọng yếu của kỷ nguyên số với lộ trình học bài
+                  bản và dự án thực tế.
+                </p>
+                <ul class="space-y-3 text-gray-700 dark:text-gray-300">
+                  <li>
+                    <strong class="text-primary">Nền tảng</strong>: Kiến thức cơ bản, tư duy logic và kỹ năng cốt lõi.
+                  </li>
+                  <li>
+                    <strong class="text-primary">Nâng cao</strong>: Chuyên sâu vào kỹ thuật, công cụ và quy trình làm
+                    việc.
+                  </li>
+                  <li>
+                    <strong class="text-primary">Thực chiến</strong>: Áp dụng vào dự án thực tế, giải quyết bài toán
+                    doanh nghiệp.
+                  </li>
+                </ul>
+              </div>
+
+              <div class="xl:col-span-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6"
+                data-aos="fade-up" data-aos-delay="150">
+                <!-- Dish 1 -->
+                <div
+                  class="border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 overflow-hidden group">
+                  <div class="h-48 overflow-hidden border-b border-gray-200 dark:border-gray-800">
+                    <img
+                      src="https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?q=80&w=1974&auto=format&fit=crop"
+                      alt="Pho"
+                      class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                  </div>
+                  <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">Web Full-stack</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">
+                      Làm chủ từ giao diện (Frontend) đến hệ thống (Backend). Xây dựng các ứng dụng web chuyên nghiệp và
+                      có khả năng mở rộng cao.
+                    </p>
+                  </div>
+                </div>
+                <!-- Dish 2 -->
+                <div
+                  class="border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 overflow-hidden group">
+                  <div class="h-48 overflow-hidden border-b border-gray-200 dark:border-gray-800">
+                    <img src="https://banhmihanoi.net/wp-content/uploads/2019/07/maxresdefault.jpg" alt="Banh Mi"
+                      class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                  </div>
+                  <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">Thiết kế UI/UX</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">
+                      Sáng tạo trải nghiệm người dùng tuyệt vời. Học cách sử dụng Figma, Adobe XD để thiết kế những giao
+                      diện ứng dụng và web đỉnh cao.
+                    </p>
+                  </div>
+                </div>
+                <!-- Dish 3 -->
+                <div
+                  class="border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 overflow-hidden group">
+                  <div class="h-48 overflow-hidden border-b border-gray-200 dark:border-gray-800">
+                    <img src="https://static.vinwonders.com/production/bun-cha-ha-noi-01.jpg" alt="Bun Cha"
+                      class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                  </div>
+                  <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">Digital Marketing</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">
+                      Chinh phục khách hàng trên nền tảng số. Học về Facebook Ads, Google Ads, SEO và Content Marketing
+                      thực chiến.
+                    </p>
+                  </div>
+                </div>
+                <!-- Dish 4 -->
+                <div
+                  class="border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 overflow-hidden group">
+                  <div class="h-48 overflow-hidden border-b border-gray-200 dark:border-gray-800">
+                    <img src="https://cdn.tgdd.vn/2020/07/CookProduct/ava-1200x676-7.jpg" alt="Coffee"
+                      class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                  </div>
+                  <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">Data Analytics</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">
+                      Biến dữ liệu thành giá trị kinh doanh. Học cách phân tích, xử lý dữ liệu với SQL, Python và Power
+                      BI.
+                    </p>
+                  </div>
+                </div>
+                <!-- Dish 5 -->
+                <div
+                  class="border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 overflow-hidden group">
+                  <div class="h-48 overflow-hidden border-b border-gray-200 dark:border-gray-800">
+                    <img src="https://cdn.tgdd.vn/2020/11/CookRecipe/Avatar/goi-cuon-bo-nuong-yakiniku-thumbnail.jpg"
+                      alt="Spring Rolls"
+                      class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                  </div>
+                  <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">Tiếng Anh Giao tiếp</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">
+                      Xóa bỏ rào cản ngôn ngữ. Tập trung vào kỹ năng nghe nói phản xạ, giúp bạn tự tin làm việc trong
+                      môi trường quốc tế.
+                    </p>
+                  </div>
+                </div>
+                <!-- Dish 6 -->
+                <div
+                  class="border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 overflow-hidden group">
+                  <div class="h-48 overflow-hidden border-b border-gray-200 dark:border-gray-800">
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/C%C3%A0_ph%C3%AA_tr%E1%BB%A9ng.jpg/1200px-C%C3%A0_ph%C3%AA_tr%E1%BB%A9ng.jpg"
+                      alt="Egg Coffee"
+                      class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                  </div>
+                  <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">Kỹ năng mềm</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">
+                      Hoàn thiện bản thân. Rèn luyện kỹ năng thuyết trình, làm việc nhóm, quản lý thời gian và giải
+                      quyết xung đột.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section: Destinations -->
+          <div id="destinations" class="py-10 border-t border-gray-200 dark:border-gray-800" data-aos="fade-up"
+            data-aos-offset="200">
+            <div class="grid grid-cols-1 xl:grid-cols-12 gap-12">
+              <div class="xl:col-span-3 space-y-6">
+                <p class="text-sm uppercase tracking-[0.3em] text-primary">
+                  Lộ trình thành công
+                </p>
+                <h2 class="text-4xl font-bold leading-tight tracking-[-0.02em] dark:text-white">
+                  Bản đồ phát triển năng lực
+                </h2>
+                <p class="text-gray-700 dark:text-gray-300">
+                  Chúng tôi chia quá trình học tập thành 3 giai đoạn then chốt, giúp bạn từng bước chinh phục đỉnh cao
+                  sự nghiệp.
+                </p>
+                <ol class="space-y-3 text-gray-700 dark:text-gray-300 list-decimal list-inside">
+                  <li>
+                    Cơ bản: Xây dựng nền tảng tư duy vững chắc và làm quen với công cụ chuyên ngành.
+                  </li>
+                  <li>
+                    Chuyên sâu: Nâng cao kỹ năng thông qua các đồ án thực tế và sự hướng dẫn của chuyên gia.
+                  </li>
+                  <li>
+                    Về đích: Chuẩn bị hồ sơ năng lực, rèn luyện kỹ năng phỏng vấn và kết nối việc làm.
+                  </li>
+                </ol>
+              </div>
+              <div class="xl:col-span-9 space-y-16">
+                <article
+                  class="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 border border-gray-200 dark:border-gray-800 p-8"
+                  data-aos="fade-right">
+                  <div class="lg:col-span-3 space-y-6">
+                    <div>
+                      <p class="text-sm uppercase tracking-[0.4em] text-primary">
+                        Giai đoạn 1
+                      </p>
+                      <h3 class="mt-2 text-3xl font-bold leading-tight dark:text-white">
+                        Xây dựng nền tảng vững chắc
+                      </h3>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300">
+                      Trang bị hệ thống kiến thức nền tảng chuẩn xác, tư duy logic và cách tiếp cận chuyên nghiệp để sẵn
+                      sàng cho mọi thử thách.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div>
+                        <h4 class="font-bold text-lg dark:text-white">
+                          Tư duy lập trình
+                        </h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">
+                          Rèn luyện khả năng giải quyết vấn đề thông qua các thuật toán và logic cơ bản.
+                        </p>
+                      </div>
+                      <div>
+                        <h4 class="font-bold text-lg dark:text-white">
+                          Công cụ chuyên sâu
+                        </h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">
+                          Làm chủ các phần mềm và nền tảng cốt lõi cần thiết cho công việc sau này.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-2 overflow-hidden h-96 border border-gray-200 dark:border-gray-700">
+                    <img
+                      alt="Terraced rice fields in Mu Cang Chai, Northern Vietnam, with golden hues during harvest season."
+                      class="w-full h-full object-cover"
+                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwtU3krntOmhEM0EwZ34sGKtDthlP3P_olh8FzmSKYM2XXY7n94n480fvjo5now2iN7eg9aW4lKJgO5udeHPz5IO-kL6reMzp1U9a_yaas4Zgdwg7JCTQEmrAGs4kghR0auWDbOYBaPNlyJorhqN-yPcHbd6BNUf8FbuqthMZ2LZW613l4DIvOQTkfh6vHancpgEKUKLcIG6JPbejW2BGg0gLDXek6TZRuEg_dLUJ-K91EtsBf9zV89phAad33Pnh_MJZZj7-TFvE" />
+                  </div>
+                </article>
+
+                <article
+                  class="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 border border-gray-200 dark:border-gray-800 p-8"
+                  data-aos="fade-left" data-aos-delay="100">
+                  <div
+                    class="lg:col-span-2 overflow-hidden h-96 lg:order-first border border-gray-200 dark:border-gray-700">
+                    <img
+                      alt="Colorful lanterns illuminating the ancient town of Hoi An at night, reflecting on the river."
+                      class="w-full h-full object-cover"
+                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtRxZPW3euNBzfFIMDuy1wYx6sSsDgd8T3YlmVhS-A6lc8bL3za2ElZLe1PFOrEX6EMdWa59Vewy_0UNvZXYn84kP-RSBDcw1I7FZqKwkn-e3haFeQJwoi0BvK1KZ7ZfJfSo7Ylk4sNAt8A5nHih3tWCQxudm0pIzPTtukS20oci3lCbOQJRaY-eGzLkO66bx--f8UErJDQ0VXdWeuD0hh7w_I0Du80SpTN1KEDtxSLU_E3G78krZhDJclJDy3hDsRaVBI0B1KYE8" />
+                  </div>
+                  <div class="lg:col-span-3 space-y-6">
+                    <div>
+                      <p class="text-sm uppercase tracking-[0.4em] text-primary">
+                        Giai đoạn 2
+                      </p>
+                      <h3 class="mt-2 text-3xl font-bold leading-tight dark:text-white">
+                        Thực chiến & Dự án thực tế
+                      </h3>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300">
+                      Học viên tham gia các dự án thực tế, giải quyết đề bài từ doanh nghiệp để tích lũy kinh nghiệm và
+                      xây dựng Portfolio ấn tượng.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div>
+                        <h4 class="font-bold text-lg dark:text-white">
+                          Thực tập doanh nghiệp
+                        </h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">
+                          Trải nghiệm môi trường làm việc chuyên nghiệp tại các công ty đối tác của học viện.
+                        </p>
+                      </div>
+                      <div>
+                        <h4 class="font-bold text-lg dark:text-white">Đồ án tốt nghiệp</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">
+                          Xây dựng sản phẩm hoàn thiện, đánh dấu bước ngoặt trong quá trình học tập.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+
+                <article
+                  class="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 border border-gray-200 dark:border-gray-800 p-8"
+                  data-aos="fade-right" data-aos-delay="150">
+                  <div class="lg:col-span-3 space-y-6">
+                    <div>
+                      <p class="text-sm uppercase tracking-[0.4em] text-primary">
+                        Giai đoạn 3
+                      </p>
+                      <h3 class="mt-2 text-3xl font-bold leading-tight dark:text-white">
+                        Tăng tốc sự nghiệp toàn cầu
+                      </h3>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300">
+                      Hoàn thiện kỹ năng bổ trợ, rèn luyện tư duy lãnh đạo và kết nối trực tiếp với nhà tuyển dụng để
+                      thăng tiến nhanh chóng.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div>
+                        <h4 class="font-bold text-lg dark:text-white">
+                          Tuyển dụng & Phỏng vấn
+                        </h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">
+                          Huấn luyện kỹ năng viết CV và trả lời phỏng vấn chinh phục mọi nhà tuyển dụng.
+                        </p>
+                      </div>
+                      <div>
+                        <h4 class="font-bold text-lg dark:text-white">
+                          Mạng lưới Alumni
+                        </h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">
+                          Gia nhập cộng đồng cựu học viên thành đạt để hỗ trợ và phát triển lâu dài.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-2 overflow-hidden h-96 border border-gray-200 dark:border-gray-700">
+                    <img
+                      alt="A woman in a traditional conical hat rows a boat through a narrow canal in the Mekong Delta."
+                      class="w-full h-full object-cover"
+                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuAilyHpTJ_JWOAAp6vrGxC3HgUlH0CfHukDdmVD5CnoVMj6j970BzPndRXTozlIkHFNp0W5RjNVmYlHl0r_jpnte6uiosrq4CZhnldHQU8q3W8I5tlIoByy-RePIAxMhfunt8TjECTC3406HgFJMIUhJJ-aAQE3sh5xOOhFdIOvw_kuOstBsvBynQjPvEl_9KSUV_N1Kvp75IwVps72MmEEikejLNUl2Lrcmt6oFzPyPqEmziKm64P9TXXOLQUOyFJFLwN3kSUfknE" />
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section: Gallery (Slider) -->
+          <div id="gallery" class="py-10 border-t border-gray-200 dark:border-gray-800" data-aos="fade-up"
+            data-aos-offset="200">
+            <h2 class="text-3xl font-bold text-center mb-8 dark:text-white">
+              Khoảnh khắc học tập
+            </h2>
+            <div class="slider-container border border-gray-200 dark:border-gray-800">
+              <div class="slider-track" id="sliderTrack">
+                <!-- Slide 1 -->
+                <div class="slide">
+                  <img
+                    src="https://media.dau.edu.vn/Media/1_TH1057/FolderFunc/202502/Images/tuyen-sinh-ktd-20250219092920-e.png"
+                    alt="Ha Long Bay" />
+                  <div
+                    class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-8 text-white">
+                    <h3 class="text-2xl font-bold">Lớp học tương tác</h3>
+                    <p>Học trực tuyến cùng chuyên gia</p>
+                  </div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="slide">
+                  <img
+                    src="https://media.dau.edu.vn/Media/1_TH1057/FolderFunc/202507/Images/dai-hoc-kien-truc-da-nang-20250722025333-e.png"
+                    alt="Mu Cang Chai" />
+                  <div
+                    class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-8 text-white">
+                    <h3 class="text-2xl font-bold">Thực hành dự án</h3>
+                    <p>Xây dựng sản phẩm thực tế</p>
+                  </div>
+                </div>
+                <!-- Slide 3 -->
+                <div class="slide">
+                  <img
+                    src="https://media.dau.edu.vn/Media/1_TH1057/FolderFunc/202410/Images/kiem-dinh-chat-luong-nganh-20241008080809-e.jpg"
+                    alt="Hoi An" />
+                  <div
+                    class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-8 text-white">
+                    <h3 class="text-2xl font-bold">Hội thảo chuyên đề</h3>
+                    <p>Cập nhật xu hướng công nghệ mới</p>
+                  </div>
+                </div>
+                <!-- Slide 4 -->
+                <div class="slide">
+                  <img
+                    src="https://media.dau.edu.vn/Media/1_TH1057/FolderFunc/202507/Images/dai-hoc-kien-truc-da-nang-2-20250722025338-e.png"
+                    alt="Mekong Delta" />
+                  <div
+                    class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-8 text-white">
+                    <h3 class="text-2xl font-bold">Lễ tốt nghiệp</h3>
+                    <p>Vinh danh những nỗ lực không ngừng</p>
+                  </div>
+                </div>
+              </div>
+
+              <button class="slider-nav slider-prev" onclick="moveSlide(-1)">
+                <span class="material-symbols-outlined">arrow_back_ios</span>
+              </button>
+              <button class="slider-nav slider-next" onclick="moveSlide(1)">
+                <span class="material-symbols-outlined">arrow_forward_ios</span>
+              </button>
+
+              <div class="slider-dots" id="sliderDots">
+                <!-- Dots will be generated by JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      <footer class="bg-[#0b1a14] text-white border-t border-white/10" data-aos="fade-up" data-aos-offset="200">
+        <div
+          class="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-24 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+          <div class="space-y-4">
+            <div class="flex items-center gap-3">
+              <div class="size-12 border border-white/30 flex items-center justify-center p-1">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Logo_dhktdn.png"
+                  alt="Academy logo" class="w-full h-full object-contain" />
+              </div>
+              <div>
+                <p class="text-xs uppercase tracking-[0.5em] text-white/60">
+                  Nền tảng giáo dục
+                </p>
+                <h3 class="text-lg font-semibold tracking-[0.3em]">
+                  TheDung Academy
+                </h3>
+              </div>
+            </div>
+            <p class="text-sm text-white/70">
+              TheDung Academy mang đến cơ hội học tập không giới hạn cho mọi người. Hãy bắt đầu hành trình chinh phục
+              tri thức và kiến tạo tương lai cùng chúng tôi ngay hôm nay. Mỗi bài học là một bước tiến mới.
+            </p>
+          </div>
+          <div>
+            <h4 class="text-sm uppercase tracking-[0.4em] text-primary mb-4">
+              Lĩnh vực chính
+            </h4>
+            <ul class="space-y-3 text-sm text-white/70">
+              <li>
+                <span class="text-white">Công nghệ & Lập trình:</span>
+                Web, App, AI, Cloud Computing.
+              </li>
+              <li>
+                <span class="text-white">Digital Marketing:</span>
+                SEO, Ads, Content, Branding.
+              </li>
+              <li>
+                <span class="text-white">Thiết kế & Sáng tạo:</span> UI/UX, Đồ họa, Video Editing.
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-sm uppercase tracking-[0.4em] text-primary mb-4">
+              Hỗ trợ học viên
+            </h4>
+            <ul class="space-y-3 text-sm text-white/70">
+              <li>
+                Tư vấn miễn phí: Oct–Apr hàng ngày từ 8h đến 21h.
+              </li>
+              <li>Tài liệu độc quyền: Cập nhật mới nhất sau mỗi buổi học.</li>
+              <li>
+                Cộng đồng: Kết nối cùng mạng lưới hơn 50.000 học viên.
+              </li>
+              <li>
+                Bảo hành khóa học: Học lại miễn phí nếu chưa nắm vững kiến thức.
+              </li>
+            </ul>
+          </div>
+          <div class="space-y-3 text-sm text-white/70">
+            <h4 class="text-sm uppercase tracking-[0.4em] text-primary mb-4">
+              Liên hệ với chúng tôi
+            </h4>
+            <p>
+              Học viện Đào tạo TheDung Academy<br />459 Trần Đại Nghĩa, Ngũ Hành Sơn, Đà Nẵng
+            </p>
+            <p>Hotline: +84 33 202 9410</p>
+            <p>Email: contact@thedung.edu.vn</p>
+            <p class="text-white">#TheDungAcademy #EmpowerFuture</p>
+          </div>
+        </div>
+        <div class="border-t border-white/10 text-center text-xs uppercase tracking-[0.3em] text-white/60 py-4">
+          © 2025 TheDung Academy · Đồng hành cùng bạn trên con đường chinh phục tri thức
+        </div>
+      </footer>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      once: true,
+      duration: 800,
+      easing: "ease-out-cubic",
+      offset: 120,
+    });
+
+    // --- Theme Logic ---
+    function initTheme() {
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      if (savedTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    }
+
+    function toggleTheme() {
+      const isDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    }
+
+    initTheme();
+    // --------------------
+
+    // Slider Functionality
+    let currentSlide = 0;
+    const track = document.getElementById("sliderTrack");
+    const slides = document.getElementsByClassName("slide");
+    const dotsContainer = document.getElementById("sliderDots");
+
+    if (dotsContainer) {
+        // Create dots
+        for (let i = 0; i < slides.length; i++) {
+            const dot = document.createElement("div");
+            dot.classList.add("dot");
+            if (i === 0) dot.classList.add("active");
+            dot.onclick = () => goToSlide(i);
+            dotsContainer.appendChild(dot);
+        }
+    }
+
+    function updateSlider() {
+      if (!track) return;
+      track.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+      // Update dots
+      const dots = document.getElementsByClassName("dot");
+      for (let i = 0; i < dots.length; i++) {
+        dots[i].classList.remove("active");
+      }
+      if (dots[currentSlide]) dots[currentSlide].classList.add("active");
+    }
+
+    function moveSlide(n) {
+      currentSlide += n;
+      if (currentSlide >= slides.length) currentSlide = 0;
+      if (currentSlide < 0) currentSlide = slides.length - 1;
+      updateSlider();
+    }
+
+    function goToSlide(n) {
+      currentSlide = n;
+      updateSlider();
+    }
+
+    // Auto slide
+    setInterval(() => {
+      moveSlide(1);
+    }, 5000);
+
+    // Mobile Menu Toggle
+    function toggleMenu() {
+      const menu = document.getElementById('mobileMenu');
+      if (!menu) return;
+      menu.classList.toggle('active');
+      if (menu.classList.contains('active')) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
+    }
+  </script>
+</body>
+
+</html>

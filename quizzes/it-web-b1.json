@@ -1,0 +1,42 @@
+[
+  {
+    "question": "CSS là viết tắt của?",
+    "A": "Cascading Style Sheets",
+    "B": "Creative Style System",
+    "C": "Central Style Syntax",
+    "D": "Colorful Styling Sheets",
+    "correct": "A"
+  },
+  {
+    "question": "Thuộc tính nào dùng để đổi màu chữ?",
+    "A": "font-color",
+    "B": "text-color",
+    "C": "color",
+    "D": "font-style",
+    "correct": "C"
+  },
+  {
+    "question": "Thuộc tính nào dùng để đổi kích thước chữ?",
+    "A": "font-size",
+    "B": "text-size",
+    "C": "size",
+    "D": "font-weight",
+    "correct": "A"
+  },
+  {
+    "question": "Thuộc tính nào dùng để căn giữa chữ?",
+    "A": "align",
+    "B": "text-align",
+    "C": "center",
+    "D": "justify-content",
+    "correct": "B"
+  },
+  {
+    "question": "Thuộc tính nào thay đổi màu nền?",
+    "A": "color",
+    "B": "background-color",
+    "C": "bg-color",
+    "D": "background-style",
+    "correct": "B"
+  }
+]

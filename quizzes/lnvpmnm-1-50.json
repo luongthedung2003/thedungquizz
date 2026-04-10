@@ -1,0 +1,295 @@
+
+[
+   {
+    "question": "Write is an example of a(n) ______.",
+    "A": "photo Editor",
+    "B": "word processing software",
+    "C": "broswer",
+    "D": "operating system",
+    "correct": "B"
+  },
+   {
+    "question": "Which of the following directory contains configuration files in Linux?",
+    "A": "/bin/",
+    "B": "/dev/",
+    "C": "/root/",
+    "D": "/etc/",
+    "correct": "D"
+  },
+   {
+    "question": "The Linux Kernel was written by?",
+    "A": "Dennis Ritchie",
+    "B": "Linus Torvalds",
+    "C": "Richard Stallman",
+    "D": "Brian Kernighan",
+    "correct": "B"
+  },
+   {
+    "question": "Which is the earliest and most widely used shell in Linux?",
+    "A": "bash",
+    "B": "bsh",
+    "C": "csh",
+    "D": "ksh",
+    "correct": "A"
+  },
+   {
+    "question": "Which command creates an empty file if file does not exist?",
+    "A": "cat",
+    "B": "read",
+    "C": "ed",
+    "D": "touch",
+    "correct": "D"
+  },
+   {
+    "question": "Linux is an example of a(n) ______.",
+    "A": "word processing software",
+    "B": "broswer",
+    "C": "operating system",
+    "D": "photo Editor",
+    "correct": "C"
+  },
+   {
+    "question": "Which command is used to display the operating system name",
+    "A": "kernel",
+    "B": "os",
+    "C": "unix",
+    "D": "uname",
+    "correct": "D"
+  },
+   {
+    "question": "Which of these commands could you use to show one page of output at a time?",
+    "A": "grep",
+    "B": "pause",
+    "C": "less",
+    "D": "sed",
+    "correct": "C"
+  },
+   {
+    "question": "Which command is used to display all the files including hidden files in your current and its subdirectories ?",
+    "A": "ls –l",
+    "B": "ls –aR",
+    "C": "ls –R",
+    "D": "ls –a",
+    "correct": "B"
+  },
+   {
+    "question": "The Linux Kernel was written by?",
+    "A": "Dennis Ritchie",
+    "B": "Brian Kernighan",
+    "C": "Linus Torvalds",
+    "D": "",
+    "correct": "C"
+  },
+  {
+    "question": "The root directory on a linux system is represented as _____",
+    "A": "*",
+    "B": "/",
+    "C": "$",
+    "D": "",
+    "correct": "B"
+  },
+   {
+    "question": "Which commands will give you information about how much disk space each file in the current directory uses?",
+    "A": "ls -la",
+    "B": "ls -a",
+    "C": "ls -l",
+    "D": "du",
+    "correct": "D"
+  },
+   {
+    "question": "Which one provide command interpreter environment?",
+    "A": "CPU",
+    "B": "Hardware",
+    "C": "Shell",
+    "D": "Kernel",
+    "correct": "C"
+  },
+   {
+    "question": "This default linux directory contains many of the linux commands.",
+    "A": "/bin",
+    "B": "/info",
+    "C": "/lib",
+    "D": "/doc",
+    "correct": "A"
+  },
+   {
+    "question": "Which of the following directory contains commands in Linux?",
+    "A": "/dev/",
+    "B": "/bin/",
+    "C": "/root/",
+    "D": "/etc/",
+    "correct": "B"
+  },
+   {
+    "question": "Which of the following sign represents the user root directory?",
+    "A": "..",
+    "B": "/",
+    "C": ".",
+    "D": "",
+    "correct": "B"
+  },
+   {
+    "question": "Core of Linux operating system is_____________ .",
+    "A": "Terminal",
+    "B": "Shell",
+    "C": "Kernel",
+    "D": "Command",
+    "correct": "C"
+  },
+   {
+    "question": "pwd command displays",
+    "A": "present working directory",
+    "B": "password file content",
+    "C": "user login",
+    "D": "user password",
+    "correct": "A"
+  },
+   {
+    "question": "User passwords are stored in _____________",
+    "A": "/etc/password",
+    "B": "/root/password",
+    "C": "/root/passwd",
+    "D": "/etc/passwd",
+    "correct": "D"
+  },
+   {
+    "question": "Executing “passwd” in shell will do:",
+    "A": "Change user password",
+    "B": "Print name of current/working directory",
+    "C": "Show your password",
+    "D": "There is no such command",
+    "correct": "A"
+  },
+  {
+    "question": "Which command is used to identify file type?",
+    "A": "info",
+    "B": "type",
+    "C": "finfo",
+    "D": "file",
+    "correct": "D"
+  },
+   {
+    "question": "Which of the following sign represents the user home directory?",
+    "A": ".",
+    "B": "..",
+    "C": "/",
+    "D": "",
+    "correct": "C"
+  },
+   {
+    "question": "The OS which is not based on Linux is -",
+    "A": "CentOs",
+    "B": "Redhat",
+    "C": "Ubuntu",
+    "D": "BSD",
+    "correct": "D"
+  },
+   {
+    "question": "Which command is used to display the unix version",
+    "A": "uname -t",
+    "B": "kernel",
+    "C": "uname -r",
+    "D": "uname -n",
+    "correct": "C"
+  },
+   {
+    "question": "What does GRUB stand for?",
+    "A": "Gum Removal Under Boot",
+    "B": "Grand Unification Bootloader",
+    "C": "Great Ultimate Bootloader",
+    "D": "Grand Unified Bootloader",
+    "correct": "D"
+  },
+   {
+    "question": "Which option of rm command is used to remove a directory with all its subdirectories",
+    "A": "–o",
+    "B": "–r",
+    "C": "–b",
+    "D": "–p",
+    "correct": "B"
+  },
+   {
+    "question": "Command used to count number of character in a file is",
+    "A": "grep",
+    "B": "wc",
+    "C": "cut",
+    "D": "count",
+    "correct": "B"
+  },
+   {
+    "question": "Which command is used to display all the files including hidden files in your current and its subdirectories ?",
+    "A": "ls –l",
+    "B": "ls –R",
+    "C": "ls –aR",
+    "D": "ls –a",
+    "correct": "C"
+  },
+   {
+    "question": "Choose option to list files by modification time.",
+    "A": "ls –t",
+    "B": "ls –a",
+    "C": "ls –l",
+    "D": "ls –mt",
+    "correct": "A"
+  },
+   {
+    "question": "Hidden file can be viewed using ______.",
+    "A": "ls -a",
+    "B": "ls -h",
+    "C": "ls -l",
+    "D": "ls -k",
+    "correct": "A"
+  },
+  {
+    "question": "uname -a will output…",
+    "A": "date where the kernel was built",
+    "B": "system information",
+    "C": "cpu info",
+    "D": "architecture",
+    "correct": "B"
+  },
+   {
+    "question": "Which command is used to change password of your Linux system?",
+    "A": "change -p",
+    "B": "pass",
+    "C": "password",
+    "D": "passwd",
+    "correct": "D"
+  },
+   {
+    "question": "Command used to determine the path of an executable file is",
+    "A": "where",
+    "B": "when",
+    "C": "which",
+    "D": "what",
+    "correct": "C"
+  },
+   {
+    "question": "Which command is used to remove files?",
+    "A": "dm",
+    "B": "rm",
+    "C": "delete",
+    "D": "erase",
+    "correct": "B"
+  },
+   {
+    "question": "What does the pwd command do?",
+    "A": "It saves the current working directory, so that you can return there with the popd command.",
+    "B": "It asks the password of the current user, and the prompts for a new password.",
+    "C": "It launches the power management daemon.",
+    "D": "It prints the path of the current working directory",
+    "correct": "D"
+  },
+   {
+    "question": "What is the right command to exit in Vim?",
+    "A": "q!",
+    "B": "q",
+    "C": "a",
+    "D": "wq",
+    "correct": "D"
+  }
+]
+
+
+
+

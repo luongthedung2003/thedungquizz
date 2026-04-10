@@ -1,0 +1,278 @@
+[
+  {
+    "type": "multiple_choice",
+    "question": "Write is an example of a(n) ______.",
+    "A": "photo Editor",
+    "B": "word processing software",
+    "C": "browser",
+    "D": "operating system",
+    "correct": "B"
+  },
+  {
+    "type": "multiple_choice",
+    "question": "Which of the following directory contains configuration files in Linux?",
+    "A": "/bin/",
+    "B": "/dev/",
+    "C": "/root/",
+    "D": "/etc/",
+    "correct": "D"
+  },
+  {
+    "type": "essay",
+    "question": "Trình bày khái niệm về hệ điều hành Linux. Linux khác gì so với Windows và macOS?",
+    "hint": "Gợi ý: Đề cập đến nguồn gốc, giấy phép mã nguồn mở, nhân Linux (kernel), và một số đặc điểm nổi bật."
+  },
+  {
+    "type": "multiple_choice",
+    "question": "The Linux Kernel was written by?",
+    "A": "Dennis Ritchie",
+    "B": "Linus Torvalds",
+    "C": "Richard Stallman",
+    "D": "Brian Kernighan",
+    "correct": "B"
+  },
+  {
+    "type": "multiple_choice",
+    "question": "Which is the earliest and most widely used shell in Linux?",
+    "A": "bash",
+    "B": "bsh",
+    "C": "csh",
+    "D": "ksh",
+    "correct": "A"
+  },
+  {
+    "type": "essay",
+    "question": "Giải thích sự khác biệt giữa Shell và Kernel trong hệ thống Linux. Cho ví dụ về các loại Shell phổ biến.",
+    "hint": "Gợi ý: Shell là giao diện người dùng (CLI), Kernel là lõi hệ điều hành. Các shell: bash, sh, zsh, ksh, csh..."
+  },
+  {
+    "type": "multiple_choice",
+    "question": "Which command creates an empty file if file does not exist?",
+    "A": "cat",
+    "B": "read",
+    "C": "ed",
+    "D": "touch",
+    "correct": "D"
+  },
+  {
+    "type": "multiple_choice",
+    "question": "Linux is an example of a(n) ______.",
+    "A": "word processing software",
+    "B": "browser",
+    "C": "operating system",
+    "D": "photo Editor",
+    "correct": "C"
+  },
+  {
+    "type": "essay",
+    "question": "Mô tả cấu trúc thư mục (filesystem hierarchy) của Linux. Giải thích chức năng của các thư mục: /bin, /etc, /home, /var, /tmp.",
+    "hint": "Gợi ý: /bin chứa lệnh cơ bản, /etc chứa cấu hình, /home chứa dữ liệu người dùng, /var dữ liệu thay đổi, /tmp tạm thời."
+  },
+  {
+    "type": "multiple_choice",
+    "question": "Which of these commands could you use to show one page of output at a time?",
+    "A": "grep",
+    "B": "pause",
+    "C": "less",
+    "D": "sed",
+    "correct": "C"
+  },
+  {
+    "type": "multiple_choice",
+    "question": "Which command is used to display all the files including hidden files in your current and its subdirectories?",
+    "A": "ls –l",
+    "B": "ls –aR",
+    "C": "ls –R",
+    "D": "ls –a",
+    "correct": "B"
+  },
+  {
+    "type": "essay",
+    "question": "Phần mềm nguồn mở (Open Source Software) là gì? Nêu ít nhất 3 ưu điểm và 2 nhược điểm của phần mềm nguồn mở so với phần mềm thương mại.",
+    "hint": "Gợi ý: Ưu điểm: miễn phí, minh bạch, cộng đồng mạnh, tùy chỉnh được. Nhược điểm: hỗ trợ kỹ thuật hạn chế, giao diện khó dùng hơn..."
+  },
+  {
+    "type": "multiple_choice",
+    "question": "Which one provides command interpreter environment?",
+    "A": "CPU",
+    "B": "Hardware",
+    "C": "Shell",
+    "D": "Kernel",
+    "correct": "C"
+  },
+  {
+    "type": "multiple_choice",
+    "question": "This default Linux directory contains many of the Linux commands.",
+    "A": "/bin",
+    "B": "/info",
+    "C": "/lib",
+    "D": "/doc",
+    "correct": "A"
+  },
+  {
+    "type": "essay",
+    "question": "Trình bày về quản lý quyền truy cập tệp (file permissions) trong Linux. Giải thích ý nghĩa của lệnh: chmod 755 file.sh",
+    "hint": "Gợi ý: 3 nhóm quyền (owner, group, others), 3 loại quyền (read=4, write=2, execute=1). 755 = rwxr-xr-x"
+  },
+  {
+    "type": "multiple_choice",
+    "question": "Core of Linux operating system is_______.",
+    "A": "Terminal",
+    "B": "Shell",
+    "C": "Kernel",
+    "D": "Command",
+    "correct": "C"
+  },
+  {
+    "type": "multiple_choice",
+    "question": "pwd command displays?",
+    "A": "present working directory",
+    "B": "password file content",
+    "C": "user login",
+    "D": "user password",
+    "correct": "A"
+  },
+  {
+    "type": "essay",
+    "question": "Giải thích sự khác biệt giữa các lệnh: cp, mv, rm trong Linux. Viết ví dụ minh họa cho mỗi lệnh.",
+    "hint": "Gợi ý: cp - sao chép, mv - di chuyển/đổi tên, rm - xóa. Ví dụ: cp file1.txt /home/user/, mv old.txt new.txt, rm -rf folder/"
+  },
+  {
+    "type": "multiple_choice",
+    "question": "User passwords are stored in _______",
+    "A": "/etc/password",
+    "B": "/root/password",
+    "C": "/root/passwd",
+    "D": "/etc/passwd",
+    "correct": "D"
+  },
+  {
+    "type": "multiple_choice",
+    "question": "Executing 'passwd' in shell will do:",
+    "A": "Change user password",
+    "B": "Print name of current/working directory",
+    "C": "Show your password",
+    "D": "There is no such command",
+    "correct": "A"
+  },
+  {
+    "type": "essay",
+    "question": "Trình bày khái niệm về giấy phép GPL (General Public License). Nó ảnh hưởng như thế nào đến việc sử dụng và phân phối phần mềm?",
+    "hint": "Gợi ý: GPL do FSF tạo ra, đảm bảo 4 quyền tự do: sử dụng, nghiên cứu, phân phối, cải tiến. Copyleft - phái sinh phải dùng cùng giấy phép."
+  },
+  {
+    "type": "multiple_choice",
+    "question": "Which command is used to identify file type?",
+    "A": "info",
+    "B": "type",
+    "C": "finfo",
+    "D": "file",
+    "correct": "D"
+  },
+  {
+    "type": "multiple_choice",
+    "question": "The OS which is not based on Linux is -",
+    "A": "CentOs",
+    "B": "Redhat",
+    "C": "Ubuntu",
+    "D": "BSD",
+    "correct": "D"
+  },
+  {
+    "type": "essay",
+    "question": "So sánh các bản phân phối Linux phổ biến: Ubuntu, CentOS, Fedora, Debian. Nên chọn bản phân phối nào cho mục đích server doanh nghiệp và tại sao?",
+    "hint": "Gợi ý: Ubuntu - dễ dùng, cộng đồng lớn. CentOS/RHEL - ổn định cho server. Fedora - công nghệ mới. Debian - ổn định dài hạn."
+  },
+  {
+    "type": "multiple_choice",
+    "question": "Which command is used to display the unix version?",
+    "A": "uname -t",
+    "B": "kernel",
+    "C": "uname -r",
+    "D": "uname -n",
+    "correct": "C"
+  },
+  {
+    "type": "multiple_choice",
+    "question": "What does GRUB stand for?",
+    "A": "Gum Removal Under Boot",
+    "B": "Grand Unification Bootloader",
+    "C": "Great Ultimate Bootloader",
+    "D": "Grand Unified Bootloader",
+    "correct": "D"
+  },
+  {
+    "type": "essay",
+    "question": "Trình bày quy trình khởi động (boot process) của hệ thống Linux từ khi bật nguồn đến khi hiển thị màn hình đăng nhập.",
+    "hint": "Gợi ý: BIOS/UEFI → Bootloader (GRUB) → Kernel loading → initramfs → systemd/init → runlevel/target → login prompt."
+  },
+  {
+    "type": "multiple_choice",
+    "question": "Which option of rm command is used to remove a directory with all its subdirectories?",
+    "A": "–o",
+    "B": "–r",
+    "C": "–b",
+    "D": "–p",
+    "correct": "B"
+  },
+  {
+    "type": "multiple_choice",
+    "question": "Command used to count number of characters in a file is?",
+    "A": "grep",
+    "B": "wc",
+    "C": "cut",
+    "D": "count",
+    "correct": "B"
+  },
+  {
+    "type": "essay",
+    "question": "Giải thích khái niệm 'pipe' (|) và 'redirection' (>, >>, <) trong Linux shell. Viết ví dụ thực tế kết hợp cả hai.",
+    "hint": "Gợi ý: Pipe chuyển output của lệnh này làm input lệnh kia. Redirection chuyển hướng output vào file. Ví dụ: ls -la | grep .txt >> output.txt"
+  },
+  {
+    "type": "multiple_choice",
+    "question": "Hidden file can be viewed using ______.",
+    "A": "ls -a",
+    "B": "ls -h",
+    "C": "ls -l",
+    "D": "ls -k",
+    "correct": "A"
+  },
+  {
+    "type": "multiple_choice",
+    "question": "What is the right command to exit in Vim?",
+    "A": "q!",
+    "B": "q",
+    "C": "a",
+    "D": "wq",
+    "correct": "D"
+  },
+  {
+    "type": "essay",
+    "question": "Trình bày về quản lý tiến trình (process management) trong Linux. Các lệnh ps, top, kill được dùng để làm gì? Phân biệt foreground và background process.",
+    "hint": "Gợi ý: ps - liệt kê tiến trình, top - giám sát thời gian thực, kill - gửi tín hiệu, & - chạy nền, fg/bg - chuyển tiến trình."
+  },
+  {
+    "type": "multiple_choice",
+    "question": "Command used to determine the path of an executable file is?",
+    "A": "where",
+    "B": "when",
+    "C": "which",
+    "D": "what",
+    "correct": "C"
+  },
+  {
+    "type": "multiple_choice",
+    "question": "Which command is used to remove files?",
+    "A": "dm",
+    "B": "rm",
+    "C": "delete",
+    "D": "erase",
+    "correct": "B"
+  },
+  {
+    "type": "essay",
+    "question": "Nêu các bước cơ bản để cài đặt một ứng dụng trên CentOS/RHEL bằng lệnh yum hoặc dnf. Giải thích sự khác biệt giữa yum và dnf.",
+    "hint": "Gợi ý: dnf là phiên bản mới của yum. Các bước: dnf update, dnf install <package>, dnf remove <package>, dnf search <keyword>."
+  }
+]

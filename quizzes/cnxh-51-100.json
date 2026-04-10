@@ -1,0 +1,395 @@
+[
+  {
+    "question": "Quá độ lên CNXH bỏ qua chế độ TBCN ở Việt Nam là tạo ra sự biến đổi về […] của xã hội trên tất cả các lĩnh vực. Chọn đáp án đúng nhất điền vào chỗ trống.",
+    "A": "Lương.",
+    "B": "Đời sống.",
+    "C": "Chất.",
+    "D": "Tinh thần.",
+    "correct": "C"
+  },
+  {
+    "question": "Đặc trưng, phương hướng, nhiệm vụ xây dựng CNXH ở Việt Nam hiện nay trong Đại hội XI, XII của Đảng gồm:",
+    "A": "5 đặc trưng, 5 phương hướng, 7 nhiệm vụ.",
+    "B": "6 đặc trưng, 6 phương hướng, 8 nhiệm vụ.",
+    "C": "7 đặc trưng, 7 phương hướng, 10 nhiệm vụ.",
+    "D": "8 đặc trưng, 8 phương hướng, 12 nhiệm vụ.",
+    "correct": "D"
+  },
+  {
+    "question": "Thuật ngữ 'dân chủ' ra đời vào khoảng thời gian nào?",
+    "A": "Thế kỷ thứ VII – VI trước công nguyên.",
+    "B": "Thế kỷ thứ VII – VI sau công nguyên.",
+    "C": "Thế kỷ thứ V – IV trước công nguyên.",
+    "D": "Thế kỷ thứ V – IV sau công nguyên.",
+    "correct": "A"
+  },
+  {
+    "question": "Các nhà tư tưởng Hy Lạp cổ đại đã dùng cụm từ nào sau đây để nói đến dân chủ?",
+    "A": "democracy.",
+    "B": "demokratos.",
+    "C": "democracia.",
+    "D": "démocratie.",
+    "correct": "B"
+  },
+  {
+    "question": "Chọn đáp án đúng nhất. Hôn nhân tiến bộ là:",
+    "A": "Xuất phát từ tính tự nguyện của hai bên gia đình.",
+    "B": "Xuất phát từ hợp đồng được ký trước pháp luật.",
+    "C": "Xuất phát từ tính tự nguyện của một bên Nam hay Nữ.",
+    "D": "Xuất phát từ tình yêu lứa đôi.",
+    "correct": "D"
+  },
+  {
+    "question": "Trên phương diện chế độ chính trị, xã hội thì dân chủ là:",
+    "A": "Một hình thức hay hình thái nhà nước.",
+    "B": "Một nguyên tắc quản lý xã hội.",
+    "C": "Quyền lực thuộc về nhân dân.",
+    "D": "Một phạm trù vĩnh viễn.",
+    "correct": "A"
+  },
+  {
+    "question": "Thực tiễn nào đánh dấu nền dân chủ XHCN chính thức được xác lập?",
+    "A": "Công nghiệp hoá nước ở Anh năm 1791.",
+    "B": "Đấu tranh giai cấp ở Pháp và Công xã Pari năm 1871.",
+    "C": "Cách mạng Tháng 10/1917 ở Nga.",
+    "D": "Đấu tranh giành chính quyền ở Mỹ năm 1776.",
+    "correct": "C"
+  },
+  {
+    "question": "Quá trình phát triển của dân chủ XHCN ở thời kỳ quá độ, cơ sở kết luận chọn lọc được thể hiện ở giá trị của nền dân chủ nào?",
+    "A": "Dân chủ nguyên thuỷ.",
+    "B": "Dân chủ chủ nô.",
+    "C": "Dân chủ xã hội chủ nghĩa.",
+    "D": "Dân chủ tư sản.",
+    "correct": "D"
+  },
+  {
+    "question": "Nền sản xuất công nghiệp gắn liền với chế tạo công cụ sản xuất, ngành nghề truyền thống có những phẩm chất đặc biệt để đảm nhận vai trò lãnh đạo công nhân?",
+    "A": "Cần cù, chăm chỉ, sáng tạo.",
+    "B": "Chịu thương, chịu khó, đoàn kết.",
+    "C": "Chuyên môn, kỹ thuật cao, tinh thần hợp tác quốc tế, tâm lý giai phòng giai cấp vô sản.",
+    "D": "Tinh tổ chức, kỹ luật lao động, tinh thần hợp tác và tầm lý lao động công nghiệp.",
+    "correct": "D"
+  },
+  {
+    "question": "Theo chủ nghĩa Mác – Lênin tư tưởng của nhân dân bảo nhiều, nền dân chủ XHCN lại càng tự tiêu dùng mạnh mẽ? Điều này được hiểu là:",
+    "A": "Tính chính trị của nhân dân sẽ mất đi, dân chủ trở thành một thời quen, một tập quán trong sinh hoạt xã hội.",
+    "B": "Tinh dân chủ sẽ mất đi, không còn chức năng điều hành chính trị xã hội nữa.",
+    "C": "Tinh dân chủ sẽ mất đi, thay vào đó là thực hiện chức năng chủ công sản chủ nghĩa.",
+    "D": "Tính quan hệ xã hội sẽ mất đi chuyển đổi theo xu hướng tư nhân chủ đạo, không còn nữa.",
+    "correct": "A"
+  },
+  {
+    "question": "Bản chất kinh tế của nền dân chủ XHCN khác xã hội tư bản chủ nghĩa là:",
+    "A": "Chế độ công hữu tư liệu sản xuất và thực hiện chế độ phân phối theo lao động.",
+    "B": "Chế độ công hữu tư liệu sản xuất chủ yếu và thực hiện chế độ phân phối lợi ích theo kết quả lao động của mọi người.",
+    "C": "Chế độ sở hữu chung tư liệu sản xuất cho toàn dân và thực hiện chế độ phân phối theo mức độ cống hiến.",
+    "D": "Chế độ công hữu tư liệu sản xuất chủ yếu và thực hiện chế độ phân phối theo nhu cầu.",
+    "correct": "B"
+  },
+  {
+    "question": "Nhà nước XHCN ra đời là kết quả của:",
+    "A": "Cách mạng do giai cấp vô sản lãnh đạo, đập tan nhà nước tư sản.",
+    "B": "Cách mạng do giai cấp nông dân lãnh đạo, đập tan nhà nước tư sản.",
+    "C": "Cách mạng do giai cấp vô sản và nhân dân lao động tiến hành dưới sự lãnh đạo của Đảng Cộng sản.",
+    "D": "Cách mạng do giai cấp tư sản lãnh đạo.",
+    "correct": "C"
+  },
+  {
+    "question": "Chọn đáp án KHÔNG đúng về sứ mệnh của nhà nước XHCN:",
+    "A": "Xây dựng thành công chủ nghĩa xã hội.",
+    "B": "Đưa nhân dân lao động lên làm chủ xã hội trên tất cả các mặt của đời sống.",
+    "C": "Chăm lo cho lợi ích của đại số nhân dân lao động.",
+    "D": "Giải quyết mâu thuẫn trong nội bộ nhân dân, giải quyết mâu thuẫn xã hội theo hướng ổn định và công bằng xã hội.",
+    "correct": "D"
+  },
+  {
+    "question": "Khẳng định nào sau đây không đúng với nội dung của dân chủ trong lĩnh vực chính trị?",
+    "A": "Công dân có quyền bầu cử, ứng cử vào các cơ quan quyền lực nhà nước.",
+    "B": "Công dân có quyền tham gia quản lý nhà nước và xã hội.",
+    "C": "Công dân có quyền quyết định mọi vấn đề chung của Nhà nước.",
+    "D": "Công dân có quyền biểu quyết khi Nhà nước tổ chức trưng cầu ý dân.",
+    "correct": "C"
+  },
+  {
+    "question": "Về chính trị, nhà nước XHCN mang bản chất của:",
+    "A": "Giai cấp công nhân – giai cấp có lợi ích phù hợp với lợi ích chung của quần chúng nhân dân lao động.",
+    "B": "Giai cấp thống trị, nhằm bảo vệ và duy trì địa vị của chính mình.",
+    "C": "Giai cấp tư sản, nhằm bảo vệ lợi ích người giàu.",
+    "D": "Giai cấp nông dân và các tầng lớp nhân dân lao động trong xã hội.",
+    "correct": "A"
+  },
+  {
+    "question": "Cơ sở, nền tảng pháp lý cho sự tồn tại và hình thành các mối quan hệ khác trong gia đình là?",
+    "A": "Quan hệ huyết thống.",
+    "B": "Quan hệ kinh tế.",
+    "C": "Quan hệ nuôi dưỡng.",
+    "D": "Quan hệ hôn nhân.",
+    "correct": "D"
+  },
+  {
+    "question": "Chọn đáp án KHÔNG đúng. Về văn hoá, xã hội, nhà nước XHCN được xây dựng trên nền tảng:",
+    "A": "Lý luận của chủ nghĩa Mác – Lênin.",
+    "B": "Giá trị văn hoá phương Tây.",
+    "C": "Giá trị văn hoá tiến tiến, tinh bộ của nhân loại.",
+    "D": "Bản sắc văn hoá tiên tiến, đậm đà riêng biệt của dân tộc.",
+    "correct": "B"
+  },
+  {
+    "question": "\"Ở các nước XHCN, giai cấp công nhân thông qua quá trình công nghiệp hoá và thực hiện […] để tăng năng suất lao động xã hội\". Chọn cụm từ đúng vào chỗ trống.",
+    "A": "Một kiểu tổ chức kinh tế mới.",
+    "B": "Một kiểu tổ chức sản xuất mới.",
+    "C": "Một kiểu tổ chức xã hội mới về lao động.",
+    "D": "Một kiểu tổ chức công nghiệp hoá mới về lao động.",
+    "correct": "C"
+  },
+  {
+    "question": "Căn cứ vào phạm vi tác động của quyền lực nhà nước, chức năng của nhà nước XHCN được chia thành:",
+    "A": "Chức năng chính trị; chức năng quản sự.",
+    "B": "Chức năng kinh tế; chức năng văn hoá, xã hội.",
+    "C": "Chức năng đối nội; chức năng đối ngoại.",
+    "D": "Chức năng trấn áp; chức năng tổ chức và xây dựng.",
+    "correct": "C"
+  },
+  {
+    "question": "Theo quan điểm của chủ nghĩa Mác – Lênin, trong thời kỳ quá độ, đặc trưng thời đại của nhà nước XHCN thể hiện:",
+    "A": "Tồn tại như một tất yếu.",
+    "B": "Tồn tại nhưng không tránh khỏi.",
+    "C": "Tồn tại trong thời kỳ đầu của CNXH.",
+    "D": "Còn tồn tại.",
+    "correct": "A"
+  },
+  {
+    "question": "Chọn đáp án đúng nhất. Theo quan điểm của chủ nghĩa Mác – Lênin, bản chất của Đảng Cộng sản là:",
+    "A": "Giải phóng toàn bộ lực lượng lao động trong xã hội.",
+    "B": "Cải tạo xã hội cũ, xây dựng xã hội mới.",
+    "C": "Dân giàu, nước mạnh, xã hội công bằng, văn minh.",
+    "D": "Giải phóng toàn bộ người lao động trong xã hội, đảm bảo bình đẳng, văn minh.",
+    "correct": "B"
+  },
+  {
+    "question": "Chọn đáp án đúng nhất. Đặc trưng của dân chủ xã hội chủ nghĩa ra đời dựa trên:",
+    "A": "Tư liệu sản xuất trong tay nhà nước và xã hội.",
+    "B": "Công cụ lao động do nhân dân làm chủ.",
+    "C": "Không sở hữu tư liệu sản xuất, phải bán sức lao động cho nhà tư bản.",
+    "D": "Máy móc, học thuyết Mác – Lênin.",
+    "correct": "C"
+  },
+  {
+    "question": "Nền dân chủ xã hội chủ nghĩa ra đời kết quả của:",
+    "A": "Cách mạng dân chủ tư sản.",
+    "B": "Cách mạng vô sản.",
+    "C": "Cách mạng do toàn dân thực hiện.",
+    "D": "Cách mạng xã hội chủ nghĩa.",
+    "correct": "B"
+  },
+  {
+    "question": "Khi các nguyên tắc cơ bản của dân chủ XHCN bị vi phạm, thì việc xây dựng nhà nước XHCN sẽ:",
+    "A": "Quyền lực không thuộc về nhân dân.",
+    "B": "Quyền lực nhân dân biến thành quyền lực của giai cấp tư sản.",
+    "C": "Quyền lực của nhân dân biến thành quyền lực của một nhóm người, phục vụ lợi ích của một nhóm người.",
+    "D": "Quyền lực của nhân dân được lấy lại từ tay giai cấp tư sản.",
+    "correct": "C"
+  },
+  {
+    "question": "Quyền tự quyết dân tộc KHÔNG bao gồm:",
+    "A": "Quyền phân lập thành quốc gia độc lập cho các dân tộc muốn tách ra khỏi quốc gia đa dân tộc.",
+    "B": "Quyền của dân tộc tự quyết định lấy vận mệnh và quyền tự lựa chọn chế độ chính trị.",
+    "C": "Quyền của dân tộc tự tuyên bố độc lập và lập quốc gia dân tộc riêng.",
+    "D": "Quyền của dân tộc tự quyết định mọi vấn đề quốc gia và dân tộc.",
+    "correct": "A"
+  },
+  {
+    "question": "'Xây dựng chế độ làm chủ tập thể xã hội chủ nghĩa' gắn với 'nhân dân làm chủ' và 'nhân dân chuyên chính vô sản' là quan điểm được nêu ra trong:",
+    "A": "Đại hội Đảng toàn quốc lần thứ II.",
+    "B": "Đại hội Đảng toàn quốc lần thứ III.",
+    "C": "Đại hội Đảng toàn quốc lần thứ IV và lần thứ V.",
+    "D": "Đại hội Đảng toàn quốc lần thứ VI.",
+    "correct": "C"
+  },
+  {
+    "question": "Quan điểm: 'Đảng phải quản trị tư tưởng lấy dân làm gốc, vì nhân dân lao động' được nêu ra trong văn kiện Đại hội Đảng lần thứ mấy?",
+    "A": "Đại hội Đảng toàn quốc lần thứ V.",
+    "B": "Đại hội Đảng toàn quốc lần thứ VI.",
+    "C": "Đại hội Đảng toàn quốc lần thứ VII.",
+    "D": "Đại hội Đảng toàn quốc lần thứ IX.",
+    "correct": "C"
+  },
+  {
+    "question": "Mục tiêu tổng quát của cách mạng Việt Nam trong Đại hội Đảng lần thứ XII:",
+    "A": "Dân giàu, nước mạnh, xã hội công bằng, văn minh.",
+    "B": "Dân giàu, nước mạnh, xã hội công bằng, dân chủ, văn minh.",
+    "C": "Dân chủ, dân giàu, nước mạnh, văn minh.",
+    "D": "Dân giàu, nước mạnh, dân chủ, công bằng, văn minh.",
+    "correct": "D"
+  },
+  {
+    "question": "Bản chất dân chủ XHCN ở Việt Nam. Chọn đáp án KHÔNG đúng.",
+    "A": "Được thực hiện ưu tiên trong lĩnh vực chính trị.",
+    "B": "Vừa là mục tiêu, vừa là động lực để xây dựng chủ nghĩa xã hội.",
+    "C": "Gắn liền với pháp luật.",
+    "D": "Nền dân làm chủ, quyền lực thuộc về nhân dân.",
+    "correct": "A"
+  },
+  {
+    "question": "Ở Việt Nam, dân chủ XHCN được thực hiện thông qua hình thức:",
+    "A": "Dân chủ gián tiếp, dân chủ đại diện.",
+    "B": "Dân chủ gián tiếp, dân chủ trực tiếp.",
+    "C": "Dân chủ gián tiếp, dân chủ uỷ quyền.",
+    "D": "Dân chủ trực tiếp.",
+    "correct": "B"
+  },
+  {
+    "question": "Chọn đáp án đúng nhất. Nước ta đang ở giai đoạn phát triển nào?",
+    "A": "Chế độ công sản chủ nghĩa.",
+    "B": "Chế độ xã hội chủ nghĩa.",
+    "C": "Thời kỳ quá độ lên chủ nghĩa xã hội; bước đầu ở giai đoạn phát triển tư bản chủ nghĩa.",
+    "D": "Thời kỳ quá độ lên chủ nghĩa xã hội.",
+    "correct": "D"
+  },
+  {
+    "question": "'Quyền lực nhà nước là thống nhất, có sự phân công, phối hợp, kiểm soát giữa các cơ quan nhà nước trong việc thực hiện các quyền lập pháp, hành pháp, tư pháp' là:",
+    "A": "Đại hội Đảng toàn quốc lần thứ IX.",
+    "B": "Đại hội Đảng toàn quốc lần thứ X.",
+    "C": "Đại hội Đảng toàn quốc lần thứ XI.",
+    "D": "Đại hội Đảng toàn quốc lần thứ XII.",
+    "correct": "D"
+  },
+  {
+    "question": "Chọn đáp án KHÔNG đúng. Để tiếp tục xây dựng và hoàn thiện dân chủ nước pháp quyền XHCN cần:",
+    "A": "Cải cách thể chế ở vào phương thức thuộc quyền của Nhà nước.",
+    "B": "Hệ thống các giai cấp, tầng lớp xã hội tồn tại khách quan trong một chế độ xã hội nhất định, tương ứng với những mối quan hệ về sở hữu, về vị trí trong xã hội, về quan hệ sản xuất, ở thời đại hiện nay.",
+    "C": "Những cộng đồng người cư trú với mối quan hệ vở về sở hữu tư liệu sản xuất, về tổ chức quản lý quá trình sản xuất, bản vị địa vị chính trị - xã hội, là mối quan hệ giai cấp của các cộng đồng dân tộc hiện nay.",
+    "D": "Những cộng đồng người với tầng lớp xã hội và nhiều tầng lớp xã hội khác nhau.",
+    "correct": "C"
+  },
+  {
+    "question": "Chọn đáp án đúng nhất. Cơ cấu xã hội là:",
+    "A": "Lao động; công bằng; dân chủ; bình đẳng và tự do.",
+    "B": "Lao động; công chính; dân chủ; tự do và bác ái.",
+    "C": "Lao động; dân chủ; văn minh; tự do và bác ái.",
+    "D": "Dân chủ; công bằng; văn minh; bình đẳng và tự do.",
+    "correct": "A"
+  },
+  {
+    "question": "Chọn đáp án đúng nhất. Theo cấu trúc cơ bản xã hội - giai cấp gồm 4 tầng lớp, đó là:",
+    "A": "Những cộng đồng người cùng tồn hồn trong một chế độ xã hội nhất định, tương ứng với những mối quan hệ về sở hữu, về vị trí xã hội, vận hành của các cộng đồng dân tộc.",
+    "B": "Hệ thống các giai cấp, tầng lớp xã hội tồn tại khách quan trong một chế độ xã hội nhất định, tương ứng với những mối quan hệ về sở hữu, vị trí xã hội, quan hệ sản xuất… giữa các giai cấp xây dựng đời sống xã hội.",
+    "C": "Những cộng đồng người cư trú với mối quan hệ về sở hữu tư liệu sản xuất, về tổ chức quản lý quá trình sản xuất… giữa các giai cấp xây dựng đời sống xã hội.",
+    "D": "Những cộng đồng người xã hội nhiều tầng lớp xã hội cấu thành, tương ứng với những mối quan hệ về sở hữu, vị trí trong xã hội, quan hệ sản xuất.",
+    "correct": "B"
+  },
+  {
+    "question": "Dưới góc độ chính trị – xã hội, thực trạng các khoa học tập trung nghiên cứu cơ cấu xã hội là?",
+    "A": "Cơ cấu xã hội – giai cấp.",
+    "B": "Cơ cấu xã hội – dân cư.",
+    "C": "Cơ cấu xã hội – dân tộc.",
+    "D": "Cơ cấu xã hội – tôn giáo.",
+    "correct": "A"
+  },
+  {
+    "question": "Chọn đáp án KHÔNG đúng. Giai cấp địa chủ, bách hoá và nhóm xã hội… trong xã hội có quan hệ gì với giai cấp xã hội – giai cấp tư bản trong thời kỳ quá độ lên CNXH?",
+    "A": "Giai cấp công nhân.",
+    "B": "Giai cấp tư bản.",
+    "C": "Giai cấp nông dân.",
+    "D": "Tầng lớp doanh nhân.",
+    "correct": "B"
+  },
+  {
+    "question": "Yêu cầu đổi mới nhằm hoàn thiện bộ máy của dân chủ tập trung theo cơ cấu xã hội – giai cấp chủ yếu là gì?",
+    "A": "Chung sức xây dựng xã hội mới, xã hội XHCN.",
+    "B": "Chung sức xây dựng xã hội mới, xã hội không bóc lột tư liệu sản xuất của xã hội.",
+    "C": "Chung sức cải tạo xã hội, xây dựng xã hội mới trên mọi lĩnh vực.",
+    "D": "Đoàn kết, hợp tác xây dựng xã hội XHCN công bằng, bình đẳng và văn minh.",
+    "correct": "C"
+  },
+  {
+    "question": "Trong hệ thống xã hội, mỗi loại hình cơ cấu xã hội có vị trí và vai trò gì?",
+    "A": "Hợp tác với nhau.",
+    "B": "Phụ thuộc lẫn nhau.",
+    "C": "Song song ngang nhau.",
+    "D": "Không ngang nhau.",
+    "correct": "D"
+  },
+  {
+    "question": "Hiện tượng nào của cơ cấu xã hội – giai cấp; giai cấp tầng lớp nào giữ vai trò chủ đạo, tiên phong trong quá trình công nghiệp hoá, hiện đại hoá?",
+    "A": "Giai cấp tư bản.",
+    "B": "Tầng lớp trí thức mới.",
+    "C": "Đảng Cộng sản.",
+    "D": "Giai cấp công nhân.",
+    "correct": "D"
+  },
+  {
+    "question": "C. Mác và Ph.Ăngghen đã được so sánh cơ bản của tư bản chủ nghĩa về đặc trưng của nhà nước XHCN theo quan điểm của:",
+    "A": "Châu Âu, ở Anh, Pháp vào giữa thế kỷ XIX.",
+    "B": "Châu Âu, ở Đức, Liên Xô vào giữa thế kỷ XIX.",
+    "C": "Châu Mỹ, ở Mỹ, Cuba vào giữa thế kỷ XIX.",
+    "D": "Châu Âu, ở Anh, Pháp vào đầu thế kỷ XIX.",
+    "correct": "A"
+  },
+  {
+    "question": "Xu hướng biến đổi cơ cấu xã hội trong quá trình phục hồi, hoàn thiện ở một quốc gia bắt đầu thực hiện công nghiệp hoá là:",
+    "A": "Tăng cường công tác lãnh đạo và quản lý đối với công tác dân số.",
+    "B": "Do quá trình bói sự khác biệt về trình độ phát triển kinh tế, về hoàn cảnh điều kiện lịch sử…",
+    "C": "Tiếp tục giảm tỉ lệ tăng dân số.",
+    "D": "Phân bổ dân số hợp lí.",
+    "correct": "B"
+  },
+  {
+    "question": "Chọn đáp án KHÔNG đúng theo chủ nghĩa Mác – Lênin, cơ cấu xã hội thể hiện các tầng lớp xã hội mới là:",
+    "A": "Tầng lớp doanh nhân.",
+    "B": "Tầng lớp tiểu chủ.",
+    "C": "Tầng lớp trí thức mới.",
+    "D": "Tầng lớp những người giàu có và trung lưu.",
+    "correct": "C"
+  },
+  {
+    "question": "Trong cơ cấu xã hội – giai cấp, vai trò chủ đạo, tiên phong của giai cấp nào trong quá trình công nghiệp hoá, hiện đại hoá được thể hiện, theo?",
+    "A": "Giai cấp tư bản.",
+    "B": "Tầng lớp trí thức mới.",
+    "C": "Đảng Cộng sản.",
+    "D": "Giai cấp công nhân.",
+    "correct": "D"
+  },
+  {
+    "question": "Theo chủ nghĩa xã hội khoa học, trong quá trình xây dựng TBCN, cơ cấu xã hội tư liệu sản xuất thuộc về?",
+    "A": "Cơ chế thị trường, cơ sở quản lý và nhà nước pháp quyền XHCN.",
+    "B": "Tư liệu sản xuất công, tạo nên sức lao động chủ đạo cho nhà tư bản.",
+    "C": "Không sở hữu tư liệu sản xuất, phải bán sức lao động cho nhà tư bản.",
+    "D": "Máy móc, học thuyết Mác – Lênin.",
+    "correct": "C"
+  },
+  {
+    "question": "Nội dung nào là một trong những phương hướng cơ bản của chính sách dân số nước ta?",
+    "A": "Tăng cường công tác lãnh đạo và quản lí đối với công tác dân số.",
+    "B": "Tăng cường bộ máy Nhà nước đối với công tác dân số.",
+    "C": "Tiếp tục giảm tốc độ gia tăng dân số.",
+    "D": "Phân bổ dân số hợp lí.",
+    "correct": "A"
+  },
+  {
+    "question": "Chủ nghĩa xã hội khoa học nghiên cứu đối tượng trong lĩnh vực:",
+    "A": "Chính trị – xã hội của đời sống xã hội.",
+    "B": "Kinh tế – chính trị của đời sống xã hội.",
+    "C": "Văn hoá – xã hội của đời sống xã hội.",
+    "D": "Văn hoá – chính trị của đời sống xã hội.",
+    "correct": "A"
+  },
+  {
+    "question": "Chọn đáp án KHÔNG đúng theo chủ nghĩa Mác – Lênin về cơ cấu xã hội – giai cấp hiện các tầng lớp xã hội mới là:",
+    "A": "Tầng lớp doanh nhân.",
+    "B": "Tầng lớp tiểu chủ.",
+    "C": "Tầng lớp trí thức mới.",
+    "D": "Tầng lớp những người giàu có và trung lưu.",
+    "correct": "C"
+  },
+  {
+    "question": "Theo quan điểm của chủ nghĩa Mác – Lênin, giai cấp công nhân và đại biểu của sản xuất công nghiệp hoá là giai cấp:",
+    "A": "Giai cấp tư bản.",
+    "B": "Tầng lớp trí thức mới.",
+    "C": "Đảng Cộng sản.",
+    "D": "Giai cấp công nhân.",
+    "correct": "D"
+  }
+]
+

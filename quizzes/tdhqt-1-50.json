@@ -1,0 +1,379 @@
+[
+  {
+    "question": "Phương thức nào KHÔNG phù hợp để lọc và chọn dữ liệu trong Pandas DataFrame?",
+    "A": "df[df['column'] > value]",
+    "B": "df.iloc[]",
+    "C": "df.loc[]",
+    "D": "df.append()",
+    "correct": "D"
+  },
+  {
+    "question": "Bước đầu tiên nên thực hiện trong giải pháp RPA là gì?",
+    "A": "Lập trình robot",
+    "B": "Triển khai giải pháp",
+    "C": "Phân tích quy trình hiện tại",
+    "D": "Đánh giá hiệu quả",
+    "correct": "C"
+  },
+  {
+    "question": "Trong các ưu điểm của RPA, đâu là lợi ích chính về mặt tài chính?",
+    "A": "Tăng độ chính xác",
+    "B": "Giảm chi phí vận hành",
+    "C": "Tăng tốc độ xử lý",
+    "D": "Tăng sự hài lòng của khách hàng",
+    "correct": "B"
+  },
+  {
+    "question": "Phương thức init trong Python có chức năng:",
+    "A": "Thực hiện phép toán cộng",
+    "B": "Kết thúc chương trình",
+    "C": "Hủy đối tượng",
+    "D": "Khởi tạo các thuộc tính của đối tượng",
+    "correct": "D"
+  },
+  {
+    "question": "Đoạn code sau in ra gì?",
+    "A": "0 1 2 3",
+    "B": "0 1 2 3",
+    "C": "0 1 2 3 4",
+    "D": "0 1 2",
+    "correct": "D"
+  },
+  {
+    "question": "Rủi ro lớn nhất khi triển khai RPA không đúng cách là:",
+    "A": "Tất cả các đáp án trên",
+    "B": "Tạo ra lỗ hổng bảo mật dữ liệu",
+    "C": "Tăng chi phí vận hành",
+    "D": "Gián đoạn quy trình kinh doanh",
+    "correct": "A"
+  },
+  {
+    "question": "Toán tử ** trong Python dùng để:",
+    "A": "Bình phương một số",
+    "B": "So sánh bằng chính xác",
+    "C": "Lũy thừa",
+    "D": "Nhân hai số",
+    "correct": "C"
+  },
+  {
+    "question": "Khi sử dụng Selenium để tự động điền form, phương thức nào KHÔNG dùng để định vị phần tử?",
+    "A": "find_element_by_json()",
+    "B": "find_element_by_css_selector()",
+    "C": "find_element_by_xpath()",
+    "D": "find_element_by_class_name()",
+    "correct": "A"
+  },
+  {
+    "question": "Khi nào nên sử dụng vòng lặp while thay vì for trong Python?",
+    "A": "Khi cần lặp qua các phần tử trong danh sách",
+    "B": "Khi biết trước số lần lặp",
+    "C": "Khi cần tăng hiệu suất xử lý",
+    "D": "Khi không biết trước số lần lặp",
+    "correct": "D"
+  },
+  {
+    "question": "Khi sử dụng Selenium WebDriver, phương pháp nào sau đây giúp chờ đợi một phần tử web xuất hiện một cách hiệu quả nhất?",
+    "A": "Kiểm tra điều kiện với vòng lặp while",
+    "B": "Sử dụng time.sleep() cố định",
+    "C": "Tăng thời gian timeout của WebDriver",
+    "D": "Sử dụng WebDriverWait kết hợp với expected_conditions",
+    "correct": "D"
+  },
+  {
+    "question": "So sánh RPA và AI, đâu là phát biểu đúng?",
+    "A": "RPA tập trung vào tự động hóa quy trình dựa trên quy tắc, trong khi AI tập trung vào học máy và ra quyết định",
+    "B": "RPA có thể thay thế hoàn toàn AI trong tương lai",
+    "C": "RPA và AI không thể kết hợp với nhau",
+    "D": "RPA là một phần của AI",
+    "correct": "A"
+  },
+  {
+    "question": "Các quy trình thường được ưu tiên cho việc áp dụng RPA là:",
+    "A": "Quy trình có tính lặp lại cao, dựa trên quy tắc",
+    "B": "Quy trình đòi hỏi ra quyết định phức tạp",
+    "C": "Quy trình không có quy tắc rõ ràng",
+    "D": "Quy trình sáng tạo đòi hỏi nhiều tư duy",
+    "correct": "A"
+  },
+  {
+    "question": "Thư viện Requests trong Python được sử dụng để:",
+    "A": "Gửi HTTP requests và xử lý responses",
+    "B": "Xử lý dữ liệu Excel",
+    "C": "Kết nối với cơ sở dữ liệu",
+    "D": "Tạo giao diện người dùng",
+    "correct": "A"
+  },
+  {
+    "question": "Đâu là output của đoạn code sau?",
+    "A": "[1] và [1, 2]",
+    "B": "Lỗi",
+    "C": "[1] và [2]",
+    "D": "[1] và [2]",
+    "correct": "A"
+  },
+  {
+    "question": "Thư viện Python nào sau đây KHÔNG phổ biến trong phát triển RPA?",
+    "A": "Django",
+    "B": "BeautifulSoup",
+    "C": "PyAutoGUI",
+    "D": "Selenium",
+    "correct": "A"
+  },
+  {
+    "question": "Cấu trúc try-except trong Python được sử dụng để:",
+    "A": "Tạo vòng lặp",
+    "B": "Xử lý ngoại lệ",
+    "C": "Tăng tốc độ thực thi chương trình",
+    "D": "Kiểm tra điều kiện logic",
+    "correct": "B"
+  },
+  {
+    "question": "Khi nói về bảo mật trong RPA, phát biểu nào sau đây là KHÔNG chính xác?",
+    "A": "Mật khẩu người dùng nên được mã hóa trong cấu hình RPA",
+    "B": "RPA nên được triển khai với quyền truy cập tối thiểu cần thiết",
+    "C": "Cần có cơ chế kiểm soát phiên bản và theo dõi thay đổi cho mã RPA",
+    "D": "RPA không gây ra rủi ro bảo mật vì nó chỉ mô phỏng hành động của con người",
+    "correct": "D"
+  },
+  {
+    "question": "Bước nào sau đây KHÔNG thuộc quy trình triển khai RPA?",
+    "A": "Kiểm thử (Testing)",
+    "B": "Thiết kế bot (Bot Design)",
+    "C": "Viết hợp đồng pháp lý với nhà cung cấp",
+    "D": "Phân tích quy trình nghiệp vụ (Process Analysis)",
+    "correct": "C"
+  },
+  {
+    "question": "Để định nghĩa một lớp (class) trong Python, cú pháp đúng là:",
+    "A": "define Class_Name:",
+    "B": "class Class_Name:",
+    "C": "Class_Name:",
+    "D": "Class Class_Name:",
+    "correct": "B"
+  },
+  {
+    "question": "Quy tắc đặt tên biến trong Python nào sau đây là KHÔNG đúng?",
+    "A": "Tên biến phân biệt chữ hoa và chữ thường",
+    "B": "Tên biến có thể chứa chữ cái, số và dấu gạch dưới",
+    "C": "Tên biến có thể bắt đầu bằng số",
+    "D": "Tên biến có thể bắt đầu bằng dấu gạch dưới (_)",
+    "correct": "C"
+  },
+  {
+    "question": "Tính kế thừa trong OOP được thực hiện như thế nào?",
+    "A": "Bằng cách truyền tham số class cha",
+    "B": "Bằng cách sử dụng từ khóa class con(class cha)",
+    "C": "Không thể thực hiện trong Python",
+    "D": "Bằng cách sử dụng từ khóa extends",
+    "correct": "B"
+  },
+  {
+    "question": "Toán tử += trong Python có công dụng gì?",
+    "A": "Xác định giá trị vào biến hiện có",
+    "B": "Cộng giá trị vào biến hiện có",
+    "C": "Thực hiện cộng biến với nhau",
+    "D": "Gán giá trị vào biến hiện có",
+    "correct": "B"
+  },
+  {
+    "question": "Trong Python, để chuyển đổi một số nguyên thành chuỗi, ta sử dụng hàm:",
+    "A": "str()",
+    "B": "int()",
+    "C": "float()",
+    "D": "bool()",
+    "correct": "A"
+  },
+  {
+    "question": "Đoạn code Pandas sau đây thực hiện thao tác gì?",
+    "A": "Xóa các hàng có giá trị None",
+    "B": "Lọc các hàng có giá trị None",
+    "C": "Thay thế các giá trị None bằng giá trị trung bình của cột tương ứng",
+    "D": "Tính toán giá trị trung bình của từng cột",
+    "correct": "C"
+  },
+  {
+    "question": "Để gửi email tự động trong Python, thư viện nào thường được sử dụng?",
+    "A": "email",
+    "B": "smtplib",
+    "C": "smtp",
+    "D": "mailsender",
+    "correct": "B"
+  },
+  {
+    "question": "Trong lập trình hướng đối tượng, tính đóng gói là:",
+    "A": "Khả năng các đối tượng khác nhau phản ứng khác nhau với cùng một thông điệp",
+    "B": "Khả năng che giấu thông tin và chi tiết triển khai bên trong đối tượng",
+    "C": "Khả năng tạo ra nhiều phiên bản từ một lớp",
+    "D": "Khả năng một lớp con kế thừa từ nhiều lớp cha",
+    "correct": "B"
+  },
+  {
+    "question": "Tại sao việc phân tích quy trình là bước quan trọng trong phát triển RPA",
+    "A": "Đảm bảo robot hoạt động độc lập với quy trình hiện tại",
+    "B": "Giúp xác định chính xác phạm vi tự động hóa và các bước chi tiết cần thực hiện",
+    "C": "Chỉ để tính toán chi phí triển khai",
+    "D": "Tăng tốc độ phát triển RPA mà không cần hiểu rõ quy trình",
+    "correct": "B"
+  },
+  {
+    "question": "Đâu là cách tốt nhất để xử lý ngoại lệ trong một dự án RPA sử dụng Python?",
+    "A": "Bỏ qua tất cả ngoại lệ để đảm bảo quy trình không bị gián đoạn",
+    "B": "Dừng toàn bộ quy trình khi gặp bất kỳ ngoại lệ nào",
+    "C": "Sử dụng một khối try-except duy nhất bao quanh toàn bộ quy trình",
+    "D": "Ghi nhật ký chi tiết mọi ngoại lệ và triển khai cơ chế thử lại với số lần giới hạn",
+    "correct": "D"
+  },
+  {
+    "question": "Để trả về nhiều giá trị từ một hàm trong Python, ta có thể:",
+    "A": "Chỉ có thể trả về một giá trị duy nhất",
+    "B": "Sử dụng return kèm theo dấu phẩy giữa các giá trị",
+    "C": "Tạo nhiều hàm con trong hàm chính",
+    "D": "Sử dụng hàm print() cho mỗi giá trị",
+    "correct": "B"
+  },
+  {
+    "question": "RPA là viết tắt của:",
+    "A": "Repetitive Process Automation",
+    "B": "Rapid Process Automation",
+    "C": "Remote Process Automation",
+    "D": "Robotic Process Automation",
+    "correct": "D"
+  },
+  {
+    "question": "Thư viện BeautifulSoup4 trong Python được sử dụng chủ yếu để:",
+    "A": "Tạo các biểu đồ và đồ thị",
+    "B": "Phân tích và trích xuất dữ liệu từ HTML và XML",
+    "C": "Kết nối với cơ sở dữ liệu",
+    "D": "Tạo giao diện người dùng",
+    "correct": "B"
+  },
+  {
+    "question": "RPA khác với AI (Trí tuệ nhân tạo) ở điểm nào?",
+    "A": "RPA có khả năng tự học và thích nghi",
+    "B": "RPA chỉ thực hiện các tác vụ theo quy tắc được lập trình sẵn",
+    "C": "RPA có khả năng ra quyết định phức tạp",
+    "D": "RPA xử lý dữ liệu phi cấu trúc tốt hơn",
+    "correct": "B"
+  },
+  {
+    "question": "Đâu là đặc điểm của tuple trong Python?",
+    "A": "Được định nghĩa bằng dấu ngoặc vuông []",
+    "B": "Không thể thay đổi các phần tử sau khi khởi tạo",
+    "C": "Lưu trữ dữ liệu dưới dạng key-value",
+    "D": "Có thể thay đổi các phần tử sau khi khởi tạo",
+    "correct": "B"
+  },
+  {
+    "question": "Hàm split() trong Python được sử dụng để:",
+    "A": "Tách một chuỗi thành danh sách",
+    "B": "Tạo ra một chuỗi mới",
+    "C": "Tăng tốc độ xử lý chuỗi",
+    "D": "Tìm độ dài của chuỗi",
+    "correct": "A"
+  },
+  {
+    "question": "Phương thức nào sau đây dùng để đọc file Excel của pandas?",
+    "A": "pd.ExcelFile(\"file.xlsx\").parse()",
+    "B": "pd.read_csv(\"file.xlsx\")",
+    "C": "pd.read_excel(\"file.xlsx\", sheet_name=None)",
+    "D": "pd.read_excel(\"file.csv\", sheet_name=0)",
+    "correct": "C"
+  },
+  {
+    "question": "Chu trình phát triển một dự án RPA thường bao gồm các bước sau, theo đúng thứ tự:",
+    "A": "Thiết kế - Phát triển - Phân tích - Kiểm thử - Bảo trì - Triển khai",
+    "B": "Phát triển - Phân tích - Thiết kế - Kiểm thử - Triển khai - Bảo trì",
+    "C": "Thiết kế - Phân tích - Phát triển - Triển khai - Kiểm thử - Bảo trì",
+    "D": "Phân tích - Thiết kế - Phát triển - Kiểm thử - Triển khai - Bảo trì",
+    "correct": "D"
+  },
+  {
+    "question": "Để đọc file CSV bằng Pandas, phương thức nào được sử dụng?",
+    "A": "pd.csv_read()",
+    "B": "pd.import_csv()",
+    "C": "pd.read_csv()",
+    "D": "pd.load_csv()",
+    "correct": "C"
+  },
+  {
+    "question": "Kết quả của đoạn code sau là gì?",
+    "A": "Lỗi biên dịch",
+    "B": "[1, 2, 3, 4]",
+    "C": "[4, 1, 2, 3]",
+    "D": "[1, 2, 3]",
+    "correct": "B"
+  },
+  {
+    "question": "Khi crawl hoặc scrap dữ liệu từ website động (dùng JavaScript), thư viện nào hiệu quả nhất?",
+    "A": "Pandas.read_html()",
+    "B": "Selenium",
+    "C": "requests + BeautifulSoup",
+    "D": "urllib.request",
+    "correct": "B"
+  },
+  {
+    "question": "Tiêu chí nào sau đây KHÔNG phù hợp để xác định một quy trình nên áp dụng RPA?",
+    "A": "Quy trình yêu cầu sự sáng tạo cao",
+    "B": "Quy trình có tính lặp lại cao",
+    "C": "Quy trình dựa trên quy tắc rõ ràng",
+    "D": "Quy trình có khối lượng công việc lớn",
+    "correct": "A"
+  },
+  {
+    "question": "Lệnh break trong vòng lặp Python có tác dụng:",
+    "A": "Kết thúc vòng lặp hiện tại",
+    "B": "Không làm gì cả",
+    "C": "Tạm dừng vòng lặp một lần",
+    "D": "Bỏ qua các lệnh còn lại trong vòng lặp",
+    "correct": "A"
+  },
+  {
+    "question": "Điều nào sau đây KHÔNG phải là thách thức khi triển khai RPA?",
+    "A": "Chi phí đầu tư ban đầu cao",
+    "B": "Giảm khả năng sáng tạo",
+    "C": "Tạo ra nhiều việc làm mới",
+    "D": "Khó khăn trong quản lý thay đổi",
+    "correct": "C"
+  },
+  {
+    "question": "Thư viện nào sau đây được dùng để tự động hóa thao tác bàn phím và chuột trên hệ điều hành?",
+    "A": "Requests",
+    "B": "Selenium",
+    "C": "PyAutoGUI",
+    "D": "BeautifulSoup",
+    "correct": "C"
+  },
+  {
+    "question": "Điểm khác biệt chính giữa RPA và tự động hóa truyền thống là:",
+    "A": "RPA chỉ hoạt động trên một nền tảng duy nhất",
+    "B": "RPA mô phỏng các hành động của con người tại giao diện người dùng",
+    "C": "RPA chỉ áp dụng trong lĩnh vực sản xuất",
+    "D": "RPA có khả năng học tập như AI",
+    "correct": "B"
+  },
+  {
+    "question": "Trong Pandas, DataFrame là:",
+    "A": "Một cấu trúc dữ liệu 1 chiều",
+    "B": "Một thư viện để vẽ biểu đồ",
+    "C": "Một phương thức để kết nối cơ sở dữ liệu",
+    "D": "Một cấu trúc dữ liệu 2 chiều giống như bảng",
+    "correct": "D"
+  },
+  {
+    "question": "Kết quả của 5 % 3 trong Python là bao nhiêu?",
+    "A": "1",
+    "B": "15",
+    "C": "3",
+    "D": "2",
+    "correct": "D"
+  },
+  {
+    "question": "Khi nào nên sử dụng Selenium thay vì BeautifulSoup trong việc trích xuất dữ liệu web?",
+    "A": "Khi dữ liệu có cấu trúc HTML đơn giản",
+    "B": "Khi chỉ cần trích xuất văn bản thuần túy",
+    "C": "Khi dữ liệu được tạo động bằng JavaScript",
+    "D": "Khi cần nhanh chóng và ít tài nguyên",
+    "correct": "C"
+  }
+
+]
