@@ -1,21 +1,31 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" class="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Đăng Nhập | THEDUNG QUIZZ</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Be+Vietnam+Pro:wght@400;500;700;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="rocket-top.css">
     <style>
-        body { font-family: 'Inter', sans-serif; }
+        :root {
+            --primary: #04ae70;
+            --primary-hover: #038d5b;
+            --student-accent: #2563eb;
+            --teacher-accent: #7c3aed;
+        }
+
+        body { font-family: 'Be Vietnam Pro', sans-serif; }
+        .font-display { font-family: 'Be Vietnam Pro', sans-serif; }
+        .font-jakarta { font-family: 'Plus Jakarta Sans', sans-serif; }
+
         .scrollbar-hide::-webkit-scrollbar { display: none; }
         .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
         
-        .role-switch-student { transform: translateX(0%); }
-        .role-switch-teacher { transform: translateX(100%); }
-
-        /* Animation utilities */
+        /* Layout Transitions */
         .fade-in { animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
         .fade-out { animation: fadeOut 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
         
@@ -34,34 +44,12 @@
         /* Eyes Closed State */
         .eyes-closed { transform: scaleY(0.05) !important; opacity: 0.8; }
 
-        /* Hide Browser Native Password Icons */
-        input::-ms-reveal,
-        input::-ms-clear,
-        input::-webkit-contacts-auto-fill-button, 
-        input::-webkit-credentials-auto-fill-button,
-        input::-webkit-password-toggle-button {
-            display: none !important;
-            width: 0;
-            height: 0;
-            appearance: none;
-            -webkit-appearance: none;
-        }
-
         /* Modernize inputs */
-        input::placeholder {
-            @apply opacity-50 font-normal;
-            letter-spacing: normal;
-        }
+        input::-ms-reveal, input::-ms-clear { display: none !important; }
         
-        /* Themed colors */
-        .theme-accent-student { @apply text-blue-600 bg-blue-600 focus:ring-blue-500 border-blue-500; }
-        .theme-accent-teacher { @apply text-purple-600 bg-purple-600 focus:ring-purple-500 border-purple-500; }
-        .theme-bg-student { @apply bg-blue-50; }
-        .theme-bg-teacher { @apply bg-purple-50; }
-
         /* Mobile Menu Styles */
         #mobileMenu {
-            transition: transform 0.3s ease-in-out;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             transform: translateX(100%);
         }
 
@@ -71,22 +59,14 @@
 
         /* --- DYNAMIC ISLAND NOTIFICATION --- */
         @keyframes dynamicIslandIn {
-            0% { transform: translateX(-50%) translateY(-100px); width: 80px; opacity: 0; }
-            50% { transform: translateX(-50%) translateY(20px); width: 80px; opacity: 1; }
-            100% { transform: translateX(-50%) translateY(20px); width: min(380px, 92vw); opacity: 1; }
+            0% { transform: translateX(-50%) translateY(-100px); width: 60px; opacity: 0; }
+            50% { transform: translateX(-50%) translateY(24px); width: 60px; opacity: 1; }
+            100% { transform: translateX(-50%) translateY(24px); width: min(400px, 92vw); opacity: 1; }
         }
 
-        @keyframes dynamicIslandDangle {
-            0% { transform: translateX(-50%) translateY(20px) rotate(0deg); }
-            15% { transform: translateX(-50%) translateY(20px) rotate(-45deg); }
-            30% { transform: translateX(-50%) translateY(20px) rotate(-35deg); }
-            45% { transform: translateX(-50%) translateY(20px) rotate(-42deg); }
-            100% { transform: translateX(-50%) translateY(20px) rotate(-40deg); }
-        }
-
-        @keyframes dynamicIslandFallFinal {
-            0% { transform: translateX(-50%) translateY(20px) rotate(-40deg); opacity: 1; }
-            100% { transform: translateX(-50%) translateY(120vh) rotate(-80deg); opacity: 0; }
+        @keyframes dynamicIslandExit {
+            0% { transform: translateX(-50%) translateY(24px) scale(1); opacity: 1; }
+            100% { transform: translateX(-50%) translateY(-120px) scale(0.8); opacity: 0; }
         }
 
         .dynamic-island {
@@ -94,210 +74,165 @@
             left: 50%;
             top: 0;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            box-shadow: 0 15px 50px -10px rgba(0,0,0,0.15);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.15);
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            padding: 0 24px;
-            width: min(380px, 92vw);
-            height: 68px;
-            border-radius: 34px;
+            justify-content: flex-start;
+            padding: 0 20px;
+            width: min(400px, 92vw);
+            height: 64px;
+            border-radius: 32px;
             overflow: hidden;
             pointer-events: none;
             border: 1px solid rgba(255, 255, 255, 0.4);
-            transform-origin: 90% 10px;
+            transform: translateX(-50%) translateY(-100px);
+            opacity: 0;
+            transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
         }
 
         .dark .dynamic-island {
-            background: rgba(30, 41, 59, 0.85);
-            border-color: rgba(255,255,255,0.1);
+            background: rgba(15, 35, 28, 0.8);
+            border-color: rgba(255,255,255,0.05);
             color: white;
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.4);
         }
 
-        .dynamic-island.animate-in {
-            animation: dynamicIslandIn 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+        .dynamic-island.active {
+            animation: dynamicIslandIn 0.7s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+            opacity: 1;
         }
 
-        .dynamic-island.animate-dangle {
-            animation: dynamicIslandDangle 2s cubic-bezier(0.445, 0.05, 0.55, 0.95) forwards;
+        .dynamic-island.exit {
+            animation: dynamicIslandExit 0.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;
         }
 
-        .dynamic-island.animate-fall-final {
-            animation: dynamicIslandFallFinal 0.8s cubic-bezier(0.47, 0, 0.745, 0.715) forwards;
+        /* Role Switch Pill */
+        #role-pill {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
     </style>
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;900&amp;display=swap"
-    rel="stylesheet" />
     <script id="tailwind-config">
-    tailwind.config = {
-      darkMode: "class",
-      theme: {
-        extend: {
-          colors: {
-            primary: "#04ae70",
-            "background-light": "#f5f8f7",
-            "background-dark": "#0f231c",
-          },
-          fontFamily: {
-            display: ["Be Vietnam Pro", "sans-serif"],
-          },
-          borderRadius: {
-            DEFAULT: "1rem",
-            lg: "2rem",
-            xl: "3rem",
-            full: "9999px",
-          },
-        },
-      },
-    };
-  </script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#04ae70",
+                        "background-light": "#f5f8f7",
+                        "background-dark": "#0f231c",
+                    },
+                    fontFamily: {
+                        display: ["Be Vietnam Pro", "sans-serif"],
+                        jakarta: ["Plus Jakarta Sans", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "1rem",
+                        lg: "2rem",
+                        xl: "3rem",
+                        full: "9999px",
+                    },
+                },
+            },
+        };
+    </script>
 </head>
-<body class="bg-[#F8FAFC] dark:bg-background-dark transition-colors duration-300 flex h-screen w-screen overflow-hidden selection:bg-blue-200 selection:text-blue-900 text-[#1E293B] dark:text-white">
-<header
-            class="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-xl border-b border-white/10 font-display text-white">
-            <div class="max-w-[1600px] mx-auto px-6 md:px-12">
-                <style>
-            .no-scrollbar::-webkit-scrollbar { display: none; }
-            .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-            
-            /* Rocket Animations */
-            @keyframes smokeExpand {
-               0% { transform: scale(0.2) translateY(0); opacity: 0.8; }
-               100% { transform: scale(3) translateY(20px) translateX(var(--smoke-x)); opacity: 0; filter: blur(4px); border-radius: 50%; }
-            }
-            .smoke-cloud { position: absolute; width: 14px; height: 14px; background-color: #cbd5e1; border-radius: 50%; bottom: -5px; opacity: 0; }
-            .rocket-fly .smoke-cloud:nth-child(1) { --smoke-x: -25px; animation: smokeExpand 1s ease-out infinite 0.1s; background-color: #94A3B8;}
-            .rocket-fly .smoke-cloud:nth-child(2) { --smoke-x: 25px; animation: smokeExpand 1.2s ease-out infinite 0.2s; }
-            .rocket-fly .smoke-cloud:nth-child(3) { --smoke-x: -40px; animation: smokeExpand 0.8s ease-out infinite 0.3s; background-color: #E2E8F0; }
-            .rocket-fly .smoke-cloud:nth-child(4) { --smoke-x: 40px; animation: smokeExpand 1.3s ease-out infinite 0.15s; background-color: #94A3B8; }
-            .rocket-fly .smoke-cloud:nth-child(5) { --smoke-x: 0px; animation: smokeExpand 0.9s ease-out infinite 0s; background-color: #F1F5F9; }
+<body class="bg-background-light dark:bg-background-dark transition-colors duration-500 flex h-screen w-screen overflow-hidden selection:bg-primary selection:text-white text-[#1E293B] dark:text-white font-display">
+    
+    <!-- Dynamic Island Notification Container -->
+    <div id="dynamic-island" class="dynamic-island">
+        <div id="island-icon" class="size-10 rounded-full flex items-center justify-center mr-3 shrink-0">
+            <span class="material-symbols-outlined text-xl">info</span>
+        </div>
+        <div class="flex flex-col min-w-0">
+            <span id="island-title" class="text-[13px] font-black uppercase tracking-widest truncate">Thông báo</span>
+            <span id="island-message" class="text-[12px] opacity-70 truncate line-clamp-1">Nội dung thông báo ở đây.</span>
+        </div>
+    </div>
 
-            @keyframes rocketTakeoff {
-               0% { transform: translateY(0); }
-               10% { transform: translateY(10px); } 
-               20% { transform: translateY(0px); }
-               100% { transform: translateY(-1500px); }
-            }
-            @keyframes svgShake {
-               0%, 20% { transform: translateX(0) rotate(0deg); }
-               1%, 5%, 9%, 13%, 17% { transform: translateX(-3px) rotate(-1deg); }
-               3%, 7%, 11%, 15%, 19% { transform: translateX(3px) rotate(1deg); }
-               21%, 100% { transform: translateX(0) rotate(0deg); }
-            }
-            .rocket-fly {
-               animation: rocketTakeoff 2.5s cubic-bezier(0.5, 0, 0.4, 1) forwards !important;
-            }
-            .rocket-fly > svg {
-               animation: svgShake 2.5s linear forwards !important;
-            }
-            @keyframes fireBlast {
-              0% { transform: scaleY(0.6) translateY(-5px); opacity: 0.5; filter: blur(1px); }
-              100% { transform: scaleY(1.5) translateY(5px); opacity: 1; filter: blur(2px) drop-shadow(0 0 10px rgba(255,100,0,1)); }
-            }
-            .rocket-fly .flame-blast { opacity: 1 !important; animation: fireBlast 0.05s infinite alternate !important; }
-            .rocket-fly .exhaust-container { opacity: 1 !important; }
-          </style>
-                <div
-                    class="hidden md:flex justify-between text-[10px] tracking-[0.4em] uppercase text-white/60 py-2 border-b border-white/10">
-                    <p class="flex items-center gap-2">
-                        <span class="material-symbols-outlined text-base"> · 24/7</span>Đà Nẵng · GMT+7
-                    </p>
-                    <p class="flex items-center gap-2">
-                        <span class="material-symbols-outlined text-base">cloud</span>26°
-                    </p>
-                    <p class="flex items-center gap-2">
-                        <span class="material-symbols-outlined text-base">call</span>Đường dây nóng +84 919 844 429
-                    </p>
-                </div>
+    <header class="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-xl border-b border-white/10 text-white">
+        <div class="max-w-[1600px] mx-auto px-6 md:px-12">
+            <div class="hidden md:flex justify-between text-[10px] tracking-[0.4em] uppercase text-white/60 py-2 border-b border-white/10">
+                <p class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-base"> · 24/7</span>Đà Nẵng · GMT+7
+                </p>
+                <p class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-base">cloud</span>26°
+                </p>
+                <p class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-base">call</span>Đường dây nóng +84 919 844 429
+                </p>
+            </div>
 
-                <div class="flex flex-col lg:flex-row lg:items-center py-2 md:py-4 gap-3 md:gap-4 relative w-full">
-                    <div class="flex items-center justify-between w-full lg:w-auto">
-                        <div class="flex items-center gap-2 md:gap-3">
-                            <div class="size-8 md:size-12 border border-white/30 flex items-center justify-center p-1">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Logo_dhktdn.png"
-                                    alt="Logo Học viện" class="w-full h-full object-contain" />
-                            </div>
-                            <div>
-                                <p class="text-[9px] md:text-[11px] uppercase tracking-[0.5em] text-white/60">ĐẠI HỌC
-                                </p>
-                                <h1 class="text-base md:text-xl font-semibold tracking-[0.2em] whitespace-nowrap">KIẾN TRÚC</h1>
-                            </div>
+            <div class="flex flex-col lg:flex-row lg:items-center py-2 md:py-4 gap-3 md:gap-4 relative w-full">
+                <div class="flex items-center justify-between w-full lg:w-auto">
+                    <div class="flex items-center gap-2 md:gap-3">
+                        <div class="size-8 md:size-12 border border-white/30 flex items-center justify-center p-1">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Logo_dhktdn.png" alt="Logo Học viện" class="w-full h-full object-contain" />
                         </div>
-
-                        <div class="flex lg:hidden items-center gap-2">
-                            <button onclick="toggleTheme()"
-                                class="size-8 md:size-9 flex items-center justify-center border border-white/30 hover:bg-white/10 transition-colors"
-                                title="Đổi giao diện">
-                                <span class="material-symbols-outlined text-xs md:text-sm block dark:hidden">light_mode</span>
-                                <span
-                                    class="material-symbols-outlined text-xs md:text-sm hidden dark:block text-yellow-400">dark_mode</span>
-                            </button>
-                            <a href="login.html"
-                                class="flex h-8 md:h-9 items-center justify-center gap-1.5 px-3 border border-white/30 text-[9px] uppercase tracking-[0.2em] whitespace-nowrap">
-                                <span class="material-symbols-outlined text-sm">person</span> SINH VIÊN
-                            </a>
-                            <button onclick="toggleMenu()"
-                                class="size-8 md:size-9 flex items-center justify-center border border-white/30">
-                                <span class="material-symbols-outlined text-[18px] md:text-sm">menu</span>
-                            </button>
+                        <div>
+                            <p class="text-[9px] md:text-[11px] uppercase tracking-[0.5em] text-white/60">ĐẠI HỌC</p>
+                            <h1 class="text-base md:text-xl font-semibold tracking-[0.2em] whitespace-nowrap uppercase">Kiến Trúc</h1>
                         </div>
                     </div>
 
-                    <nav
-                        class="flex items-center gap-6 md:gap-8 lg:mx-auto justify-start lg:justify-center w-full lg:w-auto px-4 lg:px-0 text-[9px] md:text-[11px] uppercase tracking-[0.2em] md:tracking-[0.45em] overflow-x-auto no-scrollbar whitespace-nowrap px-0 lg:px-4 border-t border-white/5 lg:border-none pt-3 lg:pt-0">
-                        <a class="text-primary font-bold" href="index.html#overview">TRANG CHỦ</a>
-                        <a class="hover:text-primary transition-colors" href="courses.html">KHÓA HỌC</a>
-                        <a class="hover:text-primary transition-colors" href="index.html#cuisine">THƯ VIỆN</a>
-                        <a class="hover:text-primary transition-colors" href="index.html#destinations">TIN TỨC</a>
-                        <a class="hover:text-primary transition-colors" href="index.html#gallery">LIÊN HỆ</a>
-                    </nav>
-
-                    <div class="hidden lg:flex items-center gap-2 md:gap-3 ml-auto">
-                        <button onclick="toggleTheme()"
-                            class="size-11 flex items-center justify-center border border-white/30 hover:bg-white/10 transition-colors"
-                            title="Đổi giao diện">
-                            <span class="material-symbols-outlined text-base block dark:hidden">light_mode</span>
-                            <span
-                                class="material-symbols-outlined text-base hidden dark:block text-yellow-400">dark_mode</span>
+                    <div id="auth-buttons-mobile" class="flex lg:hidden items-center gap-2">
+                        <button onclick="toggleTheme()" class="size-8 md:size-9 flex items-center justify-center border border-white/30 hover:bg-white/10 transition-colors" title="Đổi giao diện">
+                            <span class="material-symbols-outlined text-xs md:text-sm block dark:hidden">light_mode</span>
+                            <span class="material-symbols-outlined text-xs md:text-sm hidden dark:block text-yellow-400">dark_mode</span>
                         </button>
-                        <a href="login.html"
-                            class="flex h-9 md:h-11 min-w-[120px] md:min-w-[150px] items-center justify-center gap-2 px-5 border border-white/30 text-[11px] uppercase tracking-[0.3em]">
-                            <span class="material-symbols-outlined text-base">person</span> SINH VIÊN
-                        </a>
-                        <a href="login.html"
-                            class="flex h-9 md:h-11 min-w-[120px] md:min-w-[150px] px-3 md:px-5 bg-primary text-black font-semibold uppercase tracking-[0.4em] text-[11px] items-center justify-center">
-                            GIẢNG VIÊN
-                        </a>
-                        <a href="login.html"
-                            class="flex h-9 md:h-11 min-w-[120px] md:min-w-[150px] items-center justify-center gap-2 px-5 border border-white/30 text-[11px] uppercase tracking-[0.3em]">
-                            <span class="material-symbols-outlined text-base">app_registration</span> ĐĂNG KÝ
-                        </a>
                     </div>
+                    <button onclick="toggleMenu()" class="lg:hidden size-8 md:size-9 flex items-center justify-center border border-white/30">
+                        <span class="material-symbols-outlined text-[18px] md:text-sm">menu</span>
+                    </button>
+                </div>
+
+                <nav class="flex items-center gap-6 md:gap-8 lg:mx-auto justify-center w-full lg:w-auto text-[9px] md:text-[11px] uppercase tracking-[0.2em] md:tracking-[0.45em] overflow-x-auto no-scrollbar whitespace-nowrap px-0 lg:px-4 border-t border-white/5 lg:border-none pt-3 lg:pt-0">
+                    <a class="hover:text-primary transition-colors" href="index.html">Trang Chủ</a>
+                    <a class="hover:text-primary transition-colors" href="courses.html">Khóa Học</a>
+                    <a class="hover:text-primary transition-colors" href="index.html#cuisine">Thư Viện</a>
+                    <a class="hover:text-primary transition-colors" href="index.html#destinations">Tin Tức</a>
+                    <a class="hover:text-primary transition-colors" href="index.html#gallery">Liên Hệ</a>
+                </nav>
+
+                <div id="auth-buttons-desktop" class="hidden lg:flex items-center gap-2 md:gap-3 ml-auto">
+                    <button onclick="toggleTheme()" class="size-11 flex items-center justify-center border border-white/30 hover:bg-white/10 transition-colors" title="Đổi giao diện">
+                        <span class="material-symbols-outlined text-base block dark:hidden">light_mode</span>
+                        <span class="material-symbols-outlined text-base hidden dark:block text-yellow-400">dark_mode</span>
+                    </button>
+                    <a href="login.html" class="flex h-9 md:h-11 min-w-[120px] md:min-w-[150px] items-center justify-center gap-2 px-5 border border-white/30 text-[11px] uppercase tracking-[0.3em] font-bold">
+                        <span class="material-symbols-outlined text-base">person</span> Sinh Viên
+                    </a>
+                    <a href="login.html" class="flex h-9 md:h-11 min-w-[120px] md:min-w-[150px] px-3 md:px-5 bg-primary text-black font-black uppercase tracking-[0.4em] text-[11px] items-center justify-center transition-transform hover:scale-105 active:scale-95">
+                        Giảng Viên
+                    </a>
                 </div>
             </div>
+        </div>
 
-            <div id="mobileMenu" class="fixed inset-0 z-50 lg:hidden flex flex-col p-8 pt-32 space-y-6 text-white"
-                style="background-color: #0f231c;">
-                <button onclick="toggleMenu()"
-                    class="absolute top-6 right-6 size-12 border border-white/20 flex items-center justify-center">
-                    <span class="material-symbols-outlined">close</span>
-                </button>
-                <nav class="flex flex-col space-y-4 text-sm uppercase tracking-[0.2em] font-medium">
-                    <a onclick="toggleMenu()" class="text-primary transition-colors"
-                        href="index.html#overview">TRANG CHỦ</a>
-                    <a onclick="toggleMenu()" class="hover:text-primary transition-colors" href="courses.html">KHÓA HỌC</a>
-                    <a onclick="toggleMenu()" class="hover:text-primary transition-colors" href="index.html#cuisine">THƯ
-                        VIỆN</a>
-                    <a onclick="toggleMenu()" class="hover:text-primary transition-colors"
-                        href="index.html#destinations">TIN TỨC</a>
-                    <a onclick="toggleMenu()" class="hover:text-primary transition-colors"
-                        href="index.html#gallery">LIÊN HỆ</a>
-                </nav>
+        <div id="mobileMenu" class="fixed inset-0 z-50 lg:hidden flex flex-col p-8 pt-32 space-y-6 text-white bg-background-dark/95 backdrop-blur-2xl">
+            <button onclick="toggleMenu()" class="absolute top-6 right-6 size-12 border border-white/20 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+            <nav class="flex flex-col space-y-4 text-sm uppercase tracking-[0.3em] font-black">
+                <a onclick="toggleMenu()" class="hover:text-primary transition-colors" href="index.html">Trang Chủ</a>
+                <a onclick="toggleMenu()" class="hover:text-primary transition-colors" href="courses.html">Khóa Học</a>
+                <a onclick="toggleMenu()" class="hover:text-primary transition-colors" href="index.html#cuisine">Thư Viện</a>
+                <a onclick="toggleMenu()" class="hover:text-primary transition-colors" href="index.html#destinations">Tin Tức</a>
+                <a onclick="toggleMenu()" class="hover:text-primary transition-colors" href="index.html#gallery">Liên Hệ</a>
+            </nav>
+            <div class="pt-10 border-t border-white/10 flex flex-col gap-4">
+                <a href="login.html" class="flex h-14 items-center justify-center gap-3 border border-white/20 text-xs uppercase tracking-[0.2em] font-bold rounded-2xl">
+                    <span class="material-symbols-outlined">person</span> Cổng Sinh Viên
+                </a>
+                <a href="login.html" class="flex h-14 items-center justify-center gap-3 bg-primary text-black text-xs uppercase tracking-[0.3em] font-black rounded-2xl">
+                    Khu Giảng Viên
+                </a>
             </div>
-        </header>
+        </div>
+    </header>
 
     <div class="flex w-full h-full p-0 sm:p-3 lg:p-5 pt-[100px] lg:pt-[130px] gap-6">
 
@@ -425,7 +360,7 @@
             
             <!-- Floating logo -->
             <div class="absolute top-10 left-10 z-30 pointer-events-none flex items-center gap-2 md:gap-3 bg-white/20 backdrop-blur-md px-5 py-2.5 rounded-2xl border border-white/20">
-                <div class="size-8 bg-white text-blue-600 rounded-xl flex items-center justify-center font-black text-xl">T</div>
+                <div class="size-8 bg-white text-primary rounded-xl flex items-center justify-center font-black text-xl">T</div>
                 <span class="text-white font-black tracking-widest text-sm uppercase">THEDUNG QUIZZ</span>
             </div>
         </div>
@@ -439,31 +374,30 @@
             </a>
 
             <!-- Logo (Mobile only) -->
-            <div class="lg:hidden flex items-center gap-2 mb-8">
-                <div class="size-8 bg-blue-600 text-white rounded-xl flex items-center justify-center font-black text-xl">T</div>
-                <span class="text-slate-800 font-black tracking-widest text-sm uppercase">THEDUNG QUIZZ</span>
+            <div class="lg:hidden flex items-center gap-3 mb-10">
+                <div class="size-10 bg-primary text-white rounded-xl flex items-center justify-center font-black text-2xl shadow-lg shadow-primary/20">T</div>
+                <span class="text-slate-800 dark:text-white font-black tracking-widest text-base uppercase">THEDUNG QUIZZ</span>
             </div>
 
             <div class="w-full max-w-[420px]">
                 
                 <!-- Role Segmented Control -->
-                <div class="p-1 bg-gray-100 dark:bg-black/30 rounded-2xl flex relative mb-12 shadow-inner transition-colors duration-300" id="role-switch-container">
-                    <div id="role-pill" class="absolute top-1 bottom-1 left-1 w-[calc(50%-4px)] bg-white dark:bg-[#204537] rounded-xl transition-all duration-300 ease-out shadow-sm border border-gray-200/50 dark:border-white/10"></div>
-                    <button onclick="setRole('student')" id="btn-role-student" class="flex-1 relative z-10 py-3 text-[14px] font-bold text-blue-600 dark:text-blue-400 transition-colors">
+                <div class="p-1.5 bg-gray-100 dark:bg-white/5 rounded-[1.25rem] flex relative mb-10 shadow-inner" id="role-switch-container">
+                    <div id="role-pill" class="absolute top-1.5 bottom-1.5 left-1.5 w-[calc(50%-6px)] bg-white dark:bg-background-dark/80 backdrop-blur-md rounded-xl transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] shadow-sm border border-gray-200/50 dark:border-white/5"></div>
+                    <button onclick="setRole('student')" id="btn-role-student" class="flex-1 relative z-10 py-3.5 text-[13px] font-black uppercase tracking-widest text-primary transition-colors">
                         Sinh Viên
                     </button>
-                    <button onclick="setRole('teacher')" id="btn-role-teacher" class="flex-1 relative z-10 py-3 text-[14px] font-bold text-gray-500 dark:text-white/50 transition-colors">
+                    <button onclick="setRole('teacher')" id="btn-role-teacher" class="flex-1 relative z-10 py-3.5 text-[13px] font-black uppercase tracking-widest text-slate-400 dark:text-white/40 transition-colors">
                         Giảng Viên
                     </button>
                 </div>
 
                 <!-- Form Views Container -->
-                <div class="relative w-full" id="form-container">
-                    <!-- The innerHTML of this will be swapped between Login and Register -->
+                <div class="relative w-full min-h-[400px]" id="form-container">
+                    <!-- Swapped between Login and Register -->
                 </div>
             </div>
         </div>
-
     </div>
 
     <!-- JavaScript Application Logic -->
@@ -477,15 +411,26 @@
         };
 
         const config = {
-            student: { colorCode: 'blue', themeClass: 'text-blue-600', bgClass: 'bg-blue-600', hoverClass: 'hover:bg-blue-700', ringClass: 'focus:ring-blue-500' },
-            teacher: { colorCode: 'purple', themeClass: 'text-purple-600', bgClass: 'bg-purple-600', hoverClass: 'hover:bg-purple-700', ringClass: 'focus:ring-purple-500' }
+            student: { 
+                accent: '#2563eb', 
+                colorClass: 'blue-600',
+                title: 'Sinh Viên',
+                palette: { head: '#38bdf8', ears: '#0284c7', nose: '#0369a1', mouth: '#1e3a8a' }
+            },
+            teacher: { 
+                accent: '#7c3aed', 
+                colorClass: 'purple-600',
+                title: 'Giảng Viên',
+                palette: { head: '#c084fc', ears: '#9333ea', nose: '#7e22ce', mouth: '#7e22ce' }
+            }
         };
 
         // --- Mascot Interactive Logic ---
-        const yetiContainer = document.getElementById('yeti-container');
+        const yetiContainer = document.getElementById('yeti-svg');
         const head = document.getElementById('yeti-head');
         const eyeLeft = document.getElementById('yeti-pupil-left');
         const eyeRight = document.getElementById('yeti-pupil-right');
+        const armL = document.getElementById('yeti-arm-left');
         const armR = document.getElementById('yeti-arm-right');
 
         let mouseX = window.innerWidth / 2;
@@ -496,55 +441,42 @@
             mouseY = e.clientY;
         });
 
-        // Breathing animation
         let time = 0;
-
         function animateMascot() {
             time += 0.05;
+            if(!yetiContainer) return;
             
-            // Container center
             const rect = yetiContainer.getBoundingClientRect();
             if(rect.width === 0) {
                 requestAnimationFrame(animateMascot);
-                return; // Hidden on mobile
+                return;
             }
             
             const centerX = rect.left + rect.width / 2;
             const centerY = rect.top + rect.height / 2;
 
-            // Delta from center normalized (-1 to 1)
             let dx = (mouseX - centerX) / (window.innerWidth / 2);
             let dy = (mouseY - centerY) / (window.innerHeight / 2);
 
-            // Clamp values
             dx = Math.max(-1, Math.min(1, dx));
             dy = Math.max(-1, Math.min(1, dy));
 
-            // Head Movement: 25px X, 15px Y + slight tilt
-            const headTx = dx * 25;
-            const headTy = dy * 15 + Math.sin(time) * 4; 
+            const headTx = dx * 20;
+            const headTy = dy * 10 + Math.sin(time) * 3; 
             const headRot = dx * 5;
 
-            // Follow mouse if not covering eyes
             if (!state.isCoveringEyes) {
-                const eyeTx = dx * 14;
-                const eyeTy = dy * 10;
-                eyeLeft.style.transform = `translate(${eyeTx}px, ${eyeTy}px)`;
-                eyeRight.style.transform = `translate(${eyeTx}px, ${eyeTy}px)`;
+                const eyeTx = dx * 12;
+                const eyeTy = dy * 8;
+                if(eyeLeft) eyeLeft.style.transform = `translate(${eyeTx}px, ${eyeTy}px)`;
+                if(eyeRight) eyeRight.style.transform = `translate(${eyeTx}px, ${eyeTy}px)`;
             }
 
-            // Apply transforms
-            head.style.transform = `translate(${headTx}px, ${headTy}px) rotate(${headRot}deg)`;
+            if(head) head.style.transform = `translate(${headTx}px, ${headTy}px) rotate(${headRot}deg)`;
             
-            // Interaction logic (Right arm)
-            if (armR) {
-                if (state.isCoveringEyes) {
-                    // Handled by CSS classes
-                } else {
-                    // Constant idle wave
-                    const waveAngle = Math.sin(time * 2) * 10;
-                    armR.style.transform = `rotate(${waveAngle}deg)`;
-                }
+            if (armR && !state.isCoveringEyes) {
+                const waveAngle = Math.sin(time * 1.5) * 8;
+                armR.style.transform = `rotate(${waveAngle}deg)`;
             }
 
             requestAnimationFrame(animateMascot);
@@ -554,14 +486,19 @@
             state.isCoveringEyes = cover;
             const pupilL = document.getElementById('yeti-pupil-left');
             const pupilR = document.getElementById('yeti-pupil-right');
-            if (!pupilL || !pupilR) return;
-
+            const armL = document.getElementById('yeti-arm-left');
+            const armR = document.getElementById('yeti-arm-right');
+            
             if (cover && !state.showPassword) {
-                pupilL.classList.add('eyes-closed');
-                pupilR.classList.add('eyes-closed');
+                if(pupilL) pupilL.classList.add('eyes-closed');
+                if(pupilR) pupilR.classList.add('eyes-closed');
+                if(armL) armL.style.transform = `translate(40px, -110px) rotate(35deg)`;
+                if(armR) armR.style.transform = `translate(-40px, -110px) rotate(-35deg)`;
             } else {
-                pupilL.classList.remove('eyes-closed');
-                pupilR.classList.remove('eyes-closed');
+                if(pupilL) pupilL.classList.remove('eyes-closed');
+                if(pupilR) pupilR.classList.remove('eyes-closed');
+                if(armL) armL.style.transform = `translate(0px, 0px) rotate(0deg)`;
+                if(armR) armR.style.transform = `translate(0px, 0px) rotate(0deg)`;
             }
         }
 
@@ -569,23 +506,14 @@
             state.showPassword = !state.showPassword;
             const passInput = document.getElementById('password-input');
             const toggleIcon = document.getElementById('password-toggle-icon');
-            if (passInput) {
-                passInput.type = state.showPassword ? 'text' : 'password';
-            }
-            if (toggleIcon) {
-                toggleIcon.textContent = state.showPassword ? 'visibility_off' : 'visibility';
-            }
-            // Update arms if currently focused
-            if (state.isCoveringEyes) {
-                coverEyes(true);
-            }
+            if (passInput) passInput.type = state.showPassword ? 'text' : 'password';
+            if (toggleIcon) toggleIcon.textContent = state.showPassword ? 'visibility_off' : 'visibility';
+            coverEyes(state.isCoveringEyes);
         }
 
-        // Start animation loop
         animateMascot();
 
-
-        // --- UI Rendering Logic ---
+        // --- UI Logic ---
         function setRole(role) {
             state.role = role;
             updateRoleSwitchUI();
@@ -594,311 +522,236 @@
 
         function setView(view) {
             state.view = view;
-            
             const container = document.getElementById('form-container');
             container.classList.add('fade-out');
-            
             setTimeout(() => {
                 renderForm();
                 container.classList.remove('fade-out');
                 container.classList.add('fade-in');
+                setTimeout(() => container.classList.remove('fade-in'), 400);
             }, 300);
-            
-            setTimeout(() => {
-                container.classList.remove('fade-in');
-            }, 700);
         }
 
         function updateRoleSwitchUI() {
             const pill = document.getElementById('role-pill');
-            const btnStudent = document.getElementById('btn-role-student');
-            const btnTeacher = document.getElementById('btn-role-teacher');
+            const btnS = document.getElementById('btn-role-student');
+            const btnT = document.getElementById('btn-role-teacher');
+            const p = config[state.role].palette;
 
             if(state.role === 'student') {
                 pill.style.transform = 'translateX(0%)';
-                btnStudent.className = "flex-1 relative z-10 py-3 text-[14px] font-bold text-blue-600 dark:text-blue-400 transition-colors";
-                btnTeacher.className = "flex-1 relative z-10 py-3 text-[14px] font-bold text-gray-500 dark:text-white/50 hover:text-gray-700 dark:hover:text-white transition-colors";
+                btnS.className = "flex-1 relative z-10 py-3.5 text-[13px] font-black uppercase tracking-widest text-primary transition-colors";
+                btnT.className = "flex-1 relative z-10 py-3.5 text-[13px] font-black uppercase tracking-widest text-slate-400 dark:text-white/40 transition-colors";
             } else {
                 pill.style.transform = 'translateX(100%)';
-                pill.style.left = 'calc(4px)'; // Account for gap
-                btnStudent.className = "flex-1 relative z-10 py-3 text-[14px] font-bold text-gray-500 dark:text-white/50 hover:text-gray-700 dark:hover:text-white transition-colors";
-                btnTeacher.className = "flex-1 relative z-10 py-3 text-[14px] font-bold text-purple-600 dark:text-purple-400 transition-colors";
+                btnS.className = "flex-1 relative z-10 py-3.5 text-[13px] font-black uppercase tracking-widest text-slate-400 dark:text-white/40 transition-colors";
+                btnT.className = "flex-1 relative z-10 py-3.5 text-[13px] font-black uppercase tracking-widest text-primary transition-colors";
             }
 
-            // Also update the eye color of the yeti slightly to match the theme!
+            // Mascot theme coloring
             const faceGrad = document.getElementById('faceGrad');
-            if(state.role === 'teacher') {
-                faceGrad.innerHTML = '<stop offset="0%" stop-color="#e9d5ff" /><stop offset="100%" stop-color="#a855f7" />';
-                
-                // Update arms & fingers
-                document.getElementById('yeti-hand-left').querySelectorAll('ellipse').forEach(e => e.setAttribute('fill', '#a855f7'));
-                document.getElementById('yeti-hand-right').querySelectorAll('ellipse').forEach(e => e.setAttribute('fill', '#a855f7'));
-                
-                // Update ears (circles)
-                document.getElementById('yeti-head').querySelectorAll('circle').forEach(c => {
-                    const r = c.getAttribute('r');
-                    if(r === '35') c.setAttribute('fill', '#c084fc');
-                    else if(r === '18') c.setAttribute('fill', '#9333ea');
-                });
-
-                const nose = document.getElementById('yeti-nose');
-                if(nose) nose.setAttribute('fill', '#7e22ce');
-                const mouth = document.getElementById('yeti-mouth');
-                if(mouth) mouth.setAttribute('stroke', '#7e22ce');
-            } else {
-                faceGrad.innerHTML = '<stop offset="0%" stop-color="#bae6fd" /><stop offset="100%" stop-color="#38bdf8" />';
-                
-                // Update arms & fingers
-                document.getElementById('yeti-hand-left').querySelectorAll('ellipse').forEach(e => e.setAttribute('fill', '#38bdf8'));
-                document.getElementById('yeti-hand-right').querySelectorAll('ellipse').forEach(e => e.setAttribute('fill', '#7dd3fc'));
-
-                // Update ears (circles)
-                document.getElementById('yeti-head').querySelectorAll('circle').forEach(c => {
-                    const r = c.getAttribute('r');
-                    if(r === '35') c.setAttribute('fill', '#38bdf8');
-                    else if(r === '18') c.setAttribute('fill', '#0284c7');
-                });
-
-                const nose = document.getElementById('yeti-nose');
-                if(nose) nose.setAttribute('fill', '#0369a1');
-                const mouth = document.getElementById('yeti-mouth');
-                if(mouth) mouth.setAttribute('stroke', '#1e3a8a');
+            if(faceGrad) {
+                faceGrad.innerHTML = `<stop offset="0%" stop-color="${p.head}" stop-opacity="0.3" /><stop offset="100%" stop-color="${p.head}" />`;
             }
+            document.querySelectorAll('#yeti-hand-left ellipse, #yeti-hand-right ellipse').forEach(e => e.setAttribute('fill', p.head));
+            document.querySelectorAll('#yeti-head circle').forEach(c => {
+                if(c.getAttribute('r') === '35') c.setAttribute('fill', p.head);
+                else if(c.getAttribute('r') === '18') c.setAttribute('fill', p.ears);
+            });
+            const nose = document.getElementById('yeti-nose');
+            if(nose) nose.setAttribute('fill', p.nose);
+            const mouth = document.getElementById('yeti-mouth');
+            if(mouth) mouth.setAttribute('stroke', p.mouth);
         }
 
         function renderForm() {
             state.showPassword = false;
             const container = document.getElementById('form-container');
-            const theme = config[state.role];
+            const isLogin = state.view === 'login';
+            const isStudent = state.role === 'student';
             
-            const titleMap = {
+            const titles = {
                 'login_student': 'Chào Mừng Trở Lại! 👋',
-                'login_teacher': 'Khu Vực Giảng Viên 🎓',
+                'login_teacher': 'Cổng Giảng Viên 🎓',
                 'register_student': 'Bắt Đầu Học Tập 🚀',
                 'register_teacher': 'Hợp Tác Giảng Dạy 🏫'
             };
             
-            const descMap = {
-                'login_student': 'Đăng nhập vào tài khoản của bạn để tiếp tục kiểm tra kiến thức',
-                'login_teacher': 'Đăng nhập để quản lý bộ câu hỏi và chấm điểm bài thi',
-                'register_student': 'Tạo tài khoản học viên để mở khóa tất cả bộ câu hỏi',
-                'register_teacher': 'Đăng ký tài khoản giáo viên. Yêu cầu xét duyệt từ quản trị viên'
+            const descs = {
+                'login_student': 'Đăng nhập để tiếp tục hành trình tri thức của bạn.',
+                'login_teacher': 'Quản lý khóa học và kho câu hỏi của bạn.',
+                'register_student': 'Tạo tài khoản để tham gia các khóa học miễn phí.',
+                'register_teacher': 'Đăng ký giảng dạy và chia sẻ kiến thức của bạn.'
             };
 
             const id = `${state.view}_${state.role}`;
 
             let html = `
-                <div class="text-center mb-10">
-                    <h2 class="text-2xl md:text-3xl font-black text-slate-800 dark:text-white tracking-tight">${titleMap[id]}</h2>
-                    <p class="text-sm font-medium text-slate-500 dark:text-white/60 mt-2">${descMap[id]}</p>
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl md:text-3xl font-black text-slate-800 dark:text-white tracking-tight leading-tight">${titles[id]}</h2>
+                    <p class="text-slate-500 dark:text-white/40 mt-2 text-sm font-medium">${descs[id]}</p>
                 </div>
-                
-                <form class="space-y-4" onsubmit="handleLogin(event)">
+                <form onsubmit="handleAuth(event)" class="space-y-5">
             `;
 
-            // Dynamic Fields based on state
-            if(state.view === 'register') {
+            if (!isLogin) {
                 html += `
                     <div>
-                        <label class="block text-[13px] font-bold text-slate-700 dark:text-white/80 mb-2 ml-1">Họ và tên</label>
-                        <input type="text" placeholder="Nguyễn Văn A" class="w-full px-5 py-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-[15px] focus:bg-white dark:focus:bg-slate-800 focus:border-${theme.colorCode}-500 focus:ring-4 focus:ring-${theme.colorCode}-500/10 transition-all text-slate-800 dark:text-white placeholder:text-slate-400 dark:placeholder:text-white/30 outline-none" required>
+                        <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 dark:text-white/30 mb-2 ml-1">Họ và tên</label>
+                        <input type="text" placeholder="Nguyễn Văn A" class="w-full px-5 py-4 bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl text-[15px] focus:bg-white dark:focus:bg-white/10 focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all text-slate-800 dark:text-white placeholder:text-slate-400 dark:placeholder:text-white/20 outline-none" required>
                     </div>
                 `;
-            }
-
-            if(state.view === 'register' && state.role === 'student') {
-                html += `
-                    <div>
-                        <label class="block text-[13px] font-bold text-slate-700 dark:text-white/80 mb-2 ml-1">Mã sinh viên (MSV)</label>
-                        <input type="text" placeholder="Ví dụ: 2021xxxx" class="w-full px-5 py-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-[15px] focus:bg-white dark:focus:bg-slate-800 focus:border-${theme.colorCode}-500 focus:ring-4 focus:ring-${theme.colorCode}-500/10 transition-all text-slate-800 dark:text-white placeholder:text-slate-400 dark:placeholder:text-white/30 outline-none" required>
-                    </div>
-                `;
-            }
-
-            if(state.view === 'register' && state.role === 'teacher') {
-                html += `
-                    <div>
-                        <label class="block text-[13px] font-bold text-slate-700 dark:text-white/80 mb-2 ml-1">Mã Khoa / Mã Bộ môn</label>
-                        <input type="text" placeholder="Ví dụ: K.CNTT" class="w-full px-5 py-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-[15px] focus:bg-white dark:focus:bg-slate-800 focus:border-${theme.colorCode}-500 focus:ring-4 focus:ring-${theme.colorCode}-500/10 transition-all text-slate-800 dark:text-white placeholder:text-slate-400 dark:placeholder:text-white/30 outline-none" required>
-                    </div>
-                `;
-            }
-
-            // Always present fields
-            const identifierLabel = state.role === 'student' ? 'Mã số sinh viên' : 'Email';
-            const identifierPlaceholder = state.role === 'student' ? 'Ví dụ: 2351220152' : 'email@example.com';
-            const identifierType = state.role === 'student' ? 'text' : 'email';
-
-            html += `
-                    <div>
-                        <label class="block text-[13px] font-bold text-slate-700 dark:text-white/80 mb-2 ml-1">${identifierLabel}</label>
-                        <input id="identifier-input" type="${identifierType}" placeholder="${identifierPlaceholder}" class="w-full px-5 py-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-[15px] focus:bg-white dark:focus:bg-slate-800 focus:border-${theme.colorCode}-500 focus:ring-4 focus:ring-${theme.colorCode}-500/10 transition-all text-slate-800 dark:text-white placeholder:text-slate-400 dark:placeholder:text-white/30 outline-none" required>
-                    </div>
-
-                    <div>
-                        <label class="block text-[13px] font-bold text-slate-700 dark:text-white/80 mb-2 ml-1">Mật khẩu</label>
-                        <div class="relative group">
-                            <input id="password-input" type="password" placeholder="••••••••" 
-                                class="w-full px-5 py-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-[15px] tracking-[0.2em] focus:bg-white dark:focus:bg-slate-800 focus:border-${theme.colorCode}-500 focus:ring-4 focus:ring-${theme.colorCode}-500/10 transition-all text-slate-800 dark:text-white placeholder:text-slate-400 dark:placeholder:text-white/30 outline-none pr-14" 
-                                onfocus="coverEyes(true)" onblur="coverEyes(false)" required>
-                            <button type="button" onclick="togglePasswordVisibility()" class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 dark:text-white/30 hover:text-${theme.colorCode}-500 dark:hover:text-white transition-all outline-none">
-                                <span id="password-toggle-icon" class="material-symbols-outlined text-[22px]">visibility</span>
-                            </button>
+                if (isStudent) {
+                    html += `
+                        <div>
+                            <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 dark:text-white/30 mb-2 ml-1">Mã sinh viên (MSV)</label>
+                            <input type="text" placeholder="Ví dụ: 215122xxxx" class="w-full px-5 py-4 bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl text-[15px] focus:bg-white dark:focus:bg-white/10 focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all text-slate-800 dark:text-white placeholder:text-slate-400 dark:placeholder:text-white/20 outline-none" required>
                         </div>
+                    `;
+                } else {
+                    html += `
+                        <div>
+                            <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 dark:text-white/30 mb-2 ml-1">Mã Khoa / Bộ môn</label>
+                            <input type="text" placeholder="Ví dụ: K.CNTT" class="w-full px-5 py-4 bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl text-[15px] focus:bg-white dark:focus:bg-white/10 focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all text-slate-800 dark:text-white placeholder:text-slate-400 dark:placeholder:text-white/20 outline-none" required>
+                        </div>
+                    `;
+                }
+            }
+
+            const identLabel = isStudent ? 'Mã số sinh viên' : 'Địa chỉ Email';
+            const identPlace = isStudent ? '2351220152' : 'name@university.edu.vn';
+
+            html += `
+                <div>
+                    <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 dark:text-white/30 mb-2 ml-1">${identLabel}</label>
+                    <input id="identifier-input" type="${isStudent ? 'text' : 'email'}" placeholder="${identPlace}" class="w-full px-5 py-4 bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl text-[15px] focus:bg-white dark:focus:bg-white/10 focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all text-slate-800 dark:text-white placeholder:text-slate-400 dark:placeholder:text-white/20 outline-none" required>
+                </div>
+                <div>
+                    <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 dark:text-white/30 mb-2 ml-1">Mật khẩu</label>
+                    <div class="relative group">
+                        <input id="password-input" type="password" placeholder="••••••••" class="w-full px-5 py-4 bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl text-[15px] tracking-[0.2em] focus:bg-white dark:focus:bg-white/10 focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all text-slate-800 dark:text-white placeholder:text-slate-400 dark:placeholder:text-white/20 outline-none pr-14" onfocus="coverEyes(true)" onblur="coverEyes(false)" required>
+                        <button type="button" onclick="togglePasswordVisibility()" class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 dark:text-white/20 hover:text-primary transition-colors outline-none">
+                            <span id="password-toggle-icon" class="material-symbols-outlined text-[22px]">visibility</span>
+                        </button>
                     </div>
+                </div>
             `;
 
-            if(state.view === 'login') {
+            if(isLogin) {
                 html += `
-                    <div class="flex items-center justify-between pt-1 pb-4 px-1">
+                    <div class="flex items-center justify-between pt-1 pb-2">
                         <label class="flex items-center gap-2 cursor-pointer group">
-                            <input type="checkbox" class="w-4 h-4 rounded text-${theme.colorCode}-600 focus:ring-${theme.colorCode}-500 border-gray-300 dark:border-white/20 dark:bg-black/20">
-                            <span class="text-[13px] font-semibold text-slate-500 dark:text-white/60 group-hover:text-slate-700 dark:group-hover:text-white transition-colors">Ghi nhớ đăng nhập</span>
+                            <input type="checkbox" class="w-4 h-4 rounded text-primary focus:ring-primary border-gray-300 dark:border-white/10 dark:bg-white/5">
+                            <span class="text-[12px] font-bold text-slate-500 dark:text-white/40 group-hover:text-slate-700 dark:group-hover:text-white/60 transition-colors">Ghi nhớ tôi</span>
                         </label>
-                        <a href="#" class="text-[13px] font-bold ${theme.themeClass} hover:opacity-80 transition-opacity">Quên mật khẩu?</a>
+                        <a href="#" class="text-[12px] font-black text-primary uppercase tracking-widest hover:opacity-80 transition-opacity">Quên mật khẩu?</a>
                     </div>
                 `;
-            } else {
-                html += `<div class="h-4"></div>`;
             }
 
             html += `
-                    <button type="submit" class="w-full py-4 rounded-2xl font-black text-white text-[15px] shadow-lg shadow-${theme.colorCode}-500/30 dark:shadow-none ${theme.bgClass} ${theme.hoverClass} active:scale-95 transition-all mt-4">
-                        ${state.view === 'login' ? 'Đăng Nhập' : 'Tạo Tài Khoản'}
-                    </button>
+                <button type="submit" class="w-full py-4 rounded-2xl font-black text-white text-[14px] uppercase tracking-[0.2em] shadow-xl shadow-primary/20 bg-primary hover:bg-primary-hover active:scale-[0.98] transition-all mt-4">
+                    ${isLogin ? 'Đăng Nhập Ngay' : 'Tạo Tài Khoản'}
+                </button>
             `;
 
-            // Social Login Divider
-            if(state.view === 'login') {
+            if(isLogin) {
                 html += `
-                    <div class="flex items-center gap-4 my-6 opacity-60">
-                        <div class="flex-1 h-px bg-slate-200 dark:bg-white/10"></div>
-                        <span class="text-[11px] font-black tracking-widest text-slate-400 dark:text-white/40 uppercase">Hoặc</span>
-                        <div class="flex-1 h-px bg-slate-200 dark:bg-white/10"></div>
+                    <div class="flex items-center gap-4 my-6 opacity-40">
+                        <div class="flex-1 h-px bg-slate-300 dark:bg-white/20"></div>
+                        <span class="text-[10px] font-black tracking-[0.3em] text-slate-400 uppercase">Hoặc</span>
+                        <div class="flex-1 h-px bg-slate-300 dark:bg-white/20"></div>
                     </div>
-                    
-                    <button type="button" class="w-full py-3.5 rounded-2xl font-bold text-slate-700 dark:text-white/90 text-[14px] bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 hover:bg-slate-50 dark:hover:bg-white/10 active:scale-95 transition-all flex items-center justify-center gap-3">
+                    <button type="button" class="w-full py-4 rounded-2xl font-black text-slate-700 dark:text-white text-[13px] uppercase tracking-widest bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 hover:bg-slate-50 dark:hover:bg-white/10 active:scale-[0.98] transition-all flex items-center justify-center gap-3">
                         <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" class="w-5 h-5">
                         Tiếp tục với Google
                     </button>
                 `;
             }
 
-            html += `</form>`;
-
             html += `
-                <p class="text-center text-[14px] font-semibold text-slate-500 dark:text-white/60 mt-10">
-                    ${state.view === 'login' ? 'Chưa có tài khoản?' : 'Đã có tài khoản?'} 
-                    <button onclick="setView('${state.view === 'login' ? 'register' : 'login'}')" class="${theme.themeClass} hover:opacity-80 transition-opacity font-bold ml-1">
-                        ${state.view === 'login' ? 'Đăng ký ngay' : 'Đăng nhập'}
+                <p class="text-center text-[13px] font-bold text-slate-400 dark:text-white/30 mt-8">
+                    ${isLogin ? 'Chưa có tài khoản?' : 'Đã có tài khoản?'} 
+                    <button type="button" onclick="setView('${isLogin ? 'register' : 'login'}')" class="text-primary hover:underline ml-1 uppercase tracking-widest font-black">
+                        ${isLogin ? 'Đăng ký' : 'Đăng nhập'}
                     </button>
                 </p>
+            </form>
             `;
 
             container.innerHTML = html;
         }
 
-        async function handleLogin(e) {
+        async function handleAuth(e) {
             e.preventDefault();
             const idInput = document.getElementById('identifier-input').value;
             const passInput = document.getElementById('password-input').value;
             
             try {
                 const resp = await fetch('users.json');
-                if (!resp.ok) throw new Error('Database not found');
+                if (!resp.ok) throw new Error('Database error');
                 const users = await resp.json();
                 
                 const user = users.find(u => u.studentId === idInput && u.password === passInput);
                 
                 if (user) {
-                    // Success
+                    showIsland("Thành công", `Chào mừng trở lại, ${user.name.trim()}!`, "check_circle", "bg-green-500");
                     localStorage.setItem('isLoggedIn', 'true');
                     localStorage.setItem('user', JSON.stringify(user));
                     localStorage.setItem('userRole', state.role);
-                    window.location.href = 'index.html';
+                    setTimeout(() => window.location.href = 'index.html', 1500);
                 } else {
-                    // Logic for teacher (since they are not in users.json yet, we can allow any for now or block)
                     if (state.role === 'teacher') {
+                        // Demo mode for teacher
+                        showIsland("Giảng Viên", "Đăng nhập chế độ Demo thành công.", "verified", "bg-purple-500");
                         localStorage.setItem('isLoggedIn', 'true');
+                        localStorage.setItem('user', JSON.stringify({ name: "Giảng Viên Demo", role: "teacher" }));
                         localStorage.setItem('userRole', 'teacher');
-                        window.location.href = 'index.html';
+                        setTimeout(() => window.location.href = 'index.html', 1500);
                     } else {
-                        showAuthAlert("Lỗi đăng nhập", "Mã sinh viên hoặc mật khẩu không chính xác.");
+                        showIsland("Thất bại", "Thông tin tài khoản không chính xác.", "error", "bg-red-500");
                     }
                 }
             } catch (err) {
-                console.error(err);
-                if (state.role === 'teacher') {
-                    // Fallback for teacher if JSON fails
-                    window.location.href = 'index.html';
-                } else {
-                    showAuthAlert("Lỗi hệ thống", "Không thể kết nối với cơ sở dữ liệu người dùng.");
-                }
+                showIsland("Lỗi hệ thống", "Không thể kết nối đến máy chủ.", "warning", "bg-orange-500");
             }
         }
 
-        function showAuthAlert(title, message) {
-            const existing = document.querySelector('.dynamic-island');
-            if (existing) existing.remove();
-
-            const island = document.createElement('div');
-            island.className = 'dynamic-island animate-in';
-            island.innerHTML = `
-                <div class="flex items-center gap-3 flex-1 min-w-0">
-                    <div class="size-9 rounded-full bg-red-500 flex items-center justify-center text-white ring-8 ring-red-500/10 shrink-0">
-                        <span class="text-[14px] font-black">!</span>
-                    </div>
-                    <div class="flex flex-col min-w-0">
-                        <span class="text-[14px] font-bold text-slate-800 dark:text-white tracking-tight truncate">${title}</span>
-                        <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none">${message.substring(0, 20)}...</span>
-                    </div>
-                </div>
-                <div class="flex items-center gap-2 md:gap-4 shrink-0">
-                    <div class="flex items-center gap-2 px-3 py-1.5 bg-red-50 dark:bg-red-500/10 rounded-full border border-red-100 dark:border-red-500/20">
-                        <span class="material-symbols-outlined text-red-500 text-[14px] font-black animate-pulse">error</span>
-                        <span class="text-[11px] font-black text-red-500 uppercase tracking-tighter">Failed</span>
-                    </div>
-                </div>
-            `;
-
-            document.body.appendChild(island);
-
+        function showIsland(title, message, icon, iconBg) {
+            const island = document.getElementById('dynamic-island');
+            const iTitle = document.getElementById('island-title');
+            const iMsg = document.getElementById('island-message');
+            const iIcon = document.getElementById('island-icon');
+            
+            iTitle.innerText = title;
+            iMsg.innerText = message;
+            iIcon.className = `size-10 rounded-full flex items-center justify-center mr-3 shrink-0 text-white ${iconBg}`;
+            iIcon.innerHTML = `<span class="material-symbols-outlined text-xl font-black">${icon}</span>`;
+            
+            island.classList.remove('exit');
+            island.classList.add('active');
+            
             setTimeout(() => {
-                island.classList.remove('animate-in');
-                island.classList.add('animate-dangle');
-                setTimeout(() => {
-                    island.classList.remove('animate-dangle');
-                    island.classList.add('animate-fall-final');
-                    setTimeout(() => island.remove(), 800);
-                }, 2000);
-            }, 3000);
+                island.classList.remove('active');
+                island.classList.add('exit');
+            }, 4000);
         }
 
-        // Initialize UI
+        // Init
         updateRoleSwitchUI();
         renderForm();
-    </script>
 
-    <script>
-      function toggleMenu() {
-        const menu = document.getElementById('mobileMenu');
-        if(menu) menu.classList.toggle('active');
-      }
-      function initTheme() {
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        if (savedTheme === 'dark') {
-          document.documentElement.classList.add('dark');
-        } else {
-          document.documentElement.classList.remove('dark');
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            if(menu) menu.classList.toggle('active');
         }
-      }
-
-      function toggleTheme() {
-        const isDark = document.documentElement.classList.toggle('dark');
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
-      }
-
-      initTheme();
+        function toggleTheme() {
+            const isDark = document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        }
+        if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark');
     </script>
+    <script src="rocket-top.js"></script>
 </body>
 </html>
+

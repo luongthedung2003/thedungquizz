@@ -142,43 +142,9 @@
             .no-scrollbar::-webkit-scrollbar { display: none; }
             .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
             
-            /* Rocket Animations */
-            @keyframes smokeExpand {
-               0% { transform: scale(0.2) translateY(0); opacity: 0.8; }
-               100% { transform: scale(3) translateY(20px) translateX(var(--smoke-x)); opacity: 0; filter: blur(4px); border-radius: 50%; }
-            }
-            .smoke-cloud { position: absolute; width: 14px; height: 14px; background-color: #cbd5e1; border-radius: 50%; bottom: -5px; opacity: 0; }
-            .rocket-fly .smoke-cloud:nth-child(1) { --smoke-x: -25px; animation: smokeExpand 1s ease-out infinite 0.1s; background-color: #94A3B8;}
-            .rocket-fly .smoke-cloud:nth-child(2) { --smoke-x: 25px; animation: smokeExpand 1.2s ease-out infinite 0.2s; }
-            .rocket-fly .smoke-cloud:nth-child(3) { --smoke-x: -40px; animation: smokeExpand 0.8s ease-out infinite 0.3s; background-color: #E2E8F0; }
-            .rocket-fly .smoke-cloud:nth-child(4) { --smoke-x: 40px; animation: smokeExpand 1.3s ease-out infinite 0.15s; background-color: #94A3B8; }
-            .rocket-fly .smoke-cloud:nth-child(5) { --smoke-x: 0px; animation: smokeExpand 0.9s ease-out infinite 0s; background-color: #F1F5F9; }
-
-            @keyframes rocketTakeoff {
-               0% { transform: translateY(0); }
-               10% { transform: translateY(10px); } 
-               20% { transform: translateY(0px); }
-               100% { transform: translateY(-1500px); }
-            }
-            @keyframes svgShake {
-               0%, 20% { transform: translateX(0) rotate(0deg); }
-               1%, 5%, 9%, 13%, 17% { transform: translateX(-3px) rotate(-1deg); }
-               3%, 7%, 11%, 15%, 19% { transform: translateX(3px) rotate(1deg); }
-               21%, 100% { transform: translateX(0) rotate(0deg); }
-            }
-            .rocket-fly {
-               animation: rocketTakeoff 2.5s cubic-bezier(0.5, 0, 0.4, 1) forwards !important;
-            }
-            .rocket-fly > svg {
-               animation: svgShake 2.5s linear forwards !important;
-            }
-            @keyframes fireBlast {
-              0% { transform: scaleY(0.6) translateY(-5px); opacity: 0.5; filter: blur(1px); }
-              100% { transform: scaleY(1.5) translateY(5px); opacity: 1; filter: blur(2px) drop-shadow(0 0 10px rgba(255,100,0,1)); }
-            }
-            .rocket-fly .flame-blast { opacity: 1 !important; animation: fireBlast 0.05s infinite alternate !important; }
-            .rocket-fly .exhaust-container { opacity: 1 !important; }
+            /* Rocket Animations moved to rocket-top.css */
           </style>
+          <link rel="stylesheet" href="rocket-top.css">
                 <div
                     class="hidden md:flex justify-between text-[10px] tracking-[0.4em] uppercase text-white/60 py-2 border-b border-white/10">
                     <p class="flex items-center gap-2">
@@ -1102,47 +1068,8 @@
         document.body.style.overflow = '';
       }
     }
-    // Back to top logic
-    document.addEventListener("DOMContentLoaded", () => {
-      const backToTopBtn = document.getElementById("backToTopBtn");
-      let isFlying = false;
+    // Back to top logic moved to rocket-top.js
 
-      if(backToTopBtn) {
-        window.addEventListener("scroll", () => {
-          if (isFlying) return;
-          if (window.scrollY > 300) {
-            backToTopBtn.classList.remove("opacity-0", "pointer-events-none", "translate-y-4");
-            backToTopBtn.classList.add("opacity-100", "translate-y-0");
-          } else {
-            backToTopBtn.classList.add("opacity-0", "pointer-events-none", "translate-y-4");
-            backToTopBtn.classList.remove("opacity-100", "translate-y-0");
-          }
-        });
-        
-        backToTopBtn.addEventListener("click", () => {
-          if (isFlying) return;
-          isFlying = true;
-          
-          // Start rocket animation
-          backToTopBtn.classList.add("rocket-fly");
-          
-          // Smooth scroll up coordinated with blast off (~20% of 2.5s = 500ms)
-          setTimeout(() => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }, 500);
-
-          // Fallback scroll and reset animation
-          setTimeout(() => {
-            document.body.scrollTop = 0; // Safari fix
-            document.documentElement.scrollTop = 0;
-            backToTopBtn.classList.remove("rocket-fly");
-            backToTopBtn.classList.add("opacity-0", "pointer-events-none", "translate-y-4");
-            backToTopBtn.classList.remove("opacity-100", "translate-y-0");
-            isFlying = false;
-          }, 2500);
-        });
-      }
-    });
   </script>
 
   <button id="backToTopBtn" 
@@ -1190,6 +1117,7 @@
         <circle cx="58" cy="88" r="2" fill="#ffffff"/>
     </svg>
   </button>
+    <script src="rocket-top.js"></script>
     <script src="auth_ui.js"></script>
 </body>
 
