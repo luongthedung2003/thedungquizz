@@ -192,7 +192,7 @@
             border-color: #5D5FEF !important;
             z-index: 10;
         }
-        
+
         .nav-btn-active span.material-symbols-outlined {
             color: white !important;
         }
@@ -645,7 +645,9 @@
                 color: "#FEF3C7",
                 iconColor: "#F59E0B",
                 files: [
-                    { file: "tdhqt-1-50.json", title: "Ôn tập thi giữa kỳ" }
+                    { file: "tdhqt-1-50.json", title: "Ôn tập RPA" },
+                    { file: "tdhqt-giuaky1.json", title: "Ôn tập thi giữa kỳ phần 1" },
+                    { file: "tdhqt-giuaky2.json", title: "Ôn tập thi giữa kỳ phần 2" }
                 ]
             },
             {
@@ -1634,7 +1636,7 @@
                 </div>
                 ` : ''}
             `;
-            
+
             // Re-initialize scroll observer for question tracker
             if (typeof setupScrollTracker === 'function') {
                 setTimeout(() => setupScrollTracker(), 100);
@@ -1946,7 +1948,7 @@
             const options = {
                 root: null,
                 // Offset calculation: Header + Navigator
-                rootMargin: '-150px 0px -70% 0px', 
+                rootMargin: '-150px 0px -70% 0px',
                 threshold: 0
             };
 
@@ -1976,7 +1978,7 @@
             const activeBtn = document.getElementById(`nav-btn-${index}`);
             if (activeBtn) {
                 activeBtn.classList.add('nav-btn-active');
-                
+
                 // Horizontal Auto-Scroll logic for the current navigator bar
                 const navContainer = document.getElementById('question-nav-scroll');
                 if (navContainer) {

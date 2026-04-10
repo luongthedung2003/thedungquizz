@@ -1,0 +1,402 @@
+[
+    {
+        "question": "RPA được hiểu đúng nhất là gì?",
+        "A": "Công nghệ thay thế AI",
+        "B": "Công nghệ tự động hóa quy trình bằng robot phần mềm",
+        "C": "Hệ quản trị dữ liệu",
+        "D": "Ngôn ngữ lập trình",
+        "correct": "B"
+    },
+    {
+        "question": "Bot RPA thực hiện công việc dựa trên?",
+        "A": "Học máy",
+        "B": "Quy tắc được lập trình",
+        "C": "Ngẫu nhiên",
+        "D": "Phân tích AI",
+        "correct": "B"
+    },
+    {
+        "question": "Điểm KHÔNG phải của RPA?",
+        "A": "Không cần thay đổi hệ thống",
+        "B": "Hoạt động trên UI",
+        "C": "Tự học như AI",
+        "D": "Triển khai nhanh",
+        "correct": "C"
+    },
+    {
+        "question": "Tự động hóa truyền thống khác RPA ở?",
+        "A": "Không cần code",
+        "B": "Không cần hệ thống",
+        "C": "Cần tích hợp sâu vào hệ thống",
+        "D": "Chạy trên UI",
+        "correct": "C"
+    },
+    {
+        "question": "Quy trình KHÔNG nên dùng RPA?",
+        "A": "Lặp lại",
+        "B": "Quy tắc rõ",
+        "C": "Thay đổi liên tục",
+        "D": "Dữ liệu có cấu trúc",
+        "correct": "C"
+    },
+    {
+        "question": "Đặc điểm quan trọng của quy trình RPA?",
+        "A": "Không có quy tắc",
+        "B": "Dữ liệu phi cấu trúc",
+        "C": "Khối lượng lớn",
+        "D": "Thay đổi liên tục",
+        "correct": "C"
+    },
+    {
+        "question": "Bước nào sau phân tích quy trình?",
+        "A": "Test",
+        "B": "Thiết kế giải pháp",
+        "C": "Triển khai",
+        "D": "Bảo trì",
+        "correct": "B"
+    },
+    {
+        "question": "Trong RPA lifecycle, testing giúp?",
+        "A": "Tăng lỗi",
+        "B": "Đảm bảo bot đúng",
+        "C": "Giảm tốc độ",
+        "D": "Không cần",
+        "correct": "B"
+    },
+    {
+        "question": "Vai trò bảo mật trong RPA?",
+        "A": "Không quan trọng",
+        "B": "Bảo vệ dữ liệu nhạy cảm",
+        "C": "Giảm code",
+        "D": "Tăng tốc",
+        "correct": "B"
+    },
+    {
+        "question": "AI khác RPA vì?",
+        "A": "Không dùng dữ liệu",
+        "B": "Có khả năng học",
+        "C": "Chậm hơn",
+        "D": "Không cần code",
+        "correct": "B"
+    },
+    {
+        "question": "Ưu điểm KHÔNG đúng của RPA?",
+        "A": "Giảm sai sót",
+        "B": "Tăng tốc",
+        "C": "Tự học",
+        "D": "Giảm chi phí",
+        "correct": "C"
+    },
+    {
+        "question": "Nhược điểm RPA?",
+        "A": "Nhanh",
+        "B": "Chính xác",
+        "C": "Phụ thuộc UI",
+        "D": "Ổn định",
+        "correct": "C"
+    },
+    {
+        "question": "RPA không phù hợp với?",
+        "A": "Task lặp",
+        "B": "Task rõ ràng",
+        "C": "Task phức tạp",
+        "D": "Task dữ liệu",
+        "correct": "C"
+    },
+    {
+        "question": "Nguyên nhân giảm chi phí RPA?",
+        "A": "Tăng nhân công",
+        "B": "Giảm nhân công",
+        "C": "Tăng lỗi",
+        "D": "Giảm tốc độ",
+        "correct": "B"
+    },
+    {
+        "question": "Rủi ro lớn nhất khi sai RPA?",
+        "A": "Chậm",
+        "B": "Sai hàng loạt",
+        "C": "Không chạy",
+        "D": "Đúng",
+        "correct": "B"
+    },
+    {
+        "question": "Python phù hợp RPA vì?",
+        "A": "Khó học",
+        "B": "Cú pháp đơn giản",
+        "C": "Ít thư viện",
+        "D": "Chậm",
+        "correct": "B"
+    },
+    {
+        "question": "Ứng dụng Python?",
+        "A": "CPU design",
+        "B": "Web automation",
+        "C": "Kernel",
+        "D": "BIOS",
+        "correct": "B"
+    },
+    {
+        "question": "Thư viện scraping?",
+        "A": "Pandas",
+        "B": "BeautifulSoup",
+        "C": "Math",
+        "D": "Sys",
+        "correct": "B"
+    },
+    {
+        "question": "Requests dùng để?",
+        "A": "GUI",
+        "B": "HTTP",
+        "C": "Loop",
+        "D": "Class",
+        "correct": "B"
+    },
+    {
+        "question": "PyAutoGUI?",
+        "A": "AI",
+        "B": "Điều khiển chuột bàn phím",
+        "C": "Math",
+        "D": "Loop",
+        "correct": "B"
+    },
+    {
+        "question": "Tên biến hợp lệ?",
+        "A": "1abc",
+        "B": "a b",
+        "C": "abc_1",
+        "D": "for",
+        "correct": "C"
+    },
+    {
+        "question": "Kiểu float?",
+        "A": "Số nguyên",
+        "B": "Số thực",
+        "C": "Chuỗi",
+        "D": "Bool",
+        "correct": "B"
+    },
+    {
+        "question": "bool?",
+        "A": "True/False",
+        "B": "123",
+        "C": "text",
+        "D": "list",
+        "correct": "A"
+    },
+    {
+        "question": "None?",
+        "A": "Số",
+        "B": "Giá trị rỗng",
+        "C": "List",
+        "D": "Dict",
+        "correct": "B"
+    },
+    {
+        "question": "Chuyển kiểu dữ liệu?",
+        "A": "int(), str()",
+        "B": "loop",
+        "C": "class",
+        "D": "none",
+        "correct": "A"
+    },
+    {
+        "question": "list có?",
+        "A": "Không thứ tự",
+        "B": "Có thứ tự",
+        "C": "Không thay đổi",
+        "D": "Key-value",
+        "correct": "B"
+    },
+    {
+        "question": "tuple?",
+        "A": "Mutable",
+        "B": "Immutable",
+        "C": "Set",
+        "D": "Dict",
+        "correct": "B"
+    },
+    {
+        "question": "set?",
+        "A": "Trùng lặp",
+        "B": "Không trùng",
+        "C": "Có thứ tự",
+        "D": "Immutable",
+        "correct": "B"
+    },
+    {
+        "question": "dict?",
+        "A": "List",
+        "B": "Tuple",
+        "C": "Key-value",
+        "D": "Set",
+        "correct": "C"
+    },
+    {
+        "question": "def?",
+        "A": "Loop",
+        "B": "Hàm",
+        "C": "Class",
+        "D": "If",
+        "correct": "B"
+    },
+    {
+        "question": "Lambda dùng khi?",
+        "A": "Hàm phức tạp",
+        "B": "Hàm đơn giản",
+        "C": "Loop",
+        "D": "Class",
+        "correct": "B"
+    },
+    {
+        "question": "Đệ quy?",
+        "A": "Loop",
+        "B": "Hàm gọi chính nó",
+        "C": "List",
+        "D": "Dict",
+        "correct": "B"
+    },
+    {
+        "question": "Toán tử so sánh?",
+        "A": "+",
+        "B": "==",
+        "C": "=",
+        "D": "%",
+        "correct": "B"
+    },
+    {
+        "question": "elif?",
+        "A": "Loop",
+        "B": "Điều kiện bổ sung",
+        "C": "Class",
+        "D": "None",
+        "correct": "B"
+    },
+    {
+        "question": "try-except giúp?",
+        "A": "Loop",
+        "B": "Xử lý lỗi",
+        "C": "Class",
+        "D": "None",
+        "correct": "B"
+    },
+    {
+        "question": "for?",
+        "A": "Theo điều kiện",
+        "B": "Biết số lần",
+        "C": "Không dùng",
+        "D": "Sai",
+        "correct": "B"
+    },
+    {
+        "question": "while?",
+        "A": "Biết số lần",
+        "B": "Theo điều kiện",
+        "C": "Không dùng",
+        "D": "Sai",
+        "correct": "B"
+    },
+    {
+        "question": "break?",
+        "A": "Continue",
+        "B": "Thoát",
+        "C": "Loop",
+        "D": "None",
+        "correct": "B"
+    },
+    {
+        "question": "pass?",
+        "A": "Không làm gì",
+        "B": "Thoát",
+        "C": "Loop",
+        "D": "None",
+        "correct": "A"
+    },
+    {
+        "question": "OOP?",
+        "A": "Loop",
+        "B": "Đối tượng",
+        "C": "Data",
+        "D": "None",
+        "correct": "B"
+    },
+    {
+        "question": "Encapsulation?",
+        "A": "Đóng gói",
+        "B": "Kế thừa",
+        "C": "Đa hình",
+        "D": "Trừu tượng",
+        "correct": "A"
+    },
+    {
+        "question": "Inheritance?",
+        "A": "Đóng gói",
+        "B": "Kế thừa",
+        "C": "Đa hình",
+        "D": "Trừu tượng",
+        "correct": "B"
+    },
+    {
+        "question": "Method?",
+        "A": "Biến",
+        "B": "Hàm trong class",
+        "C": "Loop",
+        "D": "None",
+        "correct": "B"
+    },
+    {
+        "question": "BeautifulSoup vs Selenium?",
+        "A": "Cả hai đều giống",
+        "B": "BS nhanh, Selenium xử lý JS",
+        "C": "Selenium nhanh hơn",
+        "D": "Không dùng web",
+        "correct": "B"
+    },
+    {
+        "question": "Series?",
+        "A": "2D",
+        "B": "1D",
+        "C": "3D",
+        "D": "None",
+        "correct": "B"
+    },
+    {
+        "question": "DataFrame?",
+        "A": "1D",
+        "B": "2D",
+        "C": "3D",
+        "D": "None",
+        "correct": "B"
+    },
+    {
+        "question": "df.iloc?",
+        "A": "Tên cột",
+        "B": "Chỉ số",
+        "C": "Key",
+        "D": "Value",
+        "correct": "B"
+    },
+    {
+        "question": "df.loc?",
+        "A": "Label",
+        "B": "Index number",
+        "C": "Loop",
+        "D": "None",
+        "correct": "A"
+    },
+    {
+        "question": "dropna?",
+        "A": "Thêm data",
+        "B": "Xóa thiếu",
+        "C": "Sort",
+        "D": "Merge",
+        "correct": "B"
+    },
+    {
+        "question": "fillna?",
+        "A": "Xóa",
+        "B": "Thay thế",
+        "C": "Sort",
+        "D": "Merge",
+        "correct": "B"
+    }
+]
