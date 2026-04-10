@@ -45,11 +45,7 @@
             padding: 0;
         }
 
-        @media (max-width: 768px) {
-            body {
-                zoom: 0.85;
-            }
-        }
+        @media (max-width: 768px) {}
 
         .material-symbols-outlined {
             font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
@@ -97,18 +93,22 @@
             border: 2px solid transparent;
             white-space: nowrap;
         }
+
         .category-chip-active {
             background-color: #4A4C5F;
             border-color: #4A4C5F;
             color: white;
         }
+
         .category-chip-inactive {
             background-color: white;
             color: #6B7280;
         }
+
         .dark .category-chip-inactive {
             background-color: #1F2937;
         }
+
         .category-chip-inactive:hover {
             border-color: #F3F4F6;
         }
@@ -126,14 +126,16 @@
             border: 1px solid #F9FAFB;
             transition: all 0.3s ease;
         }
+
         .dark .featured-cat-card {
             background-color: #111827;
             border-color: rgba(255, 255, 255, 0.05);
         }
+
         .featured-cat-card:active {
             transform: scale(0.95);
         }
-        
+
         .course-list-card {
             display: flex;
             gap: 0.75rem;
@@ -144,10 +146,12 @@
             border: 1px solid #F9FAFB;
             transition: all 0.3s ease;
         }
+
         .dark .course-list-card {
             background-color: #111827;
             border-color: rgba(255, 255, 255, 0.05);
         }
+
         .course-list-card:active {
             transform: scale(0.98);
         }
@@ -162,13 +166,14 @@
             border-radius: 1.25rem;
             border: 1px solid #F9FAFB;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
         }
+
         .dark .quiz-card {
             background-color: #0F172A;
             border-color: rgba(255, 255, 255, 0.05);
         }
-        
+
         .status-badge {
             font-size: 10px;
             font-weight: 800;
@@ -192,10 +197,12 @@
             z-index: 100;
             padding-bottom: env(safe-area-inset-bottom);
         }
+
         .dark .bottom-nav {
             background-color: #0F172A;
             border-color: rgba(255, 255, 255, 0.05);
         }
+
         .nav-item {
             display: flex;
             flex-direction: column;
@@ -203,55 +210,139 @@
             gap: 0.25rem;
             color: #94A3B8;
         }
+
         .nav-item-active {
             color: #5D5FEF;
         }
 
-        /* Animations */
-        @keyframes slideUp {
-            from { transform: translateY(20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        .animate-slide-up { animation: slideUp 0.5s ease-out forwards; }
+        /* --- DYNAMIC ISLAND NOTIFICATION --- */
+        @keyframes dynamicIslandIn {
+            0% {
+                transform: translateX(-50%) translateY(-100px);
+                width: 80px;
+                opacity: 0;
+            }
 
-        /* Rocket Animations */
-        @keyframes smokeExpand {
-            0% { transform: scale(0.2) translateY(0); opacity: 0.8; }
-            100% { transform: scale(3) translateY(20px) translateX(var(--smoke-x)); opacity: 0; filter: blur(4px); border-radius: 50%; }
-        }
-        .smoke-cloud { position: absolute; width: 14px; height: 14px; background-color: #cbd5e1; border-radius: 50%; bottom: -5px; opacity: 0; }
-        .rocket-fly .smoke-cloud:nth-child(1) { --smoke-x: -25px; animation: smokeExpand 1s ease-out infinite 0.1s; background-color: #94A3B8;}
-        .rocket-fly .smoke-cloud:nth-child(2) { --smoke-x: 25px; animation: smokeExpand 1.2s ease-out infinite 0.2s; }
-        .rocket-fly .smoke-cloud:nth-child(3) { --smoke-x: -40px; animation: smokeExpand 0.8s ease-out infinite 0.3s; background-color: #E2E8F0; }
-        .rocket-fly .smoke-cloud:nth-child(4) { --smoke-x: 40px; animation: smokeExpand 1.3s ease-out infinite 0.15s; background-color: #94A3B8; }
-        .rocket-fly .smoke-cloud:nth-child(5) { --smoke-x: 0px; animation: smokeExpand 0.9s ease-out infinite 0s; background-color: #F1F5F9; }
+            50% {
+                transform: translateX(-50%) translateY(20px);
+                width: 80px;
+                opacity: 1;
+            }
 
-        @keyframes rocketTakeoff {
-            0% { transform: translateY(0); }
-            10% { transform: translateY(10px); } 
-            20% { transform: translateY(0px); }
-            100% { transform: translateY(-1500px); }
+            100% {
+                transform: translateX(-50%) translateY(20px);
+                width: min(380px, 92vw);
+                opacity: 1;
+            }
         }
-        @keyframes svgShake {
-            0%, 20% { transform: translateX(0) rotate(0deg); }
-            1%, 5%, 9%, 13%, 17% { transform: translateX(-3px) rotate(-1deg); }
-            3%, 7%, 11%, 15%, 19% { transform: translateX(3px) rotate(1deg); }
-            21%, 100% { transform: translateX(0) rotate(0deg); }
-        }
-        .rocket-fly {
-            animation: rocketTakeoff 2.5s cubic-bezier(0.5, 0, 0.4, 1) forwards !important;
-        }
-        .rocket-fly > svg {
-            animation: svgShake 2.5s linear forwards !important;
-        }
-        @keyframes fireBlast {
-            0% { transform: scaleY(0.6) translateY(-5px); opacity: 0.5; filter: blur(1px); }
-            100% { transform: scaleY(1.5) translateY(5px); opacity: 1; filter: blur(2px) drop-shadow(0 0 10px rgba(255,100,0,1)); }
-        }
-        .rocket-fly .flame-blast { opacity: 1 !important; animation: fireBlast 0.05s infinite alternate !important; }
-        .rocket-fly .exhaust-container { opacity: 1 !important; }
 
-        /* Custom scrollbar for webkit */
+        @keyframes dynamicIslandDangle {
+            0% {
+                transform: translateX(-50%) translateY(20px) rotate(0deg);
+            }
+
+            15% {
+                transform: translateX(-50%) translateY(20px) rotate(-45deg);
+            }
+
+            30% {
+                transform: translateX(-50%) translateY(20px) rotate(-35deg);
+            }
+
+            45% {
+                transform: translateX(-50%) translateY(20px) rotate(-42deg);
+            }
+
+            100% {
+                transform: translateX(-50%) translateY(20px) rotate(-40deg);
+            }
+        }
+
+        @keyframes dynamicIslandFallFinal {
+            0% {
+                transform: translateX(-50%) translateY(20px) rotate(-40deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateX(-50%) translateY(120vh) rotate(-80deg);
+                opacity: 0;
+            }
+        }
+
+        .dynamic-island {
+            position: fixed;
+            left: 50%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 15px 50px -10px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            width: min(380px, 92vw);
+            height: 68px;
+            border-radius: 34px;
+            overflow: hidden;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            transform-origin: 90% 10px;
+            /* Pivot near right top */
+        }
+
+        .dark .dynamic-island {
+            background: rgba(30, 41, 59, 0.85);
+            border-color: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .dynamic-island.animate-in {
+            animation: dynamicIslandIn 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+        }
+
+        .dynamic-island.animate-dangle {
+            animation: dynamicIslandDangle 2s cubic-bezier(0.445, 0.05, 0.55, 0.95) forwards;
+        }
+
+        .dynamic-island.animate-fall-final {
+            animation: dynamicIslandFallFinal 0.8s cubic-bezier(0.47, 0, 0.745, 0.715) forwards;
+        }
+
+        /* --- PREMIUM QUIZ DASHBOARD --- */
+        .quiz-card-premium {
+            background: white;
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            box-shadow: 0 10px 40px -15px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .dark .quiz-card-premium {
+            background: #1e293b;
+            border-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .quiz-card-premium:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -15px rgba(0, 0, 0, 0.12);
+            border-color: #5D5FEF44;
+        }
+
+        .hero-banner {
+            position: relative;
+            height: 350px;
+            width: 100%;
+            border-radius: 2.5rem;
+            overflow: hidden;
+            margin-bottom: -50px;
+            z-index: 10;
+        }
+
+        .chart-bar {
+            transition: height 1s ease-out;
+        }
     </style>
 </head>
 
@@ -275,37 +366,39 @@
                     </p>
                 </div>
 
-                <div class="flex flex-col lg:flex-row lg:items-center py-4 gap-4 relative w-full">
+                <div class="flex flex-col lg:flex-row lg:items-center py-2 md:py-4 gap-3 md:gap-4 relative w-full">
                     <div class="flex items-center justify-between w-full lg:w-auto">
-                        <div class="flex items-center gap-3">
-                            <div class="size-10 md:size-12 border border-white/30 flex items-center justify-center p-1">
+                        <div class="flex items-center gap-2 md:gap-3">
+                            <div class="size-8 md:size-12 border border-white/30 flex items-center justify-center p-1">
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Logo_dhktdn.png"
                                     alt="Logo Học viện" class="w-full h-full object-contain" />
                             </div>
                             <div>
                                 <p class="text-[9px] md:text-[11px] uppercase tracking-[0.5em] text-white/60">ĐẠI HỌC
                                 </p>
-                                <h1 class="text-lg md:text-xl font-semibold tracking-[0.2em] whitespace-nowrap">KIẾN TRÚC</h1>
+                                <h1 class="text-base md:text-xl font-semibold tracking-[0.2em] whitespace-nowrap">KIẾN
+                                    TRÚC</h1>
                             </div>
                         </div>
 
-                        <div class="flex lg:hidden items-center gap-2">
+                        <div id="auth-buttons-mobile" class="flex lg:hidden items-center gap-2">
                             <button onclick="toggleTheme()"
-                                class="size-9 flex items-center justify-center border border-white/30 hover:bg-white/10 transition-colors"
+                                class="size-8 md:size-9 flex items-center justify-center border border-white/30 hover:bg-white/10 transition-colors"
                                 title="Đổi giao diện">
-                                <span class="material-symbols-outlined text-sm block dark:hidden">light_mode</span>
                                 <span
-                                    class="material-symbols-outlined text-sm hidden dark:block text-yellow-400">dark_mode</span>
+                                    class="material-symbols-outlined text-xs md:text-sm block dark:hidden">light_mode</span>
+                                <span
+                                    class="material-symbols-outlined text-xs md:text-sm hidden dark:block text-yellow-400">dark_mode</span>
                             </button>
-                            <a href=""
-                                class="flex h-9 items-center justify-center gap-1.5 px-3 border border-white/30 text-[9px] uppercase tracking-[0.2em] whitespace-nowrap">
+                            <a href="login.html"
+                                class="flex h-8 md:h-9 items-center justify-center gap-1.5 px-3 border border-white/30 text-[9px] uppercase tracking-[0.2em] whitespace-nowrap">
                                 <span class="material-symbols-outlined text-sm">person</span> SINH VIÊN
                             </a>
-                            <button onclick="toggleMenu()"
-                                class="size-9 flex items-center justify-center border border-white/30">
-                                <span class="material-symbols-outlined text-sm">menu</span>
-                            </button>
                         </div>
+                        <button onclick="toggleMenu()"
+                            class="lg:hidden size-8 md:size-9 flex items-center justify-center border border-white/30">
+                            <span class="material-symbols-outlined text-[18px] md:text-sm">menu</span>
+                        </button>
                     </div>
 
                     <nav
@@ -317,7 +410,7 @@
                         <a class="hover:text-primary transition-colors" href="index.html#gallery">LIÊN HỆ</a>
                     </nav>
 
-                    <div class="hidden lg:flex items-center gap-3 ml-auto">
+                    <div id="auth-buttons-desktop" class="hidden lg:flex items-center gap-2 md:gap-3 ml-auto">
                         <button onclick="toggleTheme()"
                             class="size-11 flex items-center justify-center border border-white/30 hover:bg-white/10 transition-colors"
                             title="Đổi giao diện">
@@ -325,16 +418,16 @@
                             <span
                                 class="material-symbols-outlined text-base hidden dark:block text-yellow-400">dark_mode</span>
                         </button>
-                        <a href=""
-                            class="flex h-11 min-w-[150px] items-center justify-center gap-2 px-5 border border-white/30 text-[11px] uppercase tracking-[0.3em]">
+                        <a href="login.html"
+                            class="flex h-9 md:h-11 min-w-[120px] md:min-w-[150px] items-center justify-center gap-2 px-5 border border-white/30 text-[11px] uppercase tracking-[0.3em]">
                             <span class="material-symbols-outlined text-base">person</span> SINH VIÊN
                         </a>
-                        <a href=""
-                            class="flex h-11 min-w-[150px] px-5 bg-primary text-black font-semibold uppercase tracking-[0.4em] text-[11px] items-center justify-center">
+                        <a href="login.html"
+                            class="flex h-9 md:h-11 min-w-[120px] md:min-w-[150px] px-3 md:px-5 bg-primary text-black font-semibold uppercase tracking-[0.4em] text-[11px] items-center justify-center">
                             GIẢNG VIÊN
                         </a>
-                        <a href=""
-                            class="flex h-11 min-w-[150px] items-center justify-center gap-2 px-5 border border-white/30 text-[11px] uppercase tracking-[0.3em]">
+                        <a href="login.html"
+                            class="flex h-9 md:h-11 min-w-[120px] md:min-w-[150px] items-center justify-center gap-2 px-5 border border-white/30 text-[11px] uppercase tracking-[0.3em]">
                             <span class="material-symbols-outlined text-base">app_registration</span> ĐĂNG KÝ
                         </a>
                     </div>
@@ -375,7 +468,7 @@
             <div
                 class="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-24 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 text-left">
                 <div class="space-y-4">
-                    <div class="flex items-center gap-3">
+                    <div class="flex items-center gap-2 md:gap-3">
                         <div class="size-12 border border-white/30 flex items-center justify-center p-1">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Logo_dhktdn.png"
                                 alt="Academy logo" class="w-full h-full object-contain" />
@@ -386,7 +479,8 @@
                         </div>
                     </div>
                     <p class="text-sm text-white/70">
-                        Đại học Kiến trúc Đà Nẵng mang đến cơ hội học tập không giới hạn cho mọi người. Hãy bắt đầu hành trình
+                        Đại học Kiến trúc Đà Nẵng mang đến cơ hội học tập không giới hạn cho mọi người. Hãy bắt đầu hành
+                        trình
                         chinh phục tri thức và kiến tạo tương lai cùng chúng tôi ngay hôm nay. Mỗi bài học là một bước
                         tiến mới.
                     </p>
@@ -424,7 +518,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script>
-        AOS.init({ once: true, duration: 800, disable: 'mobile' }); // Disable on phones/tablets for smoother scrolling
+        AOS.init({ once: true, duration: 800 }); // Enable AOS on mobile again
 
         function initTheme() {
             const savedTheme = localStorage.getItem('theme') || 'light';
@@ -444,8 +538,27 @@
 
         const categories = [
             {
+                id: "it",
+                title: "LINUX VÀ PHẦN MỀM NGUỒN MỞ",
+                description: "Học Linux và phần mềm nguồn mở",
+                image: "https://i.pinimg.com/1200x/34/b1/e7/34b1e7db8bffdcc0cf7424f654b97fd0.jpg",
+                lessons: 12,
+                students: 240,
+                rating: 4.8,
+                price: "299.000đ",
+                level: "Cơ bản",
+                icon: "code",
+                color: "#EFF6FF",
+                iconColor: "#3B82F6",
+                files: [
+                    { file: "lnvpmnm-1-50.json", title: "Bộ câu hỏi Linux và phần mềm nguồn mở (Phần 1)" },
+                    { file: "lnvpmnm-mixed.json", title: "Bộ câu hỏi Linux và phần mềm nguồn mở (Phần 2)" }
+
+                ]
+            },
+            {
                 id: "it-web",
-                title: "Lập trình Web",
+                title: "LẬP TRÌNH WEBSITE",
                 description: "Học HTML, CSS, JS cấp tốc cho người mới bắt đầu",
                 image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2072&auto=format&fit=crop",
                 lessons: 12,
@@ -462,9 +575,9 @@
             },
             {
                 id: "khxh",
-                title: "KHXH & Nhân văn",
+                title: "TƯ TƯỞNG HỒ CHÍ MINH",
                 description: "Tư tưởng Hồ Chí Minh: Lý luận toàn diện và chuyên sâu",
-                image: "https://images.unsplash.com/photo-1582213708522-f8963bf1c97a?q=80&w=2070&auto=format&fit=crop",
+                image: "https://i.pinimg.com/736x/1d/47/a1/1d47a188faff47fc733904c8d5510423.jpg",
                 lessons: 50,
                 students: 1205,
                 rating: 5.0,
@@ -485,9 +598,9 @@
             },
             {
                 id: "ly-luan",
-                title: "Pháp luật & Triết học",
+                title: "CHỦ NGHĨA XÃ HỘI KHOA HỌC",
                 description: "Chiến lược Pháp luật - từ Lý thuyết đến Thực tiễn",
-                image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=2070&auto=format&fit=crop",
+                image: "https://i.pinimg.com/736x/1e/c4/c8/1ec4c8abfad522beca105366d71012f0.jpg",
                 lessons: 35,
                 students: 840,
                 rating: 4.5,
@@ -505,9 +618,9 @@
             },
             {
                 id: "management",
-                title: "Quản trị kinh doanh",
-                description: "Tài chính cá nhân: Nguyên tắc an toàn tài chính",
-                image: "https://images.unsplash.com/photo-1454165833767-02acd350c333?q=80&w=2070&auto=format&fit=crop",
+                title: "TỰ ĐỘNG HÓA QUY TRÌNH",
+                description: "Trắc nghiệm tự động hóa - RPA",
+                image: "https://i.pinimg.com/1200x/2d/d8/03/2dd8031b5e88f0104d083e4ed6233bc0.jpg",
                 lessons: 15,
                 students: 310,
                 rating: 4.9,
@@ -517,14 +630,14 @@
                 color: "#FEF3C7",
                 iconColor: "#F59E0B",
                 files: [
-                    { file: "tdhqt-1-50.json", title: "Ôn tập Quản trị học" }
+                    { file: "tdhqt-1-50.json", title: "Ôn tập thi giữa kỳ" }
                 ]
             },
             {
                 id: "design",
-                title: "Thiết kế Đồ họa",
+                title: "CÔNG NGHỆ PHẦN MỀM",
                 description: "Quy trình thiết kế - từ ý tưởng đến thành phẩm",
-                image: "https://images.unsplash.com/photo-1586717791821-3f44a563eb4c?q=80&w=2070&auto=format&fit=crop",
+                image: "https://i.pinimg.com/736x/75/08/e3/7508e3990857d8ab2c6b83d89bf7eda1.jpg",
                 lessons: 8,
                 students: 155,
                 rating: 4.7,
@@ -568,8 +681,10 @@
             showConfirmSubmitModal: false,
             showReviewConfirmModal: false,
             unansweredIndices: [],
-            userName: 'Nguyễn Văn Dung'
+            userName: 'Lương Thế Dũng'
         };
+
+        let quizData = {};
 
         function setState(newState) {
             const isViewChanging = newState.view && newState.view !== state.view;
@@ -630,7 +745,7 @@
                         </div>
 
                         <!-- Search & Filter -->
-                        <div class="flex items-center gap-3 mb-8">
+                        <div class="flex items-center gap-2 md:gap-3 mb-8">
                             <div class="flex-grow relative">
                                 <input type="text" 
                                        placeholder="Tìm kiếm khóa học, kỹ năng..." 
@@ -696,7 +811,7 @@
                             <h3 class="text-[12px] font-black uppercase tracking-[0.2em] mb-6 text-gray-400">Trình độ</h3>
                             <div class="space-y-3">
                                 ${['Cơ bản', 'Trung bình', 'Nâng cao'].map(lvl => `
-                                    <label class="flex items-center gap-3 cursor-pointer group">
+                                    <label class="flex items-center gap-2 md:gap-3 cursor-pointer group">
                                         <input type="checkbox" class="rounded border-gray-200 text-primary focus:ring-primary">
                                         <span class="text-sm text-gray-600 group-hover:text-primary transition-colors">${lvl}</span>
                                     </label>
@@ -774,7 +889,7 @@
                                         </div>
 
                                         <!-- Thống kê -->
-                                        <div class="flex items-center gap-3 lg:gap-6 lg:py-2 lg:border-y lg:border-gray-50 lg:dark:border-white/5">
+                                        <div class="flex items-center gap-2 md:gap-3 lg:gap-6 lg:py-2 lg:border-y lg:border-gray-50 lg:dark:border-white/5">
                                             <!-- Rating / Bộ đề -->
                                             <div class="flex items-center gap-0.5 lg:gap-2 text-gray-400 dark:text-gray-500">
                                                 <span class="material-symbols-outlined text-[13px] lg:text-[18px] text-[#FFB843] lg:text-gray-400 lg:dark:text-gray-500 fill-1 lg:fill-0">
@@ -846,11 +961,11 @@
         }
 
         function selectCategory(catId) {
-            setState({ 
-                view: 'quiz-list', 
-                activeCategory: 'Tất cả', 
+            setState({
+                view: 'quiz-list',
+                activeCategory: 'Tất cả',
                 selectedCategoryObj: categories.find(c => c.id === catId),
-                isSubmitted: false 
+                isSubmitted: false
             });
         }
 
@@ -858,180 +973,160 @@
             const cat = state.selectedCategoryObj;
             if (!cat) return;
 
+            // Generate Different Charts based on Index
+            const getMockChart = (index) => {
+                const colors = ['#5D5FEF', '#FF8A00', '#4AD991', '#FF4B4B', '#FFB843', '#1D9BF0'];
+                const color = colors[index % colors.length];
+
+                if (index % 4 === 0) { // Progress Bar style
+                    return `
+                        <div class="mt-6 flex flex-col gap-2">
+                            <div class="flex justify-between items-center text-[10px] font-black uppercase tracking-widest text-gray-300">
+                                <span>Tiến độ học tập</span>
+                                <span class="text-primary">${Math.floor(Math.random() * 50 + 40)}%</span>
+                            </div>
+                            <div class="h-6 w-full bg-gray-50 dark:bg-white/5 rounded-full overflow-hidden p-1 border border-gray-100 dark:border-white/5">
+                                <div class="h-full rounded-full bg-[${color}] opacity-80" style="width: ${Math.floor(Math.random() * 50 + 40)}%"></div>
+                            </div>
+                        </div>
+                    `;
+                } else if (index % 4 === 1) { // Bar Chart style
+                    return `
+                        <div class="mt-4 flex items-end gap-1.5 h-16 justify-center">
+                            ${[40, 70, 50, 90, 60, 80, 45, 75, 55, 100].map(h => `
+                                <div class="w-2.5 rounded-full bg-gray-100 dark:bg-white/5 relative group">
+                                    <div class="absolute bottom-0 left-0 right-0 rounded-full bg-[${color}] opacity-70" style="height: ${h}%"></div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    `;
+                } else if (index % 4 === 2) { // Dot Matrix style
+                    return `
+                        <div class="mt-6 grid grid-cols-6 gap-2 w-fit mx-auto">
+                            ${Array(18).fill(0).map((_, i) => `
+                                <div class="size-2 rounded-full ${Math.random() > 0.4 ? `bg-[${color}]` : 'bg-gray-100 dark:bg-white/10'} opacity-${Math.floor(Math.random() * 5 + 5)}0"></div>
+                            `).join('')}
+                        </div>
+                    `;
+                } else { // Segmentation / Timeline style
+                    return `
+                        <div class="mt-8 flex items-center gap-1 w-full overflow-hidden">
+                            ${Array(30).fill(0).map((_, i) => `
+                                <div class="h-4 w-px bg-gray-100 dark:bg-white/10 ${i % 3 === 0 ? 'h-6 bg-gray-200 dark:bg-white/20' : ''} ${i > 10 && i < 20 ? `!bg-[${color}]` : ''}"></div>
+                            `).join('')}
+                        </div>
+                    `;
+                }
+            };
+
             container.innerHTML = `
-                <div class="max-w-md mx-auto w-full lg:h-[85vh] lg:my-10 bg-[#FFF6EE] relative lg:rounded-[3rem] lg:overflow-hidden lg:shadow-2xl animate-fade-in flex flex-col h-screen overflow-hidden lg:border-[8px] lg:border-white">
+                <div class="max-w-[1400px] mx-auto px-6 py-12 md:py-16 animate-fade-in mb-32">
                     
-                    <!-- Top Half: Image & Floating Elements -->
-                    <div id="quiz-hero-image" class="relative h-[60%] w-full flex-shrink-0 bg-[#FFF6EE] z-0 transition-all duration-700 ease-in-out">
-                        <!-- Hero Image Cover -->
-                        <img src="${cat.image}" class="w-full h-full object-cover opacity-90 mix-blend-multiply pointer-events-none" />
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#F8ECE1]/80 via-transparent to-transparent pointer-events-none"></div>
-
-                        <!-- Header Controls -->
-                        <div class="absolute top-10 left-6 right-6 flex justify-between items-center z-20">
-                            <button onclick="setState({view: 'courses'})" class="size-[42px] bg-white/95 backdrop-blur-md rounded-2xl flex items-center justify-center shadow-lg active:scale-95 transition-all text-[#1A1A1A] border-b-2 border-gray-100">
-                                <span class="material-symbols-outlined text-[18px] font-black mr-1">arrow_back_ios_new</span>
+                    <!-- Header Section -->
+                    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                        <div class="space-y-6">
+                            <button onclick="setState({view: 'courses'})" class="flex items-center gap-2 text-gray-400 font-bold text-xs uppercase tracking-[0.3em] hover:text-black dark:hover:text-white transition-colors group">
+                                <span class="material-symbols-outlined text-sm group-hover:-translate-x-1 transition-transform">arrow_back</span> Quay lại danh mục
                             </button>
-                            <h1 class="text-[17px] font-black text-[#1A1A1A] tracking-tighter">Chi tiết ${cat.title}</h1>
-                            <button class="size-[42px] bg-white/95 backdrop-blur-md rounded-2xl flex items-center justify-center shadow-lg active:scale-95 transition-all border-b-2 border-red-50">
-                                <span class="material-symbols-outlined text-[#FF4B4B] fill-1 text-[22px]">favorite</span>
-                            </button>
+                            <h1 class="text-4xl md:text-5xl font-black tracking-tighter text-[#1A1A1A] dark:text-white">
+                                <span class="text-primary">${cat.title}</span> / Bài thi
+                            </h1>
+                            <p class="text-gray-400 font-medium max-w-xl">Lựa chọn bài thi phù hợp để kiểm tra kiến thức của bạn. Mỗi bài thi được thiết kế để bao quát toàn bộ chương trình học.</p>
                         </div>
-
-                        <!-- Floating Info Badge (Bottom Left) -->
-                        <div class="absolute bottom-12 left-6 bg-black/30 backdrop-blur-xl px-3.5 py-1.5 rounded-[1rem] flex items-center gap-1.5 z-20 border border-white/20 shadow-lg">
-                            <span class="material-symbols-outlined text-[#FF9D4A] text-[15px] fill-1">star</span>
-                            <span class="text-white font-black text-[13px]">${cat.rating} <span class="text-[10px] font-bold text-white/70">(${Math.floor(Math.random()*500 + 100)} đánh giá)</span></span>
-                        </div>
-
-                        <!-- Floating Feature Cards (Right Column) -->
-                        <div class="absolute top-28 right-5 flex flex-col gap-3.5 z-20">
-                            
-                            <!-- Card 1: Orange/Experience -->
-                            <div class="bg-white/95 backdrop-blur-md p-3 rounded-[1.25rem] border-[2.5px] border-[#FF9D4A] shadow-[0_8px_20px_rgba(255,157,74,0.2)] w-[88px] flex flex-col items-center justify-center text-center pb-3">
-                                <span class="material-symbols-outlined text-[#FF8A00] text-[28px] mb-1.5">business_center</span>
-                                <span class="text-[15px] font-black text-[#1A1A1A] leading-none mb-0.5">${cat.lessons} bộ</span>
-                                <span class="text-[10px] font-bold text-gray-400 leading-none">Experience</span>
+                        <div class="flex items-center gap-4 bg-white dark:bg-white/5 p-2 rounded-2xl border border-gray-100 dark:border-white/5 shadow-sm">
+                            <div class="size-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary font-black text-xl">${cat.lessons}</div>
+                            <div class="pr-6">
+                                <p class="text-[10px] uppercase tracking-widest font-black text-gray-400">Tổng cộng</p>
+                                <p class="text-[15px] font-black dark:text-white">Bộ câu hỏi</p>
                             </div>
-
-                            <!-- Card 2: Purple/Rating -->
-                            <div class="bg-white/95 backdrop-blur-md p-3 rounded-[1.25rem] border-[2.5px] border-[#8D65FF] shadow-[0_8px_20px_rgba(141,101,255,0.2)] w-[88px] flex flex-col items-center justify-center text-center pb-3">
-                                <div class="size-[30px] rounded-full bg-[#8D65FF] flex items-center justify-center mb-1.5 shadow-[0_4px_10px_rgba(141,101,255,0.4)]">
-                                    <span class="material-symbols-outlined text-white text-[18px] fill-1">star</span>
-                                </div>
-                                <span class="text-[15px] font-black text-[#1A1A1A] leading-none mb-0.5">${cat.rating}</span>
-                                <span class="text-[10px] font-bold text-gray-400 leading-none">Rating</span>
-                            </div>
-
-                            <!-- Card 3: Red/Customers -->
-                            <div class="bg-gradient-to-b from-[#FFFFFF] to-[#FFF6F6] backdrop-blur-md p-3 rounded-[1.25rem] shadow-xl w-[88px] flex flex-col items-center justify-center text-center pb-3 border border-red-50">
-                                <div class="flex items-center justify-center -space-x-1 border-b border-gray-100 pb-1 mb-1.5 min-h-[30px]">
-                                    <span class="material-symbols-outlined text-[#FF6565] text-[28px]">group</span>
-                                </div>
-                                <span class="text-[15px] font-black text-[#1A1A1A] leading-none mb-0.5">${cat.students}+</span>
-                                <span class="text-[10px] font-bold text-gray-400 leading-none">Lượt đăng ký</span>
-                            </div>
-
                         </div>
                     </div>
 
-                    <!-- Bottom Panel (Overlapping Content) -->
-                    <div class="flex-grow bg-white rounded-t-[2.5rem] -mt-[35px] z-30 p-8 pt-4 pb-32 flex flex-col relative shadow-[0_-15px_40px_rgba(0,0,0,0.06)] h-0 overflow-y-auto no-scrollbar transition-all duration-700 ease-in-out">
-                        <!-- Handlebar -->
-                        <div onclick="window.toggleQuizPanel()" class="w-full flex items-center justify-center cursor-pointer group pb-4 pt-1">
-                            <span id="quiz-drawer-icon" class="material-symbols-outlined text-gray-300 group-hover:text-[#FF8A00] transition-colors text-[28px] font-bold animate-bounce hidden">keyboard_arrow_down</span>
-                            <div id="quiz-drawer-pill" class="w-10 h-1.5 bg-gray-200 rounded-full group-hover:bg-[#FF8A00] transition-colors"></div>
-                        </div>
+                    <!-- Quizzes Container -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 md:gap-8">
+                        ${cat.files.length > 0 ? cat.files.map((quiz, i) => {
+                const colors = ['#5D5FEF', '#FF8A00', '#4AD991', '#FF4B4B', '#FFB843', '#1D9BF0'];
+                const color = colors[i % colors.length];
+                const icons = ['terminal', 'laptop_mac', 'memory', 'query_stats', 'menu_book', 'science'];
+                const icon = icons[i % icons.length];
 
-                        <!-- Title & Price Block -->
-                        <div class="flex justify-between items-start mb-6">
-                            <div>
-                                <div class="flex items-center gap-1.5 mb-1.5">
-                                    <h2 class="text-[22px] font-black text-[#1A1A1A]">${cat.title}</h2>
-                                    <span class="material-symbols-outlined text-[#1D9BF0] fill-1 text-[22px]">verified</span>
-                                </div>
-                                <div class="flex items-center gap-1 text-gray-500">
-                                    <span class="material-symbols-outlined text-[#FF9D4A] fill-1 text-[17px]">location_on</span>
-                                    <span class="text-[13px] font-extrabold">Hệ thống DAU Quizz</span>
-                                </div>
-                            </div>
-                            
-                            <div class="text-right flex flex-col items-end">
-                                <div class="flex items-end text-[#FF8A00] gap-0.5">
-                                    <span class="text-[26px] font-black leading-none">${cat.price !== 'Miễn phí' ? cat.price : 'FREE'}</span>
-                                    <span class="text-[13px] font-extrabold text-gray-400 mb-0.5">/all</span>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-                        <!-- Quiz List -->
-                        <div class="mb-8">
-                            <div class="flex justify-between items-center mb-6">
-                                <h3 class="text-[17px] font-black text-[#1A1A1A]">Danh sách bài thi</h3>
-                                <span class="material-symbols-outlined text-gray-400 font-black cursor-pointer">more_horiz</span>
-                            </div>
-                            
-                            <div class="space-y-4">
-                                ${cat.files.length > 0 ? cat.files.map((file, i) => `
-                                    <div onclick="loadQuiz('${file.file}', '${file.title}')" class="flex flex-col gap-3 group cursor-pointer active:scale-[0.98] transition-transform">
-                                        <!-- Header row of the item -->
-                                        <div class="flex items-center justify-between">
-                                            <div class="text-[11px] font-black uppercase tracking-widest ${i === 0 ? 'text-[#FF8A00]' : 'text-gray-400 group-hover:text-[#FF8A00]'} transition-colors">Bài ${i + 1}</div>
-                                            ${i === 0 ? '<span class="text-[9px] font-black text-white bg-[#FF8A00] px-2 py-0.5 rounded-full uppercase tracking-wider">ĐANG MỞ</span>' : '<span class="text-[9px] font-black text-gray-400 bg-gray-100 group-hover:bg-orange-50 group-hover:text-[#FF8A00] transition-colors px-2 py-0.5 rounded-full uppercase tracking-wider">SẴN SÀNG</span>'}
-                                        </div>
-                                        <!-- Body of the item -->
-                                        <div class="flex items-center justify-between p-5 rounded-[1.5rem] border-2 ${i === 0 ? 'border-[#FF9C49] bg-[#FFF8F2] shadow-[0_8px_20px_rgba(255,156,73,0.15)]' : 'border-gray-100 hover:border-[#FF9C49] hover:shadow-lg'} transition-all">
-                                            <div class="flex items-center gap-4">
-                                                <div class="size-[42px] rounded-[1rem] ${i === 0 ? 'bg-gradient-to-br from-[#FF9C49] to-[#FF8A00] text-white shadow-md' : 'bg-gray-100 text-gray-400 group-hover:bg-orange-100 group-hover:text-[#FF8A00]'} flex items-center justify-center transition-colors">
-                                                    <span class="material-symbols-outlined font-black text-[22px]">play_arrow</span>
-                                                </div>
-                                                <div class="flex flex-col justify-center">
-                                                    <h4 class="${i === 0 ? 'text-[#FF8A00]' : 'text-[#1A1A1A]'} font-extrabold text-[16px] mb-1 transition-colors group-hover:text-[#FF8A00] line-clamp-1 break-all pr-4">${file.title}</h4>
-                                                    <div class="flex items-center gap-2 text-[11px] font-extrabold text-gray-400">
-                                                        <span class="flex items-center gap-0.5"><span class="material-symbols-outlined text-[13px]">timer</span> 45'</span>
-                                                    </div>
-                                                </div>
+                return `
+                                <!-- Desktop Card (Hidden on Mobile) -->
+                                <div class="hidden md:flex quiz-card-premium rounded-[2.5rem] p-8 flex-col group cursor-pointer text-left" onclick="loadQuiz('${quiz.file}', '${quiz.title}')">
+                                    <div class="flex justify-between items-center mb-10">
+                                        <div class="flex items-center gap-4">
+                                            <div class="size-12 rounded-2xl bg-[${color}] opacity-80 flex items-center justify-center text-white border border-[${color}]/20">
+                                                <span class="material-symbols-outlined text-[24px]">${icon}</span>
                                             </div>
-                                            <span class="material-symbols-outlined ${i === 0 ? 'text-[#FF8A00] opacity-100' : 'text-gray-300 opacity-0 group-hover:opacity-100'} transition-all text-xl font-bold">arrow_forward</span>
+                                            <span class="text-[12px] font-black text-gray-400 dark:text-gray-400 uppercase tracking-widest">${cat.title}</span>
+                                        </div>
+                                        <div class="flex items-center gap-1 text-gray-400 font-bold text-[10px] uppercase tracking-wider group-hover:text-primary transition-colors">
+                                            Làm bài <span class="material-symbols-outlined text-sm">arrow_forward</span>
                                         </div>
                                     </div>
-                                `).join('') : '<div class="py-10 text-center text-gray-400 font-bold text-[13px]">Danh mục này hiện chưa có bài thi nào!</div>'}
-                            </div>
-                        </div>
 
-                    </div>
+                                    <div class="mb-4">
+                                        <h3 class="text-[22px] font-black text-gray-800 dark:text-white leading-tight tracking-tight mb-2 group-hover:text-primary transition-colors">
+                                            ${quiz.title}
+                                        </h3>
+                                        <div class="flex items-center gap-2">
+                                            <span class="text-[11px] font-bold text-gray-400 uppercase">Mã: ${quiz.file.split('-')[0]}</span>
+                                            <span class="size-1 rounded-full bg-gray-300"></span>
+                                            <span class="text-[11px] font-bold text-gray-400 uppercase">45 Phút</span>
+                                        </div>
+                                    </div>
 
-                    <!-- Floating Gradient Button matching "Book James" -->
-                    <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-white via-white/95 to-transparent z-40 pointer-events-none pb-8 lg:pb-6">
-                        <button onclick="if('${cat.files[0] ? cat.files[0].file : ''}') loadQuiz('${cat.files[0] ? cat.files[0].file : ''}', '${cat.files[0] ? cat.files[0].title : ''}')" class="w-full h-[64px] bg-gradient-to-r from-[#FFB067] via-[#FF9C49] to-[#FF8A00] rounded-[1.25rem] shadow-[0_10px_30px_rgba(255,138,0,0.3)] flex items-center justify-center gap-2 font-black text-white text-[16px] active:scale-[0.98] transition-all pointer-events-auto relative overflow-hidden group">
-                            <span class="material-symbols-outlined bg-white/25 size-6 flex items-center justify-center rounded-full text-[14px]">check</span>
-                            Làm bài ngay ${cat.price !== 'Miễn phí' ? cat.price : ''}
-                            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] skew-x-[-15deg] group-hover:translate-x-[200%] transition-transform duration-1000"></div>
-                        </button>
+                                    <div class="mt-auto">
+                                        ${getMockChart(i)}
+                                    </div>
+                                    
+                                    <div class="mt-8 pt-6 border-t border-gray-50 dark:border-white/5 flex justify-between items-center">
+                                        <span class="text-[11px] font-black text-gray-300 uppercase tracking-widest">Trạng thái: Ổn định</span>
+                                        <div class="flex -space-x-2">
+                                            ${[1, 2, 3].map(j => `<img src="https://i.pravatar.cc/100?u=${i * j}" class="size-6 rounded-full border-2 border-white dark:border-slate-800" />`).join('')}
+                                            <div class="size-6 rounded-full bg-gray-100 dark:bg-white/10 border-2 border-white dark:border-slate-800 flex items-center justify-center text-[8px] font-bold">+12</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Mobile List Item (Hidden on Desktop) -->
+                                <div class="flex md:hidden items-center gap-4 py-5 px-3 border-b border-gray-100 dark:border-white/5 active:bg-gray-50 dark:active:bg-white/5 transition-all cursor-pointer" onclick="loadQuiz('${quiz.file}', '${quiz.title}')">
+                                    <div class="size-16 rounded-[1.25rem] border-2 border-slate-100 dark:border-white/10 flex items-center justify-center flex-shrink-0 bg-white dark:bg-slate-800 shadow-sm overflow-hidden">
+                                        <div class="size-full flex items-center justify-center bg-[${color}]/10">
+                                            <span class="material-symbols-outlined text-[32px]" style="color: ${color}">${icon}</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex-grow min-w-0 text-left">
+                                        <h3 class="text-[15px] font-black text-gray-800 dark:text-white leading-tight mb-1 uppercase tracking-tight truncate">${quiz.title}</h3>
+                                        <p class="text-[12px] text-gray-400 font-medium truncate">Bộ đề ôn tập · 45 phút · ${cat.title}</p>
+                                    </div>
+                                    <span class="material-symbols-outlined text-gray-300">chevron_right</span>
+                                </div>
+                            `;
+            }).join('') : '<div class="col-span-full py-20 text-center text-gray-400 font-bold text-sm tracking-widest uppercase">Danh mục này hiện chưa có bài thi nào!</div>'}
                     </div>
                 </div>
             `;
-
-            // Auto-slide up after 1s
-            setTimeout(() => {
-                const hero = document.getElementById('quiz-hero-image');
-                if (hero && state.view === 'quiz-list') {
-                    window.toggleQuizPanel(true);
-                }
-            }, 1000);
         }
 
-        window.toggleQuizPanel = function(forceExpand) {
-            const hero = document.getElementById('quiz-hero-image');
-            const icon = document.getElementById('quiz-drawer-icon');
-            const pill = document.getElementById('quiz-drawer-pill');
-            if (!hero) return;
-            
-            const isCurrentlyExpanded = hero.style.height === '20%';
-            const shouldExpand = forceExpand !== undefined ? forceExpand : !isCurrentlyExpanded;
 
-            if (shouldExpand) {
-                hero.style.height = '20%';
-                if (icon) icon.classList.remove('hidden');
-                if (pill) pill.classList.add('hidden');
-            } else {
-                hero.style.height = '60%';
-                if (icon) icon.classList.add('hidden');
-                if (pill) pill.classList.remove('hidden');
-            }
-        };
 
         async function loadQuiz(filename, title) {
+            // AUTH GATE
+            if (localStorage.getItem('isLoggedIn') !== 'true') {
+                showAuthAlert();
+                return;
+            }
+
             setState({ view: 'loading', selectedQuizFile: filename, quizTitle: title });
             try {
                 const response = await fetch(`quizzes/${filename}`);
                 if (!response.ok) throw new Error('File not found');
                 let data = await response.json();
-                
+
                 shuffleArray(data);
                 data = data.map(q => {
+                    if (q.type === 'essay') return q;
                     const correctText = q[q.correct.toUpperCase()];
                     const options = [];
                     ['A', 'B', 'C', 'D'].forEach(label => {
@@ -1064,13 +1159,56 @@
                 });
             } catch (err) {
                 console.error(err);
-                alert("Không thể tải bài thi. Vui lòng kiểm tra lại dữ liệu.");
+                showAuthAlert("Lỗi", "Không thể tải bài thi. Vui lòng kiểm tra lại bộ nhớ.");
                 setState({ view: 'quiz-list' });
             }
         }
 
+        function showAuthAlert(title = "Yêu cầu đăng nhập", message = "Vui lòng đăng nhập để thực hiện bài thi này.") {
+            // Remove existing alert if any
+            const existing = document.querySelector('.dynamic-island');
+            if (existing) existing.remove();
+
+            const island = document.createElement('div');
+            island.className = 'dynamic-island animate-in';
+            island.innerHTML = `
+                <div class="flex items-center gap-3 flex-1 min-w-0">
+                    <div class="size-9 rounded-full bg-red-500 flex items-center justify-center text-white ring-8 ring-red-500/10 shrink-0">
+                        <span class="text-[14px] font-black">!</span>
+                    </div>
+                    <div class="flex flex-col min-w-0">
+                        <span class="text-[14px] font-bold text-slate-800 dark:text-white tracking-tight truncate">${title}</span>
+                        <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none">THEDUNG Platform</span>
+                    </div>
+                </div>
+                <!-- Right Side Status -->
+                <div class="flex items-center gap-2 md:gap-4 shrink-0">
+                    <div class="flex items-center gap-2 px-3 py-1.5 bg-red-50 dark:bg-red-500/10 rounded-full border border-red-100 dark:border-red-500/20">
+                        <span class="material-symbols-outlined text-red-500 text-[14px] font-black animate-pulse">error</span>
+                        <span class="text-[11px] font-black text-red-500 uppercase tracking-tighter">Failed</span>
+                        <span class="material-symbols-outlined text-red-500 text-[12px] font-black ml-1">refresh</span>
+                    </div>
+                    <span class="material-symbols-outlined text-slate-300 dark:text-white/20 text-lg hover:text-slate-500 transition-colors">fullscreen</span>
+                </div>
+            `;
+
+            document.body.appendChild(island);
+
+            // Wait 3s static -> Dangle 2s -> Fall
+            setTimeout(() => {
+                island.classList.remove('animate-in');
+                island.classList.add('animate-dangle');
+
+                setTimeout(() => {
+                    island.classList.remove('animate-dangle');
+                    island.classList.add('animate-fall-final');
+                    setTimeout(() => island.remove(), 800);
+                }, 2000); // 2 seconds lủng lẳng
+            }, 3000); // 3 seconds static
+        }
+
         function renderQuizRoom(container) {
-            const answeredCount = state.userAnswers.filter(a => a !== null).length;
+            const answeredCount = state.userAnswers.filter(a => a !== null && a.toString().trim() !== '').length;
             const progress = ((answeredCount / state.questions.length) * 100).toFixed(1);
 
             container.innerHTML = `
@@ -1096,18 +1234,18 @@
                                 <div class="flex items-center gap-1.5 p-1">
                                     <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar flex-grow">
                                         ${state.questions.map((_, i) => {
-                                            const isAnswered = state.userAnswers[i] !== null;
-                                            
-                                            let btnClass = "size-8 flex-shrink-0 rounded-lg text-[11px] font-semibold transition-all flex items-center justify-center ";
-                                            if (isAnswered) btnClass += "bg-[#E6F9F0] text-[#4AD991] hover:bg-[#D7F5E5]";
-                                            else btnClass += "border border-gray-100 dark:border-white/5 text-gray-400 hover:bg-gray-50 dark:hover:bg-white/10";
+                const isAnswered = state.userAnswers[i] !== null && state.userAnswers[i].toString().trim() !== '';
 
-                                            return `
+                let btnClass = "size-8 flex-shrink-0 rounded-lg text-[11px] font-semibold transition-all flex items-center justify-center ";
+                if (isAnswered) btnClass += "bg-[#E6F9F0] text-[#4AD991] hover:bg-[#D7F5E5]";
+                else btnClass += "border border-gray-100 dark:border-white/5 text-gray-400 hover:bg-gray-50 dark:hover:bg-white/10";
+
+                return `
                                                 <button id="nav-btn-${i}" onclick="jumpToQuestion(${i})" class="${btnClass}">
                                                     ${isAnswered ? '<span class="material-symbols-outlined text-[12px] font-bold">check</span>' : (i + 1)}
                                                 </button>
                                             `;
-                                        }).join('')}
+            }).join('')}
                                     </div>
                                     
                                     <!-- Mobile Info Toggle -->
@@ -1120,8 +1258,8 @@
                             <!-- Questions List -->
                             <div class="space-y-10">
                                 ${state.questions.map((q, i) => {
-                                    const isAnswered = state.userAnswers[i] !== null;
-                                    return `
+                const isAnswered = state.userAnswers[i] !== null && state.userAnswers[i].toString().trim() !== '';
+                return `
                                         <div id="question-${i}" 
                                              class="bg-white dark:bg-gray-900 rounded-[1.5rem] p-4 md:p-8 shadow-sm border border-gray-50 dark:border-white/5 scroll-mt-[180px] transition-all duration-500">
                                             <div class="text-left">
@@ -1139,41 +1277,54 @@
                                                 </h3>
 
                                                 <div class="space-y-2.5">
-                                                    ${['A', 'B', 'C', 'D'].map(id => {
-                                                        const text = q[id];
-                                                        if (!text) return '';
-                                                        const isSelected = state.userAnswers[i] === id;
-                                                        const isCorrect = q.correct.toUpperCase() === id.toUpperCase();
-                                                        
-                                                        let optionClass = "px-4 py-3 rounded-xl flex items-center gap-4 group transition-all duration-300 ";
-                                                        let radioClass = "size-5 rounded-full border-2 flex items-center justify-center transition-all flex-shrink-0 ";
-                                                        let textClass = "text-[13px] md:text-base font-bold transition-colors ";
-                                                        let icon = "";
+                                                    ${q.type === 'essay' ? `
+                                                        <textarea id="q-${i}-textarea" 
+                                                                  placeholder="Nhập câu trả lời của bạn vào đây..." 
+                                                                  ${state.isSubmitted ? 'disabled' : `oninput="updateEssayAnswer(${i}, this.value)"`}
+                                                                  class="w-full h-32 p-4 rounded-xl border border-gray-200 dark:border-white/20 bg-transparent text-base text-[#1E293B] dark:text-white focus:ring-2 focus:ring-[#5D5FEF] focus:border-[#5D5FEF] transition-all resize-none shadow-sm ${state.isSubmitted ? 'opacity-70 bg-gray-50 dark:bg-white/5 cursor-not-allowed' : ''}">${state.userAnswers[i] || ''}</textarea>
+                                                        ${state.isSubmitted ? `
+                                                            <div class="mt-4 p-4 rounded-xl bg-blue-50 dark:bg-[#5D5FEF]/10 border border-blue-100 dark:border-[#5D5FEF]/20">
+                                                                <div class="flex items-center gap-2 text-[#5D5FEF] font-bold mb-2 text-sm">
+                                                                    <span class="material-symbols-outlined text-[16px]">lightbulb</span> Gợi ý đáp án:
+                                                                </div>
+                                                                <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">${q.hint || 'Không có gợi ý'}</p>
+                                                            </div>
+                                                        ` : ''}
+                                                    ` : ['A', 'B', 'C', 'D'].map(id => {
+                    const text = q[id];
+                    if (!text) return '';
+                    const isSelected = state.userAnswers[i] === id;
+                    const isCorrect = q.correct.toUpperCase() === id.toUpperCase();
 
-                                                        if (state.isSubmitted) {
-                                                            if (isCorrect) {
-                                                                optionClass += "bg-[#E6F9F0] border border-[#4AD991]/30";
-                                                                radioClass += "bg-[#4AD991] border-[#4AD991]";
-                                                                textClass += "text-[#1E293B] dark:text-white";
-                                                                icon = '<span class="material-symbols-outlined text-white text-[12px] font-bold">check</span>';
-                                                            } else if (isSelected && !isCorrect) {
-                                                                optionClass += "bg-[#FFF1F1] border border-[#FF5C5C]/30";
-                                                                radioClass += "bg-[#FF5C5C] border-[#FF5C5C]";
-                                                                textClass += "text-[#1E293B] dark:text-white";
-                                                                icon = '<span class="material-symbols-outlined text-white text-[12px] font-bold">close</span>';
-                                                            } else {
-                                                                optionClass += "bg-transparent opacity-50";
-                                                                radioClass += "border-gray-200 dark:border-white/20";
-                                                                textClass += "text-gray-400";
-                                                            }
-                                                        } else {
-                                                            optionClass += "cursor-pointer " + (isSelected ? "bg-[#F1F5F9] dark:bg-white/5" : "bg-transparent hover:bg-gray-50 dark:hover:bg-white/5");
-                                                            radioClass += isSelected ? "bg-gradient-to-br from-[#FF5C5C] to-[#FF4D6D] border-[#FF5C5C]" : "border-gray-200 dark:border-white/20";
-                                                            textClass += isSelected ? "text-[#1E293B] dark:text-white" : "text-[#64748B] dark:text-gray-400";
-                                                            if (isSelected) icon = '<span class="material-symbols-outlined text-white text-[12px] font-bold">check</span>';
-                                                        }
+                    let optionClass = "px-4 py-3 rounded-xl flex items-center gap-4 group transition-all duration-300 ";
+                    let radioClass = "size-5 rounded-full border-2 flex items-center justify-center transition-all flex-shrink-0 ";
+                    let textClass = "text-[13px] md:text-base font-bold transition-colors ";
+                    let icon = "";
 
-                                                        return `
+                    if (state.isSubmitted) {
+                        if (isCorrect) {
+                            optionClass += "bg-[#E6F9F0] border border-[#4AD991]/30";
+                            radioClass += "bg-[#4AD991] border-[#4AD991]";
+                            textClass += "text-[#1E293B] dark:text-white";
+                            icon = '<span class="material-symbols-outlined text-white text-[12px] font-bold">check</span>';
+                        } else if (isSelected && !isCorrect) {
+                            optionClass += "bg-[#FFF1F1] border border-[#FF5C5C]/30";
+                            radioClass += "bg-[#FF5C5C] border-[#FF5C5C]";
+                            textClass += "text-[#1E293B] dark:text-white";
+                            icon = '<span class="material-symbols-outlined text-white text-[12px] font-bold">close</span>';
+                        } else {
+                            optionClass += "bg-transparent opacity-50";
+                            radioClass += "border-gray-200 dark:border-white/20";
+                            textClass += "text-gray-400";
+                        }
+                    } else {
+                        optionClass += "cursor-pointer " + (isSelected ? "bg-[#F1F5F9] dark:bg-white/5" : "bg-transparent hover:bg-gray-50 dark:hover:bg-white/5");
+                        radioClass += isSelected ? "bg-gradient-to-br from-[#FF5C5C] to-[#FF4D6D] border-[#FF5C5C]" : "border-gray-200 dark:border-white/20";
+                        textClass += isSelected ? "text-[#1E293B] dark:text-white" : "text-[#64748B] dark:text-gray-400";
+                        if (isSelected) icon = '<span class="material-symbols-outlined text-white text-[12px] font-bold">check</span>';
+                    }
+
+                    return `
                                                             <div id="q-${i}-option-${id}" 
                                                                  ${!state.isSubmitted ? `onclick="selectAnswer(${i}, '${id}')"` : ''} 
                                                                  class="${optionClass}">
@@ -1187,12 +1338,12 @@
                                                                 </span>
                                                             </div>
                                                         `;
-                                                    }).join('')}
+                }).join('')}
                                                 </div>
                                             </div>
                                         </div>
                                     `;
-                                }).join('')}
+            }).join('')}
                             </div>
                         </div>
 
@@ -1205,7 +1356,7 @@
                                 </h3>
                                 <div class="space-y-5">
                                     <div class="flex justify-between items-center">
-                                        <div class="flex items-center gap-3">
+                                        <div class="flex items-center gap-2 md:gap-3">
                                             <div class="size-8 rounded-lg bg-[#5D5FEF]/10 flex items-center justify-center">
                                                 <span class="material-symbols-outlined text-[#5D5FEF] text-lg">assignment</span>
                                             </div>
@@ -1214,7 +1365,7 @@
                                         <span class="text-[14px] font-bold dark:text-white text-right font-display max-w-[120px] truncate">${state.quizTitle}</span>
                                     </div>
                                     <div class="flex justify-between items-center">
-                                        <div class="flex items-center gap-3">
+                                        <div class="flex items-center gap-2 md:gap-3">
                                             <div class="size-8 rounded-lg bg-[#5D5FEF]/10 flex items-center justify-center">
                                                 <span class="material-symbols-outlined text-[#5D5FEF] text-lg">person</span>
                                             </div>
@@ -1223,7 +1374,7 @@
                                         <span class="text-[14px] font-bold dark:text-white font-display">${state.userName}</span>
                                     </div>
                                     <div class="flex justify-between items-center">
-                                        <div class="flex items-center gap-3">
+                                        <div class="flex items-center gap-2 md:gap-3">
                                             <div class="size-8 rounded-lg bg-[#5D5FEF]/10 flex items-center justify-center">
                                                 <span class="material-symbols-outlined text-[#5D5FEF] text-lg">format_list_numbered</span>
                                             </div>
@@ -1232,7 +1383,7 @@
                                         <span class="text-[14px] font-bold dark:text-white font-display">${state.questions.length} câu</span>
                                     </div>
                                     <div class="flex justify-between items-center">
-                                        <div class="flex items-center gap-3">
+                                        <div class="flex items-center gap-2 md:gap-3">
                                             <div class="size-8 rounded-lg bg-[#5D5FEF]/10 flex items-center justify-center">
                                                 <span class="material-symbols-outlined text-[#5D5FEF] text-lg">schedule</span>
                                             </div>
@@ -1310,7 +1461,7 @@
                                 <span class="text-2xl font-black text-gray-300 pb-2">/ ${state.questions.length}</span>
                             </div>
                             <div class="inline-block px-5 py-2 bg-[#5D5FEF]/10 text-[#5D5FEF] rounded-full text-[11px] font-black uppercase tracking-widest">
-                                Hoàn thành ${((state.score/state.questions.length)*100).toFixed(0)}%
+                                Hoàn thành ${((state.score / state.questions.length) * 100).toFixed(0)}%
                             </div>
                         </div>
 
@@ -1353,7 +1504,7 @@
                                 </div>
                                 <div class="flex justify-between items-center">
                                     <span class="text-gray-400 font-bold">Tiến độ</span>
-                                    <div class="flex items-center gap-3">
+                                    <div class="flex items-center gap-2 md:gap-3">
                                         <div class="w-24 h-2 bg-gray-100 dark:bg-white/10 rounded-full overflow-hidden">
                                             <div id="overlay-progress-bar" class="h-full bg-[#4AD991]" style="width: ${progress}%"></div>
                                         </div>
@@ -1486,31 +1637,31 @@
 
         function renderQuizCard(quiz, status = 'upcoming', score = null) {
             const statusConfig = {
-                upcoming: { 
-                    label: 'Sắp diễn ra', 
-                    bg: 'bg-[#E6F9F0]', 
-                    text: 'text-[#4AD991]', 
+                upcoming: {
+                    label: 'Sắp diễn ra',
+                    bg: 'bg-[#E6F9F0]',
+                    text: 'text-[#4AD991]',
                     icon: 'schedule',
                     btn: 'Xem chi tiết'
                 },
-                in_progress: { 
-                    label: 'Đang diễn ra', 
-                    bg: 'bg-[#FFF8F1]', 
-                    text: 'text-[#FF8A65]', 
+                in_progress: {
+                    label: 'Đang diễn ra',
+                    bg: 'bg-[#FFF8F1]',
+                    text: 'text-[#FF8A65]',
                     icon: 'play_circle',
                     btn: 'Tiếp tục'
                 },
-                completed: { 
-                    label: 'Đã hoàn thành', 
-                    bg: 'bg-[#F1F3FF]', 
-                    text: 'text-[#5D5FEF]', 
+                completed: {
+                    label: 'Đã hoàn thành',
+                    bg: 'bg-[#F1F3FF]',
+                    text: 'text-[#5D5FEF]',
                     icon: 'check_circle',
                     btn: 'Xem lại'
                 }
             };
 
             const config = statusConfig[status];
-            
+
             return `
                 <div onclick="loadQuiz('${quiz.file}', '${quiz.title}')" class="quiz-card group active:scale-[0.98] transition-all cursor-pointer">
                     <div class="size-16 rounded-2xl bg-gray-50 dark:bg-white/5 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/10 transition-colors">
@@ -1523,7 +1674,7 @@
                             <span class="text-[10px] font-bold text-gray-400 uppercase tracking-tighter">Hạn: 20/04</span>
                         </div>
                         <h3 class="text-[14px] font-black text-[#1E293B] dark:text-white truncate mb-1">${quiz.title}</h3>
-                        <div class="flex items-center gap-3 text-[10px] text-gray-400 font-bold">
+                        <div class="flex items-center gap-2 md:gap-3 text-[10px] text-gray-400 font-bold">
                             <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[12px]">timer</span> 45'</span>
                             <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[12px]">help</span> 50 câu</span>
                         </div>
@@ -1594,15 +1745,15 @@
         function selectAnswer(qIdx, ansId) {
             // Update State Silently
             state.userAnswers[qIdx] = ansId;
-            
+
             // 1. Update Option UI for this specific question
             ['A', 'B', 'C', 'D'].forEach(id => {
                 const optEl = document.getElementById(`q-${qIdx}-option-${id}`);
                 const radioEl = document.getElementById(`q-${qIdx}-radio-${id}`);
                 const textEl = document.getElementById(`q-${qIdx}-text-${id}`);
-                
+
                 if (!optEl) return;
-                
+
                 if (id === ansId) {
                     optEl.className = "cursor-pointer px-4 py-3 rounded-xl flex items-center gap-4 group transition-all duration-300 bg-[#F1F5F9] dark:bg-white/5";
                     if (radioEl) {
@@ -1634,34 +1785,67 @@
             }
 
             // 4. Update Sidebar Progress
-            const answeredCount = state.userAnswers.filter(a => a !== null).length;
+            const answeredCount = state.userAnswers.filter(a => a !== null && a.toString().trim() !== '').length;
             const progress = ((answeredCount / state.questions.length) * 100).toFixed(1);
-            
+
             const progressText = document.getElementById('sidebar-progress-text');
             const progressBar = document.getElementById('sidebar-progress-bar');
             const progressPercent = document.getElementById('sidebar-progress-percent');
-            
+
             // Add Overlay Progress Elements
             const overlayBar = document.getElementById('overlay-progress-bar');
             const overlayText = document.getElementById('overlay-progress-text');
-            
+
             if (progressText) progressText.innerText = `Bạn đã hoàn thành ${answeredCount}/${state.questions.length} câu`;
             if (progressBar) progressBar.style.width = `${progress}%`;
             if (progressPercent) progressPercent.innerText = `${progress}%`;
-            
+
             if (overlayBar) overlayBar.style.width = `${progress}%`;
             if (overlayText) overlayText.innerText = `${progress}%`;
         }
 
+        window.updateEssayAnswer = function (qIdx, text) {
+            state.userAnswers[qIdx] = text;
+            const isAnswered = text && text.trim() !== '';
+            const statusEl = document.getElementById(`q-${qIdx}-status`);
+            const navBtn = document.getElementById(`nav-btn-${qIdx}`);
+            if (statusEl) {
+                statusEl.innerHTML = isAnswered ? '<span class="flex items-center gap-1.5 text-[#4AD991] font-bold text-[11px]"><span class="material-symbols-outlined text-xs">check_circle</span> Đã trả lời</span>' : '';
+            }
+            if (navBtn) {
+                if (isAnswered) {
+                    navBtn.className = "size-8 flex-shrink-0 rounded-lg text-[11px] font-semibold transition-all flex items-center justify-center bg-[#E6F9F0] text-[#4AD991] hover:bg-[#D7F5E5]";
+                    navBtn.innerHTML = '<span class="material-symbols-outlined text-[12px] font-bold">check</span>';
+                } else {
+                    navBtn.className = "size-8 flex-shrink-0 rounded-lg text-[11px] font-semibold transition-all flex items-center justify-center border border-gray-100 dark:border-white/5 text-gray-400 hover:bg-gray-50 dark:hover:bg-white/10";
+                    navBtn.innerHTML = (qIdx + 1);
+                }
+            }
+            const answeredCount = state.userAnswers.filter(a => a !== null && a.toString().trim() !== '').length;
+            const progress = ((answeredCount / state.questions.length) * 100).toFixed(1);
+
+            const progressText = document.getElementById('sidebar-progress-text');
+            const progressBar = document.getElementById('sidebar-progress-bar');
+            const progressPercent = document.getElementById('sidebar-progress-percent');
+            const overlayBar = document.getElementById('overlay-progress-bar');
+            const overlayText = document.getElementById('overlay-progress-text');
+
+            if (progressText) progressText.innerText = `Bạn đã hoàn thành ${answeredCount}/${state.questions.length} câu`;
+            if (progressBar) progressBar.style.width = `${progress}%`;
+            if (progressPercent) progressPercent.innerText = `${progress}%`;
+            if (overlayBar) overlayBar.style.width = `${progress}%`;
+            if (overlayText) overlayText.innerText = `${progress}%`;
+        };
+
         function submitQuiz() {
             if (state.isSubmitted) return;
 
-            const unansweredIndices = state.userAnswers.map((a, i) => a === null ? i + 1 : null).filter(n => n !== null);
-            
+            const unansweredIndices = state.userAnswers.map((a, i) => (a === null || a.toString().trim() === '') ? i + 1 : null).filter(n => n !== null);
+
             if (unansweredIndices.length > 0) {
-                setState({ 
-                    showWarningModal: true, 
-                    unansweredIndices: unansweredIndices 
+                setState({
+                    showWarningModal: true,
+                    unansweredIndices: unansweredIndices
                 });
                 return;
             }
@@ -1673,16 +1857,18 @@
             let score = 0;
             state.questions.forEach((q, i) => {
                 const userAns = state.userAnswers[i];
-                if (userAns && userAns.toUpperCase() === q.correct.toUpperCase()) {
+                if (q.type === 'essay') {
+                    if (userAns && userAns.trim() !== '') score++;
+                } else if (userAns && q.correct && userAns.toUpperCase() === q.correct.toUpperCase()) {
                     score++;
                 }
             });
 
-            setState({ 
-                isSubmitted: true, 
-                showScoreModal: true, 
+            setState({
+                isSubmitted: true,
+                showScoreModal: true,
                 showConfirmSubmitModal: false,
-                score: score 
+                score: score
             });
         }
 
@@ -1707,7 +1893,7 @@
         }
 
         function finalReview() {
-            setState({ 
+            setState({
                 isSubmitted: true,
                 showScoreModal: false,
                 showWarningModal: false,
@@ -1749,7 +1935,7 @@
             const backToTopBtn = document.getElementById("backToTopBtn");
             let isFlying = false;
 
-            if(backToTopBtn) {
+            if (backToTopBtn) {
                 window.addEventListener("scroll", () => {
                     if (isFlying) return;
                     if (window.scrollY > 300) {
@@ -1760,14 +1946,14 @@
                         backToTopBtn.classList.remove("opacity-100", "translate-y-0");
                     }
                 });
-                
+
                 backToTopBtn.addEventListener("click", () => {
                     if (isFlying) return;
                     isFlying = true;
-                    
+
                     // Start rocket animation
                     backToTopBtn.classList.add("rocket-fly");
-                    
+
                     // Smooth scroll up coordinated with blast off (~20% of 2.5s = 500ms)
                     setTimeout(() => {
                         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1789,14 +1975,17 @@
         render();
     </script>
 
-    <button id="backToTopBtn" 
+    <button id="backToTopBtn"
         class="fixed bottom-8 right-8 z-50 size-16 flex flex-col items-center justify-center opacity-0 pointer-events-none translate-y-4 transition-all duration-300 hover:scale-[1.15] cursor-pointer overflow-visible focus:outline-none">
-        
+
         <!-- Exhaust Container (Fire and Smoke) -->
-        <div class="exhaust-container absolute -bottom-8 left-1/2 -translate-x-1/2 opacity-0 pointer-events-none flex flex-col items-center z-0">
+        <div
+            class="exhaust-container absolute -bottom-8 left-1/2 -translate-x-1/2 opacity-0 pointer-events-none flex flex-col items-center z-0">
             <!-- Flame -->
-            <div class="w-3.5 h-14 bg-gradient-to-b from-yellow-300 via-orange-500 to-red-600 rounded-full blur-[2px] flame-blast opacity-0"></div>
-            
+            <div
+                class="w-3.5 h-14 bg-gradient-to-b from-yellow-300 via-orange-500 to-red-600 rounded-full blur-[2px] flame-blast opacity-0">
+            </div>
+
             <!-- Smoke Clouds -->
             <div class="absolute top-6 flex items-center justify-center">
                 <div class="smoke-cloud"></div>
@@ -1810,30 +1999,31 @@
         <!-- Perfect Colorful Rocket SVG matching user image -->
         <svg viewBox="0 0 120 160" class="size-11 relative z-10 drop-shadow-md pb-1 pl-1">
             <!-- Center Nozzle -->
-            <path fill="#334155" d="M52 125 h16 v8 h-16 z"/>
+            <path fill="#334155" d="M52 125 h16 v8 h-16 z" />
             <!-- Left Fin -->
-            <path fill="#cbd5e1" d="M35 90 Q 15 110 5 145 Q 25 125 35 120 Z"/>
+            <path fill="#cbd5e1" d="M35 90 Q 15 110 5 145 Q 25 125 35 120 Z" />
             <!-- Right Fin -->
-            <path fill="#cbd5e1" d="M85 90 Q 105 110 115 145 Q 95 125 85 120 Z"/>
+            <path fill="#cbd5e1" d="M85 90 Q 105 110 115 145 Q 95 125 85 120 Z" />
             <!-- Main Body -->
-            <path fill="#f8fafc" d="M60 20 Q 25 70 35 125 L 85 125 Q 95 70 60 20 Z"/>
+            <path fill="#f8fafc" d="M60 20 Q 25 70 35 125 L 85 125 Q 95 70 60 20 Z" />
             <!-- Body shadow detail -->
-            <path fill="#e2e8f0" d="M85 125 Q 95 70 60 20 Q 80 80 75 125 Z" opacity="0.5"/>
+            <path fill="#e2e8f0" d="M85 125 Q 95 70 60 20 Q 80 80 75 125 Z" opacity="0.5" />
             <!-- Nose Cone -->
-            <path fill="#f97316" d="M60 20 Q 42 45 37 60 L 83 60 Q 78 45 60 20 Z"/>
+            <path fill="#f97316" d="M60 20 Q 42 45 37 60 L 83 60 Q 78 45 60 20 Z" />
             <!-- Blue Stripe -->
-            <path fill="#3b82f6" d="M36.5 60 L 83.5 60 L 84.5 68 L 35.5 68 Z"/>
+            <path fill="#3b82f6" d="M36.5 60 L 83.5 60 L 84.5 68 L 35.5 68 Z" />
             <!-- Red Window Rim -->
-            <circle cx="60" cy="90" r="14" fill="#ef4444"/>
+            <circle cx="60" cy="90" r="14" fill="#ef4444" />
             <!-- Inner Ring -->
-            <circle cx="60" cy="90" r="10" fill="#1e293b"/>
+            <circle cx="60" cy="90" r="10" fill="#1e293b" />
             <!-- Blue Glowing Core -->
-            <circle cx="60" cy="90" r="8" fill="#3b82f6"/>
-            <circle cx="60" cy="90" r="4" fill="#93c5fd"/>
+            <circle cx="60" cy="90" r="8" fill="#3b82f6" />
+            <circle cx="60" cy="90" r="4" fill="#93c5fd" />
             <!-- Highlight -->
-            <circle cx="58" cy="88" r="2" fill="#ffffff"/>
+            <circle cx="58" cy="88" r="2" fill="#ffffff" />
         </svg>
     </button>
+    <script src="auth_ui.js"></script>
 </body>
 
 </html>

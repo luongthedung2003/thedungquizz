@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Đăng Nhập | THEDUNG QUIZZ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .role-switch-student { transform: translateX(0%); }
+        .role-switch-teacher { transform: translateX(100%); }
+
+        /* Animation utilities */
+        .fade-in { animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+        .fade-out { animation: fadeOut 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        @keyframes fadeOut {
+            from { opacity: 1; transform: translateY(0) scale(1); }
+            to { opacity: 0; transform: translateY(-10px) scale(0.98); }
+        }
+
+        .yeti-element { transition: transform 0.1s ease-out; }
+        .yeti-arm { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        
+        /* Eyes Closed State */
+        .eyes-closed { transform: scaleY(0.05) !important; opacity: 0.8; }
+
+        /* Hide Browser Native Password Icons */
+        input::-ms-reveal,
+        input::-ms-clear,
+        input::-webkit-contacts-auto-fill-button, 
+        input::-webkit-credentials-auto-fill-button,
+        input::-webkit-password-toggle-button {
+            display: none !important;
+            width: 0;
+            height: 0;
+            appearance: none;
+            -webkit-appearance: none;
+        }
+
+        /* Modernize inputs */
+        input::placeholder {
+            @apply opacity-50 font-normal;
+            letter-spacing: normal;
+        }
+        
+        /* Themed colors */
+        .theme-accent-student { @apply text-blue-600 bg-blue-600 focus:ring-blue-500 border-blue-500; }
+        .theme-accent-teacher { @apply text-purple-600 bg-purple-600 focus:ring-purple-500 border-purple-500; }
+        .theme-bg-student { @apply bg-blue-50; }
+        .theme-bg-teacher { @apply bg-purple-50; }
+
+        /* Mobile Menu Styles */
+        #mobileMenu {
+            transition: transform 0.3s ease-in-out;
+            transform: translateX(100%);
+        }
+
+        #mobileMenu.active {
+            transform: translateX(0);
+        }
+
+        /* --- DYNAMIC ISLAND NOTIFICATION --- */
+        @keyframes dynamicIslandIn {
+            0% { transform: translateX(-50%) translateY(-100px); width: 80px; opacity: 0; }
+            50% { transform: translateX(-50%) translateY(20px); width: 80px; opacity: 1; }
+            100% { transform: translateX(-50%) translateY(20px); width: min(380px, 92vw); opacity: 1; }
+        }
+
+        @keyframes dynamicIslandDangle {
+            0% { transform: translateX(-50%) translateY(20px) rotate(0deg); }
+            15% { transform: translateX(-50%) translateY(20px) rotate(-45deg); }
+            30% { transform: translateX(-50%) translateY(20px) rotate(-35deg); }
+            45% { transform: translateX(-50%) translateY(20px) rotate(-42deg); }
+            100% { transform: translateX(-50%) translateY(20px) rotate(-40deg); }
+        }
+
+        @keyframes dynamicIslandFallFinal {
+            0% { transform: translateX(-50%) translateY(20px) rotate(-40deg); opacity: 1; }
+            100% { transform: translateX(-50%) translateY(120vh) rotate(-80deg); opacity: 0; }
+        }
+
+        .dynamic-island {
+            position: fixed;
+            left: 50%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 15px 50px -10px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            width: min(380px, 92vw);
+            height: 68px;
+            border-radius: 34px;
+            overflow: hidden;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            transform-origin: 90% 10px;
+        }
+
+        .dark .dynamic-island {
+            background: rgba(30, 41, 59, 0.85);
+            border-color: rgba(255,255,255,0.1);
+            color: white;
+        }
+
+        .dynamic-island.animate-in {
+            animation: dynamicIslandIn 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+        }
+
+        .dynamic-island.animate-dangle {
+            animation: dynamicIslandDangle 2s cubic-bezier(0.445, 0.05, 0.55, 0.95) forwards;
+        }
+
+        .dynamic-island.animate-fall-final {
+            animation: dynamicIslandFallFinal 0.8s cubic-bezier(0.47, 0, 0.745, 0.715) forwards;
+        }
+    </style>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;900&amp;display=swap"
+    rel="stylesheet" />
+    <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#04ae70",
+            "background-light": "#f5f8f7",
+            "background-dark": "#0f231c",
+          },
+          fontFamily: {
+            display: ["Be Vietnam Pro", "sans-serif"],
+          },
+          borderRadius: {
+            DEFAULT: "1rem",
+            lg: "2rem",
+            xl: "3rem",
+            full: "9999px",
+          },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="bg-[#F8FAFC] dark:bg-background-dark transition-colors duration-300 flex h-screen w-screen overflow-hidden selection:bg-blue-200 selection:text-blue-900 text-[#1E293B] dark:text-white">
+<header
+            class="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-xl border-b border-white/10 font-display text-white">
+            <div class="max-w-[1600px] mx-auto px-6 md:px-12">
+                <style>
+            .no-scrollbar::-webkit-scrollbar { display: none; }
+            .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+            
+            /* Rocket Animations */
+            @keyframes smokeExpand {
+               0% { transform: scale(0.2) translateY(0); opacity: 0.8; }
+               100% { transform: scale(3) translateY(20px) translateX(var(--smoke-x)); opacity: 0; filter: blur(4px); border-radius: 50%; }
+            }
+            .smoke-cloud { position: absolute; width: 14px; height: 14px; background-color: #cbd5e1; border-radius: 50%; bottom: -5px; opacity: 0; }
+            .rocket-fly .smoke-cloud:nth-child(1) { --smoke-x: -25px; animation: smokeExpand 1s ease-out infinite 0.1s; background-color: #94A3B8;}
+            .rocket-fly .smoke-cloud:nth-child(2) { --smoke-x: 25px; animation: smokeExpand 1.2s ease-out infinite 0.2s; }
+            .rocket-fly .smoke-cloud:nth-child(3) { --smoke-x: -40px; animation: smokeExpand 0.8s ease-out infinite 0.3s; background-color: #E2E8F0; }
+            .rocket-fly .smoke-cloud:nth-child(4) { --smoke-x: 40px; animation: smokeExpand 1.3s ease-out infinite 0.15s; background-color: #94A3B8; }
+            .rocket-fly .smoke-cloud:nth-child(5) { --smoke-x: 0px; animation: smokeExpand 0.9s ease-out infinite 0s; background-color: #F1F5F9; }
+
+            @keyframes rocketTakeoff {
+               0% { transform: translateY(0); }
+               10% { transform: translateY(10px); } 
+               20% { transform: translateY(0px); }
+               100% { transform: translateY(-1500px); }
+            }
+            @keyframes svgShake {
+               0%, 20% { transform: translateX(0) rotate(0deg); }
+               1%, 5%, 9%, 13%, 17% { transform: translateX(-3px) rotate(-1deg); }
+               3%, 7%, 11%, 15%, 19% { transform: translateX(3px) rotate(1deg); }
+               21%, 100% { transform: translateX(0) rotate(0deg); }
+            }
+            .rocket-fly {
+               animation: rocketTakeoff 2.5s cubic-bezier(0.5, 0, 0.4, 1) forwards !important;
+            }
+            .rocket-fly > svg {
+               animation: svgShake 2.5s linear forwards !important;
+            }
+            @keyframes fireBlast {
+              0% { transform: scaleY(0.6) translateY(-5px); opacity: 0.5; filter: blur(1px); }
+              100% { transform: scaleY(1.5) translateY(5px); opacity: 1; filter: blur(2px) drop-shadow(0 0 10px rgba(255,100,0,1)); }
+            }
+            .rocket-fly .flame-blast { opacity: 1 !important; animation: fireBlast 0.05s infinite alternate !important; }
+            .rocket-fly .exhaust-container { opacity: 1 !important; }
+          </style>
+                <div
+                    class="hidden md:flex justify-between text-[10px] tracking-[0.4em] uppercase text-white/60 py-2 border-b border-white/10">
+                    <p class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-base"> · 24/7</span>Đà Nẵng · GMT+7
+                    </p>
+                    <p class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-base">cloud</span>26°
+                    </p>
+                    <p class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-base">call</span>Đường dây nóng +84 919 844 429
+                    </p>
+                </div>
+
+                <div class="flex flex-col lg:flex-row lg:items-center py-2 md:py-4 gap-3 md:gap-4 relative w-full">
+                    <div class="flex items-center justify-between w-full lg:w-auto">
+                        <div class="flex items-center gap-2 md:gap-3">
+                            <div class="size-8 md:size-12 border border-white/30 flex items-center justify-center p-1">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Logo_dhktdn.png"
+                                    alt="Logo Học viện" class="w-full h-full object-contain" />
+                            </div>
+                            <div>
+                                <p class="text-[9px] md:text-[11px] uppercase tracking-[0.5em] text-white/60">ĐẠI HỌC
+                                </p>
+                                <h1 class="text-base md:text-xl font-semibold tracking-[0.2em] whitespace-nowrap">KIẾN TRÚC</h1>
+                            </div>
+                        </div>
+
+                        <div class="flex lg:hidden items-center gap-2">
+                            <button onclick="toggleTheme()"
+                                class="size-8 md:size-9 flex items-center justify-center border border-white/30 hover:bg-white/10 transition-colors"
+                                title="Đổi giao diện">
+                                <span class="material-symbols-outlined text-xs md:text-sm block dark:hidden">light_mode</span>
+                                <span
+                                    class="material-symbols-outlined text-xs md:text-sm hidden dark:block text-yellow-400">dark_mode</span>
+                            </button>
+                            <a href="login.html"
+                                class="flex h-8 md:h-9 items-center justify-center gap-1.5 px-3 border border-white/30 text-[9px] uppercase tracking-[0.2em] whitespace-nowrap">
+                                <span class="material-symbols-outlined text-sm">person</span> SINH VIÊN
+                            </a>
+                            <button onclick="toggleMenu()"
+                                class="size-8 md:size-9 flex items-center justify-center border border-white/30">
+                                <span class="material-symbols-outlined text-[18px] md:text-sm">menu</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <nav
+                        class="flex items-center gap-6 md:gap-8 lg:mx-auto justify-start lg:justify-center w-full lg:w-auto px-4 lg:px-0 text-[9px] md:text-[11px] uppercase tracking-[0.2em] md:tracking-[0.45em] overflow-x-auto no-scrollbar whitespace-nowrap px-0 lg:px-4 border-t border-white/5 lg:border-none pt-3 lg:pt-0">
+                        <a class="text-primary font-bold" href="index.html#overview">TRANG CHỦ</a>
+                        <a class="hover:text-primary transition-colors" href="courses.html">KHÓA HỌC</a>
+                        <a class="hover:text-primary transition-colors" href="index.html#cuisine">THƯ VIỆN</a>
+                        <a class="hover:text-primary transition-colors" href="index.html#destinations">TIN TỨC</a>
+                        <a class="hover:text-primary transition-colors" href="index.html#gallery">LIÊN HỆ</a>
+                    </nav>
+
+                    <div class="hidden lg:flex items-center gap-2 md:gap-3 ml-auto">
+                        <button onclick="toggleTheme()"
+                            class="size-11 flex items-center justify-center border border-white/30 hover:bg-white/10 transition-colors"
+                            title="Đổi giao diện">
+                            <span class="material-symbols-outlined text-base block dark:hidden">light_mode</span>
+                            <span
+                                class="material-symbols-outlined text-base hidden dark:block text-yellow-400">dark_mode</span>
+                        </button>
+                        <a href="login.html"
+                            class="flex h-9 md:h-11 min-w-[120px] md:min-w-[150px] items-center justify-center gap-2 px-5 border border-white/30 text-[11px] uppercase tracking-[0.3em]">
+                            <span class="material-symbols-outlined text-base">person</span> SINH VIÊN
+                        </a>
+                        <a href="login.html"
+                            class="flex h-9 md:h-11 min-w-[120px] md:min-w-[150px] px-3 md:px-5 bg-primary text-black font-semibold uppercase tracking-[0.4em] text-[11px] items-center justify-center">
+                            GIẢNG VIÊN
+                        </a>
+                        <a href="login.html"
+                            class="flex h-9 md:h-11 min-w-[120px] md:min-w-[150px] items-center justify-center gap-2 px-5 border border-white/30 text-[11px] uppercase tracking-[0.3em]">
+                            <span class="material-symbols-outlined text-base">app_registration</span> ĐĂNG KÝ
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="mobileMenu" class="fixed inset-0 z-50 lg:hidden flex flex-col p-8 pt-32 space-y-6 text-white"
+                style="background-color: #0f231c;">
+                <button onclick="toggleMenu()"
+                    class="absolute top-6 right-6 size-12 border border-white/20 flex items-center justify-center">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+                <nav class="flex flex-col space-y-4 text-sm uppercase tracking-[0.2em] font-medium">
+                    <a onclick="toggleMenu()" class="text-primary transition-colors"
+                        href="index.html#overview">TRANG CHỦ</a>
+                    <a onclick="toggleMenu()" class="hover:text-primary transition-colors" href="courses.html">KHÓA HỌC</a>
+                    <a onclick="toggleMenu()" class="hover:text-primary transition-colors" href="index.html#cuisine">THƯ
+                        VIỆN</a>
+                    <a onclick="toggleMenu()" class="hover:text-primary transition-colors"
+                        href="index.html#destinations">TIN TỨC</a>
+                    <a onclick="toggleMenu()" class="hover:text-primary transition-colors"
+                        href="index.html#gallery">LIÊN HỆ</a>
+                </nav>
+            </div>
+        </header>
+
+    <div class="flex w-full h-full p-0 sm:p-3 lg:p-5 pt-[100px] lg:pt-[130px] gap-6">
+
+        <!-- ======================= LEFT PANEL (YETI) ======================= -->
+        <div class="hidden lg:flex relative flex-col w-1/2 xl:w-[55%] h-full rounded-[2.5rem] overflow-hidden bg-slate-100 dark:bg-slate-950 shadow-2xl isolate border border-white/10">
+            <!-- Decorative Premium Background (Circles & Glow) -->
+            <div class="absolute -top-20 -left-20 w-80 h-80 bg-blue-600/10 rounded-full blur-[100px]"></div>
+            <div class="absolute -bottom-20 -right-20 w-80 h-80 bg-blue-400/10 rounded-full blur-[100px]"></div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-500/5 via-transparent to-transparent"></div>
+            
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent z-10 pointer-events-none"></div>
+
+            <!-- Mascot Container (Interactive Vector SVG) -->
+            <div class="absolute inset-0 z-20 flex items-center justify-center translate-y-10" id="yeti-container">
+                <svg id="yeti-svg" viewBox="0 0 500 600" class="w-full max-w-[500px] h-auto drop-shadow-2xl pointer-events-none">
+                    <defs>
+                        <!-- Yeti Body Gradient -->
+                        <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="#ffffff" />
+                            <stop offset="50%" stop-color="#f8fafc" />
+                            <stop offset="100%" stop-color="#e2e8f0" />
+                        </linearGradient>
+                        <!-- Face Gradient -->
+                        <!-- Face Gradient -->
+                        <linearGradient id="faceGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="#bae6fd" />
+                            <stop offset="100%" stop-color="#38bdf8" />
+                        </linearGradient>
+                        <radialGradient id="eyeGrad">
+                            <stop offset="0%" stop-color="#fff" />
+                            <stop offset="100%" stop-color="#f1f5f9" />
+                        </radialGradient>
+                        
+                        <!-- Fur Texture Filter -->
+                        <filter id="furFilter" x="-20%" y="-20%" width="140%" height="140%">
+                            <feTurbulence type="fractalNoise" baseFrequency="0.08" numOctaves="3" result="noise" />
+                            <feDisplacementMap in="SourceGraphic" in2="noise" scale="5" xChannelSelector="R" yChannelSelector="G" />
+                        </filter>
+                    </defs>
+
+                    <!-- FOOT (Rounded Shadows - Dynamic) -->
+                    <ellipse cx="180" cy="550" rx="35" ry="25" fill="#f1f5f9" opacity="0.9" filter="url(#furFilter)" />
+                    <ellipse cx="320" cy="550" rx="35" ry="25" fill="#f1f5f9" opacity="0.9" filter="url(#furFilter)" />
+
+                    <!-- BACK ARMS -->
+                    <path d="M150 350 Q100 380 110 480 Q120 520 160 500" fill="#f1f5f9" filter="url(#furFilter)" />
+                    <path d="M350 350 Q400 380 390 480 Q380 520 340 500" fill="#f1f5f9" filter="url(#furFilter)" />
+
+                    <!-- MAIN BODY -->
+                    <path d="M 120 480 Q 100 350 150 300 Q 250 250 350 300 Q 400 350 380 480 Q 360 580 250 580 Q 140 580 120 480 Z" fill="#ffffff" filter="url(#furFilter)" />
+
+                    <!-- FRONT ARMS -->
+                    <!-- Left Arm & Hand -->
+                    <g id="yeti-arm-left" class="yeti-arm origin-[160px_350px]">
+                        <path d="M 160 350 Q 80 380 90 480 Q 100 520 140 500" fill="#ffffff" filter="url(#furFilter)" />
+                        <g id="yeti-hand-left">
+                            <ellipse cx="95" cy="495" rx="12" ry="18" fill="#38BDF8" transform="rotate(15 95 495)" />
+                            <ellipse cx="115" cy="510" rx="11" ry="17" fill="#38BDF8" />
+                            <ellipse cx="138" cy="505" rx="10" ry="16" fill="#38BDF8" transform="rotate(-15 138 505)" />
+                        </g>
+                    </g>
+
+                    <!-- Right Arm & Hand -->
+                    <g id="yeti-arm-right" class="yeti-arm origin-[340px_350px]">
+                        <path d="M 340 350 Q 420 380 410 480 Q 400 520 360 500" fill="#ffffff" filter="url(#furFilter)" />
+                        <g id="yeti-hand-right">
+                            <ellipse cx="405" cy="495" rx="12" ry="18" fill="#7DD3FC" transform="rotate(-15 405 495)" />
+                            <ellipse cx="385" cy="510" rx="11" ry="17" fill="#7DD3FC" />
+                            <ellipse cx="362" cy="505" rx="10" ry="16" fill="#7DD3FC" transform="rotate(15 362 505)" />
+                        </g>
+                    </g>
+
+                    <!-- HEAD GROUP -->
+                    <g id="yeti-head" class="yeti-element origin-[250px_300px]">
+                        <!-- Volumetric Ears -->
+                        <circle cx="140" cy="280" r="35" fill="#38bdf8" filter="url(#furFilter)" />
+                        <circle cx="140" cy="280" r="18" fill="#0284c7" opacity="0.3" />
+                        <circle cx="360" cy="280" r="35" fill="#38bdf8" filter="url(#furFilter)" />
+                        <circle cx="360" cy="280" r="18" fill="#0284c7" opacity="0.3" />
+
+                        <!-- Main Head Fur -->
+                        <path d="M 140 320 Q 100 200 250 180 Q 400 200 360 320 Q 320 380 250 380 Q 180 380 140 320 Z" fill="#ffffff" filter="url(#furFilter)" />
+                        
+                        <!-- Hair Tufts -->
+                        <path d="M 210 190 Q 200 130 240 170 Q 250 120 270 170 Q 310 130 300 190" fill="#ffffff" filter="url(#furFilter)" />
+
+                        <!-- Face Mask -->
+                        <path id="yeti-face-mask" d="M 180 270 Q 180 230 250 220 Q 320 230 320 270 Q 320 330 250 335 Q 180 330 180 270 Z" fill="url(#faceGrad)" />
+
+                        <!-- Eyes Backgrounds -->
+                        <circle cx="215" cy="275" r="28" fill="url(#eyeGrad)" />
+                        <circle cx="285" cy="275" r="24" fill="url(#eyeGrad)" />
+
+                        <!-- INTERACTIVE PUPILS -->
+                        <g id="yeti-pupil-left" class="yeti-element origin-[215px_275px]">
+                            <circle cx="215" cy="275" r="14" fill="#0F172A" />
+                            <circle cx="210" cy="270" r="5" fill="#ffffff" opacity="0.8" />
+                            <circle cx="222" cy="278" r="2" fill="#ffffff" opacity="0.5" />
+                        </g>
+
+                        <g id="yeti-pupil-right" class="yeti-element origin-[285px_275px]">
+                            <circle cx="285" cy="275" r="12" fill="#0F172A" />
+                            <circle cx="281" cy="271" r="4" fill="#ffffff" opacity="0.8" />
+                            <circle cx="290" cy="277" r="1.5" fill="#ffffff" opacity="0.5" />
+                        </g>
+
+                        <!-- Nose -->
+                        <path id="yeti-nose" d="M 245 300 Q 250 295 255 300 Q 255 308 250 308 Q 245 308 245 300 Z" fill="#0369a1" />
+
+                        <!-- Mouth -->
+                        <path id="yeti-mouth" d="M 235 315 Q 250 325 265 315" fill="none" stroke="#1e3a8a" stroke-width="4" stroke-linecap="round" />
+                    </g>
+                </svg>
+            </div>
+
+            <!-- Ground shadow -->
+            <div class="absolute bottom-16 left-1/2 -translate-x-1/2 w-[350px] h-8 bg-black/20 rounded-[100%] blur-xl z-10 pointer-events-none"></div>
+
+            <div class="absolute bottom-14 left-14 z-30 pointer-events-none">
+                <h1 class="text-5xl 2xl:text-6xl font-black text-white leading-[1.05] tracking-tight drop-shadow-lg">
+                    EXPLORE.<br>LEARN.<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-white">GROW.</span>
+                </h1>
+                <p class="text-white/80 font-medium text-lg mt-4 max-w-sm">Bring your educational journey to the next level with our interactive platform.</p>
+            </div>
+            
+            <!-- Floating logo -->
+            <div class="absolute top-10 left-10 z-30 pointer-events-none flex items-center gap-2 md:gap-3 bg-white/20 backdrop-blur-md px-5 py-2.5 rounded-2xl border border-white/20">
+                <div class="size-8 bg-white text-blue-600 rounded-xl flex items-center justify-center font-black text-xl">T</div>
+                <span class="text-white font-black tracking-widest text-sm uppercase">THEDUNG QUIZZ</span>
+            </div>
+        </div>
+
+        <!-- ======================= RIGHT PANEL (FORM) ======================= -->
+        <div class="w-full lg:w-1/2 xl:w-[45%] h-full flex flex-col justify-center items-center py-8 px-4 sm:px-6 lg:px-16 overflow-y-auto scrollbar-hide bg-white dark:bg-[#163328] rounded-none sm:rounded-[2rem] shadow-sm relative transition-colors duration-300">
+            
+            <!-- Mobile Back to Home (Hidden on Desktop) -->
+            <a href="index.html" class="lg:hidden absolute top-6 left-6 size-10 rounded-full bg-gray-50 dark:bg-white/10 flex items-center justify-center text-gray-500 dark:text-white/70 hover:bg-gray-100 dark:hover:bg-white/20 transition-colors border border-gray-100 dark:border-white/5">
+                <span class="material-symbols-outlined text-[18px]">arrow_back_ios_new</span>
+            </a>
+
+            <!-- Logo (Mobile only) -->
+            <div class="lg:hidden flex items-center gap-2 mb-8">
+                <div class="size-8 bg-blue-600 text-white rounded-xl flex items-center justify-center font-black text-xl">T</div>
+                <span class="text-slate-800 font-black tracking-widest text-sm uppercase">THEDUNG QUIZZ</span>
+            </div>
+
+            <div class="w-full max-w-[420px]">
+                
+                <!-- Role Segmented Control -->
+                <div class="p-1 bg-gray-100 dark:bg-black/30 rounded-2xl flex relative mb-12 shadow-inner transition-colors duration-300" id="role-switch-container">
+                    <div id="role-pill" class="absolute top-1 bottom-1 left-1 w-[calc(50%-4px)] bg-white dark:bg-[#204537] rounded-xl transition-all duration-300 ease-out shadow-sm border border-gray-200/50 dark:border-white/10"></div>
+                    <button onclick="setRole('student')" id="btn-role-student" class="flex-1 relative z-10 py-3 text-[14px] font-bold text-blue-600 dark:text-blue-400 transition-colors">
+                        Sinh Viên
+                    </button>
+                    <button onclick="setRole('teacher')" id="btn-role-teacher" class="flex-1 relative z-10 py-3 text-[14px] font-bold text-gray-500 dark:text-white/50 transition-colors">
+                        Giảng Viên
+                    </button>
+                </div>
+
+                <!-- Form Views Container -->
+                <div class="relative w-full" id="form-container">
+                    <!-- The innerHTML of this will be swapped between Login and Register -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // State
+        const state = {
+            view: 'login', // 'login' or 'register'
+            role: 'student', // 'student' or 'teacher'
+            isCoveringEyes: false,
+            showPassword: false
+        };
+
+        const config = {
+            student: { colorCode: 'blue', themeClass: 'text-blue-600', bgClass: 'bg-blue-600', hoverClass: 'hover:bg-blue-700', ringClass: 'focus:ring-blue-500' },
+            teacher: { colorCode: 'purple', themeClass: 'text-purple-600', bgClass: 'bg-purple-600', hoverClass: 'hover:bg-purple-700', ringClass: 'focus:ring-purple-500' }
+        };
+
+        // --- Mascot Interactive Logic ---
+        const yetiContainer = document.getElementById('yeti-container');
+        const head = document.getElementById('yeti-head');
+        const eyeLeft = document.getElementById('yeti-pupil-left');
+        const eyeRight = document.getElementById('yeti-pupil-right');
+        const armR = document.getElementById('yeti-arm-right');
+
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+        
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        // Breathing animation
+        let time = 0;
+
+        function animateMascot() {
+            time += 0.05;
+            
+            // Container center
+            const rect = yetiContainer.getBoundingClientRect();
+            if(rect.width === 0) {
+                requestAnimationFrame(animateMascot);
+                return; // Hidden on mobile
+            }
+            
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+
+            // Delta from center normalized (-1 to 1)
+            let dx = (mouseX - centerX) / (window.innerWidth / 2);
+            let dy = (mouseY - centerY) / (window.innerHeight / 2);
+
+            // Clamp values
+            dx = Math.max(-1, Math.min(1, dx));
+            dy = Math.max(-1, Math.min(1, dy));
+
+            // Head Movement: 25px X, 15px Y + slight tilt
+            const headTx = dx * 25;
+            const headTy = dy * 15 + Math.sin(time) * 4; 
+            const headRot = dx * 5;
+
+            // Follow mouse if not covering eyes
+            if (!state.isCoveringEyes) {
+                const eyeTx = dx * 14;
+                const eyeTy = dy * 10;
+                eyeLeft.style.transform = `translate(${eyeTx}px, ${eyeTy}px)`;
+                eyeRight.style.transform = `translate(${eyeTx}px, ${eyeTy}px)`;
+            }
+
+            // Apply transforms
+            head.style.transform = `translate(${headTx}px, ${headTy}px) rotate(${headRot}deg)`;
+            
+            // Interaction logic (Right arm)
+            if (armR) {
+                if (state.isCoveringEyes) {
+                    // Handled by CSS classes
+                } else {
+                    // Constant idle wave
+                    const waveAngle = Math.sin(time * 2) * 10;
+                    armR.style.transform = `rotate(${waveAngle}deg)`;
+                }
+            }
+
+            requestAnimationFrame(animateMascot);
+        }
+        
+        function coverEyes(cover) {
+            state.isCoveringEyes = cover;
+            const pupilL = document.getElementById('yeti-pupil-left');
+            const pupilR = document.getElementById('yeti-pupil-right');
+            if (!pupilL || !pupilR) return;
+
+            if (cover && !state.showPassword) {
+                pupilL.classList.add('eyes-closed');
+                pupilR.classList.add('eyes-closed');
+            } else {
+                pupilL.classList.remove('eyes-closed');
+                pupilR.classList.remove('eyes-closed');
+            }
+        }
+
+        function togglePasswordVisibility() {
+            state.showPassword = !state.showPassword;
+            const passInput = document.getElementById('password-input');
+            const toggleIcon = document.getElementById('password-toggle-icon');
+            if (passInput) {
+                passInput.type = state.showPassword ? 'text' : 'password';
+            }
+            if (toggleIcon) {
+                toggleIcon.textContent = state.showPassword ? 'visibility_off' : 'visibility';
+            }
+            // Update arms if currently focused
+            if (state.isCoveringEyes) {
+                coverEyes(true);
+            }
+        }
+
+        // Start animation loop
+        animateMascot();
+
+
+        // --- UI Rendering Logic ---
+        function setRole(role) {
+            state.role = role;
+            updateRoleSwitchUI();
+            renderForm();
+        }
+
+        function setView(view) {
+            state.view = view;
+            
+            const container = document.getElementById('form-container');
+            container.classList.add('fade-out');
+            
+            setTimeout(() => {
+                renderForm();
+                container.classList.remove('fade-out');
+                container.classList.add('fade-in');
+            }, 300);
+            
+            setTimeout(() => {
+                container.classList.remove('fade-in');
+            }, 700);
+        }
+
+        function updateRoleSwitchUI() {
+            const pill = document.getElementById('role-pill');
+            const btnStudent = document.getElementById('btn-role-student');
+            const btnTeacher = document.getElementById('btn-role-teacher');
+
+            if(state.role === 'student') {
+                pill.style.transform = 'translateX(0%)';
+                btnStudent.className = "flex-1 relative z-10 py-3 text-[14px] font-bold text-blue-600 dark:text-blue-400 transition-colors";
+                btnTeacher.className = "flex-1 relative z-10 py-3 text-[14px] font-bold text-gray-500 dark:text-white/50 hover:text-gray-700 dark:hover:text-white transition-colors";
+            } else {
+                pill.style.transform = 'translateX(100%)';
+                pill.style.left = 'calc(4px)'; // Account for gap
+                btnStudent.className = "flex-1 relative z-10 py-3 text-[14px] font-bold text-gray-500 dark:text-white/50 hover:text-gray-700 dark:hover:text-white transition-colors";
+                btnTeacher.className = "flex-1 relative z-10 py-3 text-[14px] font-bold text-purple-600 dark:text-purple-400 transition-colors";
+            }
+
+            // Also update the eye color of the yeti slightly to match the theme!
+            const faceGrad = document.getElementById('faceGrad');
+            if(state.role === 'teacher') {
+                faceGrad.innerHTML = '<stop offset="0%" stop-color="#e9d5ff" /><stop offset="100%" stop-color="#a855f7" />';
+                
+                // Update arms & fingers
+                document.getElementById('yeti-hand-left').querySelectorAll('ellipse').forEach(e => e.setAttribute('fill', '#a855f7'));
+                document.getElementById('yeti-hand-right').querySelectorAll('ellipse').forEach(e => e.setAttribute('fill', '#a855f7'));
+                
+                // Update ears (circles)
+                document.getElementById('yeti-head').querySelectorAll('circle').forEach(c => {
+                    const r = c.getAttribute('r');
+                    if(r === '35') c.setAttribute('fill', '#c084fc');
+                    else if(r === '18') c.setAttribute('fill', '#9333ea');
+                });
+
+                const nose = document.getElementById('yeti-nose');
+                if(nose) nose.setAttribute('fill', '#7e22ce');
+                const mouth = document.getElementById('yeti-mouth');
+                if(mouth) mouth.setAttribute('stroke', '#7e22ce');
+            } else {
+                faceGrad.innerHTML = '<stop offset="0%" stop-color="#bae6fd" /><stop offset="100%" stop-color="#38bdf8" />';
+                
+                // Update arms & fingers
+                document.getElementById('yeti-hand-left').querySelectorAll('ellipse').forEach(e => e.setAttribute('fill', '#38bdf8'));
+                document.getElementById('yeti-hand-right').querySelectorAll('ellipse').forEach(e => e.setAttribute('fill', '#7dd3fc'));
+
+                // Update ears (circles)
+                document.getElementById('yeti-head').querySelectorAll('circle').forEach(c => {
+                    const r = c.getAttribute('r');
+                    if(r === '35') c.setAttribute('fill', '#38bdf8');
+                    else if(r === '18') c.setAttribute('fill', '#0284c7');
+                });
+
+                const nose = document.getElementById('yeti-nose');
+                if(nose) nose.setAttribute('fill', '#0369a1');
+                const mouth = document.getElementById('yeti-mouth');
+                if(mouth) mouth.setAttribute('stroke', '#1e3a8a');
+            }
+        }
+
+        function renderForm() {
+            state.showPassword = false;
+            const container = document.getElementById('form-container');
+            const theme = config[state.role];
+            
+            const titleMap = {
+                'login_student': 'Chào Mừng Trở Lại! 👋',
+                'login_teacher': 'Khu Vực Giảng Viên 🎓',
+                'register_student': 'Bắt Đầu Học Tập 🚀',
+                'register_teacher': 'Hợp Tác Giảng Dạy 🏫'
+            };
+            
+            const descMap = {
+                'login_student': 'Đăng nhập vào tài khoản của bạn để tiếp tục kiểm tra kiến thức',
+                'login_teacher': 'Đăng nhập để quản lý bộ câu hỏi và chấm điểm bài thi',
+                'register_student': 'Tạo tài khoản học viên để mở khóa tất cả bộ câu hỏi',
+                'register_teacher': 'Đăng ký tài khoản giáo viên. Yêu cầu xét duyệt từ quản trị viên'
+            };
+
+            const id = `${state.view}_${state.role}`;
+
+            let html = `
+                <div class="text-center mb-10">
+                    <h2 class="text-2xl md:text-3xl font-black text-slate-800 dark:text-white tracking-tight">${titleMap[id]}</h2>
+                    <p class="text-sm font-medium text-slate-500 dark:text-white/60 mt-2">${descMap[id]}</p>
+                </div>
+                
+                <form class="space-y-4" onsubmit="handleLogin(event)">
+            `;
+
+            // Dynamic Fields based on state
+            if(state.view === 'register') {
+                html += `
+                    <div>
+                        <label class="block text-[13px] font-bold text-slate-700 dark:text-white/80 mb-2 ml-1">Họ và tên</label>
+                        <input type="text" placeholder="Nguyễn Văn A" class="w-full px-5 py-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-[15px] focus:bg-white dark:focus:bg-slate-800 focus:border-${theme.colorCode}-500 focus:ring-4 focus:ring-${theme.colorCode}-500/10 transition-all text-slate-800 dark:text-white placeholder:text-slate-400 dark:placeholder:text-white/30 outline-none" required>
+                    </div>
+                `;
+            }
+
+            if(state.view === 'register' && state.role === 'student') {
+                html += `
+                    <div>
+                        <label class="block text-[13px] font-bold text-slate-700 dark:text-white/80 mb-2 ml-1">Mã sinh viên (MSV)</label>
+                        <input type="text" placeholder="Ví dụ: 2021xxxx" class="w-full px-5 py-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-[15px] focus:bg-white dark:focus:bg-slate-800 focus:border-${theme.colorCode}-500 focus:ring-4 focus:ring-${theme.colorCode}-500/10 transition-all text-slate-800 dark:text-white placeholder:text-slate-400 dark:placeholder:text-white/30 outline-none" required>
+                    </div>
+                `;
+            }
+
+            if(state.view === 'register' && state.role === 'teacher') {
+                html += `
+                    <div>
+                        <label class="block text-[13px] font-bold text-slate-700 dark:text-white/80 mb-2 ml-1">Mã Khoa / Mã Bộ môn</label>
+                        <input type="text" placeholder="Ví dụ: K.CNTT" class="w-full px-5 py-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-[15px] focus:bg-white dark:focus:bg-slate-800 focus:border-${theme.colorCode}-500 focus:ring-4 focus:ring-${theme.colorCode}-500/10 transition-all text-slate-800 dark:text-white placeholder:text-slate-400 dark:placeholder:text-white/30 outline-none" required>
+                    </div>
+                `;
+            }
+
+            // Always present fields
+            const identifierLabel = state.role === 'student' ? 'Mã số sinh viên' : 'Email';
+            const identifierPlaceholder = state.role === 'student' ? 'Ví dụ: 2351220152' : 'email@example.com';
+            const identifierType = state.role === 'student' ? 'text' : 'email';
+
+            html += `
+                    <div>
+                        <label class="block text-[13px] font-bold text-slate-700 dark:text-white/80 mb-2 ml-1">${identifierLabel}</label>
+                        <input id="identifier-input" type="${identifierType}" placeholder="${identifierPlaceholder}" class="w-full px-5 py-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-[15px] focus:bg-white dark:focus:bg-slate-800 focus:border-${theme.colorCode}-500 focus:ring-4 focus:ring-${theme.colorCode}-500/10 transition-all text-slate-800 dark:text-white placeholder:text-slate-400 dark:placeholder:text-white/30 outline-none" required>
+                    </div>
+
+                    <div>
+                        <label class="block text-[13px] font-bold text-slate-700 dark:text-white/80 mb-2 ml-1">Mật khẩu</label>
+                        <div class="relative group">
+                            <input id="password-input" type="password" placeholder="••••••••" 
+                                class="w-full px-5 py-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-[15px] tracking-[0.2em] focus:bg-white dark:focus:bg-slate-800 focus:border-${theme.colorCode}-500 focus:ring-4 focus:ring-${theme.colorCode}-500/10 transition-all text-slate-800 dark:text-white placeholder:text-slate-400 dark:placeholder:text-white/30 outline-none pr-14" 
+                                onfocus="coverEyes(true)" onblur="coverEyes(false)" required>
+                            <button type="button" onclick="togglePasswordVisibility()" class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 dark:text-white/30 hover:text-${theme.colorCode}-500 dark:hover:text-white transition-all outline-none">
+                                <span id="password-toggle-icon" class="material-symbols-outlined text-[22px]">visibility</span>
+                            </button>
+                        </div>
+                    </div>
+            `;
+
+            if(state.view === 'login') {
+                html += `
+                    <div class="flex items-center justify-between pt-1 pb-4 px-1">
+                        <label class="flex items-center gap-2 cursor-pointer group">
+                            <input type="checkbox" class="w-4 h-4 rounded text-${theme.colorCode}-600 focus:ring-${theme.colorCode}-500 border-gray-300 dark:border-white/20 dark:bg-black/20">
+                            <span class="text-[13px] font-semibold text-slate-500 dark:text-white/60 group-hover:text-slate-700 dark:group-hover:text-white transition-colors">Ghi nhớ đăng nhập</span>
+                        </label>
+                        <a href="#" class="text-[13px] font-bold ${theme.themeClass} hover:opacity-80 transition-opacity">Quên mật khẩu?</a>
+                    </div>
+                `;
+            } else {
+                html += `<div class="h-4"></div>`;
+            }
+
+            html += `
+                    <button type="submit" class="w-full py-4 rounded-2xl font-black text-white text-[15px] shadow-lg shadow-${theme.colorCode}-500/30 dark:shadow-none ${theme.bgClass} ${theme.hoverClass} active:scale-95 transition-all mt-4">
+                        ${state.view === 'login' ? 'Đăng Nhập' : 'Tạo Tài Khoản'}
+                    </button>
+            `;
+
+            // Social Login Divider
+            if(state.view === 'login') {
+                html += `
+                    <div class="flex items-center gap-4 my-6 opacity-60">
+                        <div class="flex-1 h-px bg-slate-200 dark:bg-white/10"></div>
+                        <span class="text-[11px] font-black tracking-widest text-slate-400 dark:text-white/40 uppercase">Hoặc</span>
+                        <div class="flex-1 h-px bg-slate-200 dark:bg-white/10"></div>
+                    </div>
+                    
+                    <button type="button" class="w-full py-3.5 rounded-2xl font-bold text-slate-700 dark:text-white/90 text-[14px] bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 hover:bg-slate-50 dark:hover:bg-white/10 active:scale-95 transition-all flex items-center justify-center gap-3">
+                        <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" class="w-5 h-5">
+                        Tiếp tục với Google
+                    </button>
+                `;
+            }
+
+            html += `</form>`;
+
+            html += `
+                <p class="text-center text-[14px] font-semibold text-slate-500 dark:text-white/60 mt-10">
+                    ${state.view === 'login' ? 'Chưa có tài khoản?' : 'Đã có tài khoản?'} 
+                    <button onclick="setView('${state.view === 'login' ? 'register' : 'login'}')" class="${theme.themeClass} hover:opacity-80 transition-opacity font-bold ml-1">
+                        ${state.view === 'login' ? 'Đăng ký ngay' : 'Đăng nhập'}
+                    </button>
+                </p>
+            `;
+
+            container.innerHTML = html;
+        }
+
+        async function handleLogin(e) {
+            e.preventDefault();
+            const idInput = document.getElementById('identifier-input').value;
+            const passInput = document.getElementById('password-input').value;
+            
+            try {
+                const resp = await fetch('users.json');
+                if (!resp.ok) throw new Error('Database not found');
+                const users = await resp.json();
+                
+                const user = users.find(u => u.studentId === idInput && u.password === passInput);
+                
+                if (user) {
+                    // Success
+                    localStorage.setItem('isLoggedIn', 'true');
+                    localStorage.setItem('user', JSON.stringify(user));
+                    localStorage.setItem('userRole', state.role);
+                    window.location.href = 'index.html';
+                } else {
+                    // Logic for teacher (since they are not in users.json yet, we can allow any for now or block)
+                    if (state.role === 'teacher') {
+                        localStorage.setItem('isLoggedIn', 'true');
+                        localStorage.setItem('userRole', 'teacher');
+                        window.location.href = 'index.html';
+                    } else {
+                        showAuthAlert("Lỗi đăng nhập", "Mã sinh viên hoặc mật khẩu không chính xác.");
+                    }
+                }
+            } catch (err) {
+                console.error(err);
+                if (state.role === 'teacher') {
+                    // Fallback for teacher if JSON fails
+                    window.location.href = 'index.html';
+                } else {
+                    showAuthAlert("Lỗi hệ thống", "Không thể kết nối với cơ sở dữ liệu người dùng.");
+                }
+            }
+        }
+
+        function showAuthAlert(title, message) {
+            const existing = document.querySelector('.dynamic-island');
+            if (existing) existing.remove();
+
+            const island = document.createElement('div');
+            island.className = 'dynamic-island animate-in';
+            island.innerHTML = `
+                <div class="flex items-center gap-3 flex-1 min-w-0">
+                    <div class="size-9 rounded-full bg-red-500 flex items-center justify-center text-white ring-8 ring-red-500/10 shrink-0">
+                        <span class="text-[14px] font-black">!</span>
+                    </div>
+                    <div class="flex flex-col min-w-0">
+                        <span class="text-[14px] font-bold text-slate-800 dark:text-white tracking-tight truncate">${title}</span>
+                        <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none">${message.substring(0, 20)}...</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2 md:gap-4 shrink-0">
+                    <div class="flex items-center gap-2 px-3 py-1.5 bg-red-50 dark:bg-red-500/10 rounded-full border border-red-100 dark:border-red-500/20">
+                        <span class="material-symbols-outlined text-red-500 text-[14px] font-black animate-pulse">error</span>
+                        <span class="text-[11px] font-black text-red-500 uppercase tracking-tighter">Failed</span>
+                    </div>
+                </div>
+            `;
+
+            document.body.appendChild(island);
+
+            setTimeout(() => {
+                island.classList.remove('animate-in');
+                island.classList.add('animate-dangle');
+                setTimeout(() => {
+                    island.classList.remove('animate-dangle');
+                    island.classList.add('animate-fall-final');
+                    setTimeout(() => island.remove(), 800);
+                }, 2000);
+            }, 3000);
+        }
+
+        // Initialize UI
+        updateRoleSwitchUI();
+        renderForm();
+    </script>
+
+    <script>
+      function toggleMenu() {
+        const menu = document.getElementById('mobileMenu');
+        if(menu) menu.classList.toggle('active');
+      }
+      function initTheme() {
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        if (savedTheme === 'dark') {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      }
+
+      function toggleTheme() {
+        const isDark = document.documentElement.classList.toggle('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      }
+
+      initTheme();
+    </script>
+</body>
+</html>
