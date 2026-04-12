@@ -951,6 +951,19 @@
             AOS.refresh();
         }
 
+        // Hàm xử lý tìm kiếm mượt mà, không render lại toàn bộ layout
+        function handleSearch(value) {
+            state.searchQuery = value;
+
+            // Đồng bộ giá trị giữa các ô input
+            const inputs = document.querySelectorAll('input[oninput*="handleSearch"]');
+            inputs.forEach(input => {
+                if (input.value !== value) input.value = value;
+            });
+
+            renderCourseGrid();
+        }
+
         function renderLoading(container) {
             container.innerHTML = `
                 <div class="flex flex-col justify-center items-center h-[60vh] space-y-6">
@@ -961,13 +974,6 @@
         }
 
         function renderCoursesLayout(container) {
-            const filteredCourses = categories.filter(c => {
-                const matchesSearch = c.title.toLowerCase().includes(state.searchQuery.toLowerCase()) ||
-                    c.description.toLowerCase().includes(state.searchQuery.toLowerCase());
-                const matchesCat = state.activeCategory === 'Tất cả' || c.title === state.activeCategory;
-                return matchesSearch && matchesCat;
-            });
-
             container.innerHTML = `
                 <div class="flex flex-col lg:flex-row gap-0 lg:gap-12 relative animate-fade-in pb-24 lg:pb-0">
                     
@@ -990,16 +996,14 @@
                                 <input type="text" 
                                        placeholder="Tìm kiếm khóa học, kỹ năng..." 
                                        value="${state.searchQuery}"
-                                       oninput="state.searchQuery = this.value; render()"
-                                       class="w-full h-14 bg-white dark:bg-gray-900 border-none rounded-[1.25rem] pl-14 pr-6 text-sm shadow-sm focus:ring-2 focus:ring-primary/20 transition-all dark:text-white dark:placeholder-gray-500">
+                                       oninput="handleSearch(this.value)"
+                                       class="w-full h-14 bg-white dark:bg-gray-900 border-none rounded-[1.25rem] pl-14 pr-6 text-base !text-[16px] shadow-sm focus:ring-2 focus:ring-primary/20 transition-all dark:text-white dark:placeholder-gray-500">
                                 <span class="material-symbols-outlined absolute left-5 top-1/2 -translate-y-1/2 text-gray-400">search</span>
                             </div>
                             <button class="size-14 rounded-[1.25rem] bg-white dark:bg-gray-900 shadow-sm flex items-center justify-center active:scale-95 transition-all border border-gray-50 dark:border-white/5">
                                 <span class="material-symbols-outlined text-gray-400">tune</span>
                             </button>
                         </div>
-
-
                     </div>
 
                     <!-- Sidebar Container (Desktop Only) -->
@@ -1009,8 +1013,8 @@
                                 <input type="text" 
                                        placeholder="Tìm kiếm bài học..." 
                                        value="${state.searchQuery}"
-                                       oninput="state.searchQuery = this.value; render()"
-                                       class="w-full h-12 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl px-6 py-4 text-sm focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all card-shadow dark:text-white dark:placeholder-gray-500">
+                                       oninput="handleSearch(this.value)"
+                                       class="w-full h-12 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl px-6 py-4 text-base !text-[16px] focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all card-shadow dark:text-white dark:placeholder-gray-500">
                                 <span class="material-symbols-outlined absolute right-4 top-3.5 text-gray-300 dark:text-gray-600 group-hover:text-primary transition-colors">search</span>
                             </div>
                         </div>
@@ -1052,136 +1056,137 @@
                             <h2 class="text-[17px] font-black text-[#1E293B] dark:text-white">Khóa học nổi bật</h2>
                         </div>
                         
-                        <!-- List Header (Desktop) -->
-                        <div class="hidden lg:flex flex-col sm:flex-row justify-between items-center mb-10 gap-4">
-                            <p class="text-sm font-semibold text-gray-400">Đang hiển thị <span class="text-black dark:text-white font-extrabold">${filteredCourses.length}</span> trên ${categories.length} kết quả</p>
-                            <div class="flex items-center gap-2 text-sm text-gray-500">
-                                <span>Sắp xếp:</span>
-                                <select class="bg-transparent border-none focus:ring-0 font-bold text-black dark:text-white text-sm">
-                                    <option class="dark:bg-gray-900">Mặc định</option>
-                                    <option class="dark:bg-gray-900">Mới nhất</option>
-                                    <option class="dark:bg-gray-900">Phổ biến nhất</option>
-                                </select>
-                            </div>
+                        <!-- List Header (Desktop / Statistics) -->
+                        <div id="course-list-stats" class="hidden lg:flex flex-col sm:flex-row justify-between items-center mb-10 gap-4">
+                            <!-- Sẽ được cập nhật bởi renderCourseGrid -->
                         </div>
 
-                        <!-- Unified Responsive Course List -->
-                        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-8">
-                            ${filteredCourses.map((cat, i) => `
-                                <div onclick="selectCategory('${cat.id}')" class="bg-white dark:bg-gray-900/50 
-                                    rounded-2xl lg:rounded-3xl 
-                                    flex flex-row lg:flex-col 
-                                    p-3 lg:p-0 
-                                    gap-3 lg:gap-0
-                                    card-shadow group cursor-pointer border border-gray-50 lg:border-transparent dark:border-white/5 
-                                    hover:border-primary/50 transition-all duration-500 lg:hover:-translate-y-2 lg:hover:shadow-2xl lg:hover:shadow-primary/10 
-                                    animate-slide-up" style="animation-delay: ${i * 0.1}s">
-                                    
-                                    <!-- Cột 1: Ảnh -->
-                                    <div class="relative w-[90px] h-[90px] lg:w-full lg:h-56 flex-shrink-0 lg:flex-shrink rounded-xl lg:rounded-none lg:rounded-t-3xl overflow-hidden">
-                                        <img src="${cat.image}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" />
-                                        
-                                        <!-- Tags -->
-                                        <div class="absolute top-1.5 left-1.5 lg:top-4 lg:left-4">
-                                            <span class="bg-[#7B61FF] lg:bg-black/80 text-white text-[7px] lg:text-[10px] font-black px-1.5 py-0.5 lg:px-4 lg:py-1.5 rounded-md lg:rounded-full uppercase lg:tracking-widest backdrop-blur-md">
-                                                <span class="lg:hidden">Bestseller</span>
-                                                <span class="hidden lg:inline">${cat.title}</span>
-                                            </span>
-                                        </div>
-                                        
-                                        <!-- Nút Favorite -->
-                                        <div class="absolute top-2 right-2 lg:top-4 lg:right-4 hidden lg:flex size-6 lg:size-10 bg-white/90 dark:bg-black/50 rounded-full items-center justify-center backdrop-blur-md shadow-lg group-hover:bg-primary group-hover:text-white transition-all">
-                                            <span class="material-symbols-outlined text-[14px] lg:text-lg">favorite</span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Cột 2/3: Thông tin -->
-                                    <div class="flex flex-col flex-grow min-w-0 lg:p-6 lg:space-y-4 text-left">
-                                        
-                                        <!-- Tiêu đề / Mô tả -->
-                                        <div>
-                                            <h3 class="lg:hidden text-[13px] font-extrabold text-[#1E293B] dark:text-white leading-tight truncate">${cat.title}</h3>
-                                            <h3 class="text-[10px] lg:text-lg font-medium lg:font-extrabold text-gray-400 lg:text-gray-900 lg:dark:text-white leading-tight line-clamp-1 lg:line-clamp-2 mt-0.5 mb-1.5 lg:m-0 lg:group-hover:text-primary transition-colors">${cat.description}</h3>
-                                        </div>
-                                        
-                                        <!-- Avatar Section (Mobile Only) -->
-                                        <div class="flex lg:hidden items-center gap-1.5 mb-1.5">
-                                            <div class="size-4 rounded-full overflow-hidden">
-                                                <img src="https://ui-avatars.com/api/?name=${state.userName}&background=f1f3ff&color=5d5fef" class="w-full h-full">
-                                            </div>
-                                            <span class="text-[10px] text-gray-500 font-bold">${state.userName}</span>
-                                        </div>
-
-                                        <!-- Thống kê -->
-                                        <div class="flex items-center gap-2 md:gap-3 lg:gap-6 lg:py-2 lg:border-y lg:border-gray-50 lg:dark:border-white/5">
-                                            <!-- Rating / Bộ đề -->
-                                            <div class="flex items-center gap-0.5 lg:gap-2 text-gray-400 dark:text-gray-500">
-                                                <span class="material-symbols-outlined text-[13px] lg:text-[18px] text-[#FFB843] lg:text-gray-400 lg:dark:text-gray-500 fill-1 lg:fill-0">
-                                                    <span class="lg:hidden">star</span>
-                                                    <span class="hidden lg:inline">menu_book</span>
-                                                </span>
-                                                <span class="text-[10px] lg:text-[12px] font-black lg:font-bold text-[#1E293B] lg:text-gray-400 dark:text-gray-300 lg:dark:text-gray-500">
-                                                    <span class="lg:hidden">${cat.rating}</span>
-                                                    <span class="hidden lg:inline">${cat.lessons} Bộ đề</span>
-                                                </span>
-                                            </div>
-                                            
-                                            <!-- Bộ đề / Lượt thi -->
-                                            <div class="flex items-center gap-0.5 lg:gap-2 text-gray-400 dark:text-gray-500">
-                                                <span class="material-symbols-outlined text-[13px] lg:text-[18px]">
-                                                    <span class="lg:hidden">menu_book</span>
-                                                    <span class="hidden lg:inline">group</span>
-                                                </span>
-                                                <span class="text-[10px] lg:text-[12px] font-bold">
-                                                    <span class="lg:hidden">${cat.lessons} Bộ đề</span>
-                                                    <span class="hidden lg:inline">${cat.students} Lượt thi</span>
-                                                </span>
-                                            </div>
-
-                                            <!-- Lượt thi (Mobile only) -->
-                                            <div class="flex lg:hidden items-center gap-0.5 text-gray-400">
-                                                <span class="material-symbols-outlined text-[13px]">group</span>
-                                                <span class="text-[10px] font-bold">${cat.students}</span>
-                                            </div>
-                                        </div>
-
-                                        <!-- Desktop Footer (Rating + Price) -->
-                                        <div class="hidden lg:flex justify-between items-center pt-2">
-                                            <div class="flex items-center gap-1">
-                                                <span class="material-symbols-outlined text-[18px] text-[#FFB843] fill-1">star</span>
-                                                <span class="text-sm font-bold dark:text-gray-300">${cat.rating}</span>
-                                                <span class="text-xs text-gray-300 dark:text-gray-600">(${Math.floor(Math.random() * 200)})</span>
-                                            </div>
-                                            <div class="text-primary font-black text-lg">
-                                                ${cat.price}
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Mobile Price & Button -->
-                                    <div class="flex lg:hidden flex-col items-end justify-between flex-shrink-0 min-w-[80px]">
-                                        <span class="material-symbols-outlined text-gray-300 text-[18px]">bookmark</span>
-                                        <div class="flex flex-col items-end gap-1">
-                                            <span class="text-[#5D5FEF] font-black text-[12px] whitespace-nowrap">${cat.price}</span>
-                                            <button class="px-3 py-1.5 bg-[#F1F3FF] dark:bg-[#5D5FEF]/10 text-[#5D5FEF] text-[9px] font-black rounded-lg uppercase tracking-wider transition-all active:scale-95">
-                                                Xem ngay
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            `).join('')}
+                        <!-- Unified Responsive Course List Container -->
+                        <div id="course-grid-results">
+                            <!-- Nội dung khóa học sẽ được Render vào đây -->
                         </div>
 
                         <!-- Mobile Bottom Action -->
                         <button class="lg:hidden mt-8 w-full py-4 bg-[#F1F3FF] dark:bg-[#5D5FEF]/10 text-[#5D5FEF] font-black text-[13px] rounded-2xl flex items-center justify-center gap-2 mb-10 active:scale-[0.98] transition-all">
                             Xem tất cả khóa học <span class="material-symbols-outlined text-sm">chevron_right</span>
                         </button>
-
                     </div>
                 </div>
-
             `;
+
+            // Render danh sách lần đầu
+            renderCourseGrid();
+        }
+
+        function renderCourseGrid() {
+            const gridContainer = document.getElementById('course-grid-results');
+            const statsContainer = document.getElementById('course-list-stats');
+            if (!gridContainer) return;
+
+            const query = state.searchQuery.toLowerCase().trim();
+            const filteredCourses = categories.filter(c => {
+                const matchesSearch = c.title.toLowerCase().includes(query) ||
+                    c.description.toLowerCase().includes(query) ||
+                    (c.files && c.files.some(f => f.title.toLowerCase().includes(query)));
+
+                const matchesCat = state.activeCategory === 'Tất cả' || c.title === state.activeCategory;
+
+                // Nếu đang tìm kiếm, ưu tiên hiển thị kết quả khớp trên toàn hệ thống
+                if (query.length > 0) return matchesSearch;
+                return matchesSearch && matchesCat;
+            });
+
+            // Cập nhật thống kê (chỉ khi ở Desktop)
+            if (statsContainer) {
+                statsContainer.innerHTML = `
+                    <p class="text-sm font-semibold text-gray-400">Đang hiển thị <span class="text-black dark:text-white font-extrabold">${filteredCourses.length}</span> trên ${categories.length} kết quả</p>
+                    <div class="flex items-center gap-2 text-sm text-gray-500">
+                        <span>Sắp xếp:</span>
+                        <select class="bg-transparent border-none focus:ring-0 font-bold text-black dark:text-white text-sm">
+                            <option class="dark:bg-gray-900">Mặc định</option>
+                            <option class="dark:bg-gray-900">Mới nhất</option>
+                            <option class="dark:bg-gray-900">Phổ biến nhất</option>
+                        </select>
+                    </div>
+                `;
+            }
+
+            if (filteredCourses.length === 0) {
+                gridContainer.innerHTML = `
+                    <div class="col-span-full py-20 text-center animate-fade-in text-[#1E293B] dark:text-white">
+                        <div class="size-20 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <span class="material-symbols-outlined text-4xl text-gray-400">search_off</span>
+                        </div>
+                        <h3 class="text-xl font-bold">Không tìm thấy khóa học nào</h3>
+                        <p class="text-gray-500 mt-2">Thử thay đổi từ khóa hoặc danh mục khác xem sao!</p>
+                        <button onclick="handleSearch(''); document.querySelectorAll('input').forEach(i=>i.value='')" class="mt-6 text-primary font-bold hover:underline">Xóa tìm kiếm</button>
+                    </div>
+                `;
+                return;
+            }
+
+            gridContainer.innerHTML = `
+                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-8 animate-fade-in">
+                    ${filteredCourses.map((cat, i) => `
+                        <div onclick="selectCategory('${cat.id}')" class="bg-white dark:bg-gray-900/50 
+                            rounded-2xl lg:rounded-3xl 
+                            flex flex-row lg:flex-col 
+                            p-3 lg:p-0 
+                            gap-3 lg:gap-0
+                            card-shadow group cursor-pointer border border-gray-50 lg:border-transparent dark:border-white/5 
+                            hover:border-primary/50 transition-all duration-500 lg:hover:-translate-y-2 lg:hover:shadow-2xl lg:hover:shadow-primary/10 
+                            animate-slide-up" style="animation-delay: ${i * 0.05}s">
+                            
+                            <div class="relative w-[90px] h-[90px] lg:w-full lg:h-56 flex-shrink-0 lg:flex-shrink rounded-xl lg:rounded-none lg:rounded-t-3xl overflow-hidden">
+                                <img src="${cat.image}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" />
+                                <div class="absolute top-1.5 left-1.5 lg:top-4 lg:left-4">
+                                    <span class="bg-[#7B61FF] lg:bg-black/80 text-white text-[7px] lg:text-[10px] font-black px-1.5 py-0.5 lg:px-4 lg:py-1.5 rounded-md lg:rounded-full uppercase lg:tracking-widest backdrop-blur-md">
+                                        <span class="lg:hidden">Bestseller</span>
+                                        <span class="hidden lg:inline">${cat.title}</span>
+                                    </span>
+                                </div>
+                                <div class="absolute top-2 right-2 lg:top-4 lg:right-4 hidden lg:flex size-6 lg:size-10 bg-white/90 dark:bg-black/50 rounded-full items-center justify-center backdrop-blur-md shadow-lg group-hover:bg-primary group-hover:text-white transition-all">
+                                    <span class="material-symbols-outlined text-[14px] lg:text-lg">favorite</span>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-col flex-grow min-w-0 lg:p-6 lg:space-y-4 text-left">
+                                <div class="hidden lg:flex items-center justify-between">
+                                    <div class="flex items-center gap-1">
+                                        <span class="material-symbols-outlined text-yellow-400 text-sm fill-current">star</span>
+                                        <span class="text-[11px] font-black">${cat.rating}</span>
+                                    </div>
+                                    <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">${cat.level}</span>
+                                </div>
+
+                                <div class="flex flex-col gap-1 lg:gap-3">
+                                    <h4 class="text-sm lg:text-lg font-black dark:text-white line-clamp-1 lg:line-clamp-2 uppercase tracking-tight leading-tight group-hover:text-primary transition-colors">${cat.title}</h4>
+                                    <p class="hidden lg:block text-xs text-gray-500 font-medium line-clamp-2 leading-relaxed">${cat.description}</p>
+                                </div>
+
+                                <div class="flex items-center gap-2 lg:gap-4 mt-1 lg:mt-0">
+                                    <div class="flex items-center gap-1 text-[10px] lg:text-xs text-gray-400 font-bold">
+                                        <span class="material-symbols-outlined text-[12px] lg:text-sm">menu_book</span>
+                                        ${cat.files.length} Bộ đề
+                                    </div>
+                                    <div class="flex items-center gap-1 text-[10px] lg:text-xs text-gray-400 font-bold">
+                                        <span class="material-symbols-outlined text-[12px] lg:text-sm">group</span>
+                                        ${cat.students} SV
+                                    </div>
+                                </div>
+
+                                <div class="lg:pt-4 lg:border-t lg:border-gray-50 lg:dark:border-white/5 flex items-center justify-between mt-auto">
+                                    <span class="text-xs lg:text-xl font-black text-primary">${cat.price}</span>
+                                    <div class="hidden lg:flex size-10 rounded-xl bg-gray-50 dark:bg-white/5 items-center justify-center group-hover:bg-primary/10 group-hover:text-primary transition-all">
+                                        <span class="material-symbols-outlined">chevron_right</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            AOS.refresh();
         }
 
         function selectCategory(catId) {
@@ -1424,7 +1429,7 @@
                     island.classList.add('animate-fall-final');
                     setTimeout(() => island.remove(), 800);
                 }, 2000); // 2 seconds lủng lẳng
-            }, 3000); // 3 seconds static
+            }, 1000); // 3 seconds static
         }
 
         function renderQuizRoom(container) {
