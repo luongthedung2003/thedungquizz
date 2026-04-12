@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="vi" class="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thư viện tri thức | TheDung Academy</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Be+Vietnam+Pro:wght@400;500;700;900&display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#04ae70",
+                        secondary: "#5D5FEF",
+                        "lib-bg": "#FDFBF7",
+                        "lib-dark-bg": "#0B1A14",
+                        "lib-card": "rgba(255, 255, 255, 0.8)",
+                    },
+                    fontFamily: {
+                        sans: ["Plus Jakarta Sans", "sans-serif"],
+                        display: ["Be Vietnam Pro", "sans-serif"],
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        body {
+            background-color: #FDFBF7;
+        }
+
+        .dark body {
+            background-color: #0B1A14;
+        }
+
+        .book-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            perspective: 1000px;
+        }
+
+        .book-card:hover {
+            transform: translateY(-10px) rotateY(-5deg);
+        }
+
+        .book-shadow {
+            box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.1), -5px -5px 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .dark .book-shadow {
+            box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .calendar-dot {
+            width: 4px;
+            height: 4px;
+            background-color: #04ae70;
+            border-radius: 50%;
+            margin-top: 4px;
+            opacity: 0;
+        }
+
+        .active-day .calendar-dot {
+            opacity: 1;
+        }
+
+        .active-day {
+            background-color: #fff;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            border-radius: 1rem;
+        }
+
+        .dark .active-day {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        /* 3D Book Mockup */
+        .book-3d {
+            filter: drop-shadow(30px 30px 50px rgba(0, 0, 0, 0.2));
+            transform: rotateY(-15deg) rotateX(5deg);
+            transition: transform 0.5s ease;
+        }
+
+        .book-3d:hover {
+            transform: rotateY(-5deg) rotateX(0deg);
+        }
+
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 100;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .dark .bottom-nav {
+            background: rgba(11, 26, 20, 0.9);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+
+<body class="font-display text-[#1e293b] dark:text-gray-100 transition-colors duration-500 overflow-x-hidden">
+
+    <!-- Header Consistency -->
+    <header
+        class="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-xl border-b border-white/10 font-display text-white">
+        <div class="max-w-[1600px] mx-auto px-6 md:px-12">
+            <div
+                class="hidden md:flex justify-between text-[10px] tracking-[0.4em] uppercase text-white/60 py-2 border-b border-white/10">
+                <p class="flex items-center gap-2"><span class="material-symbols-outlined text-base"> · 24/7</span>Đà
+                    Nẵng · GMT+7</p>
+                <p class="flex items-center gap-2"><span class="material-symbols-outlined text-base">cloud</span>26°</p>
+                <p class="flex items-center gap-2"><span class="material-symbols-outlined text-base">call</span>Hotline
+                    +84 33 202 9410</p>
+            </div>
+            <div class="flex flex-col lg:flex-row lg:items-center py-2 md:py-4 gap-3 md:gap-4 relative w-full">
+                <div class="flex items-center justify-between w-full lg:w-auto">
+                    <div class="flex items-center gap-2 md:gap-3">
+                        <div class="size-8 md:size-12 border border-white/30 flex items-center justify-center p-1">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Logo_dhktdn.png" alt="Logo"
+                                class="w-full h-full object-contain" />
+                        </div>
+                        <div>
+                            <p class="text-[9px] md:text-[11px] uppercase tracking-[0.5em] text-white/60">ĐẠI HỌC</p>
+                            <h1 class="text-base md:text-xl font-semibold tracking-[0.2em] whitespace-nowrap uppercase">
+                                Kiến Trúc</h1>
+                        </div>
+                    </div>
+                    <div id="auth-buttons-mobile" class="flex lg:hidden items-center gap-2"></div>
+                    <button onclick="toggleMenu()"
+                        class="lg:hidden size-8 md:size-9 flex items-center justify-center border border-white/30">
+                        <span class="material-symbols-outlined">menu</span>
+                    </button>
+                </div>
+                <nav
+                    class="flex items-center gap-6 md:gap-8 lg:mx-auto justify-center w-full lg:w-auto text-[9px] md:text-[11px] uppercase tracking-[0.2em] md:tracking-[0.45em] overflow-x-auto no-scrollbar whitespace-nowrap px-0 lg:px-4 border-t border-white/5 lg:border-none pt-3 lg:pt-0">
+                    <a class="hover:text-primary transition-colors" href="index.html">TRANG CHỦ</a>
+                    <a class="hover:text-primary transition-colors" href="courses.html">KHÓA HỌC</a>
+                    <a class="text-primary font-bold" href="library.html">THƯ VIỆN</a>
+                    <a class="hover:text-primary transition-colors" href="news.html">TIN TỨC</a>
+                    <a class="hover:text-primary transition-colors" href="index.html#gallery">LIÊN HỆ</a>
+                </nav>
+                <div id="auth-buttons-desktop" class="hidden lg:flex items-center gap-2 md:gap-3 ml-auto"></div>
+            </div>
+        </div>
+    </header>
+
+    <main class="mt-28 md:mt-32 max-w-[1600px] mx-auto px-4 md:px-12 pb-24">
+        <div class="flex flex-col lg:flex-row gap-12 mt-8">
+
+            <!-- LEFT COLUMN (70%) -->
+            <div class="lg:w-[68%] space-y-12">
+
+                <!-- Search & Welcome -->
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                    <div class="relative w-full max-w-md group">
+                        <span
+                            class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-primary transition-colors">search</span>
+                        <input type="text" placeholder="Tìm kiếm tên sách, tác giả, phiên bản..."
+                            class="w-full pl-12 pr-6 py-3.5 rounded-2xl bg-white dark:bg-white/5 border-none shadow-sm focus:ring-2 focus:ring-primary text-sm font-medium">
+                    </div>
+                    <div class="hidden md:flex items-center gap-3">
+                        <div
+                            class="size-10 rounded-full border border-gray-200 dark:border-white/10 flex items-center justify-center bg-white dark:bg-white/5 shadow-sm">
+                            <span class="material-symbols-outlined text-[20px]">notifications</span>
+                        </div>
+                        <a href="profile.html"
+                            class="flex items-center gap-3 bg-white dark:bg-white/5 p-1 pr-4 rounded-full border border-gray-200 dark:border-white/10 shadow-sm hover:border-primary transition-all">
+                            <div class="size-8 rounded-full overflow-hidden">
+                                <img id="header-avatar" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Lucky"
+                                    class="w-full h-full object-cover">
+                            </div>
+                            <span id="user-name-display"
+                                class="text-xs font-black uppercase tracking-widest truncate max-w-[100px]">Học
+                                viên</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Section -->
+                <div
+                    class="relative bg-[#EEEBE4] dark:bg-white/5 rounded-[3rem] p-8 md:p-14 overflow-hidden flex flex-col md:flex-row items-center gap-8 shadow-inner">
+                    <div class="md:w-1/2 space-y-6 relative z-10">
+                        <h2 class="text-4xl md:text-6xl font-black tracking-tighter leading-none mb-2">Chúc bạn đọc sách
+                            vui vẻ, <br><span id="welcome-name" class="text-primary">Học viên</span></h2>
+                        <p
+                            class="text-gray-500 dark:text-gray-400 text-sm md:text-lg font-medium max-w-md leading-relaxed">
+                            Ồ! Bạn đang khám phá những bí mật sâu thẳm của thế giới phù thủy. Hãy tiếp tục hành trình và
+                            đắm mình vào những trang sách thú vị nhé!
+                        </p>
+                        <button
+                            class="bg-black text-white dark:bg-white dark:text-black mt-4 px-8 py-4 rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] flex items-center gap-3 hover:scale-105 transition-all group">
+                            Bắt đầu đọc ngay <span
+                                class="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">north_east</span>
+                        </button>
+                    </div>
+                    <div class="hidden md:flex md:w-1/2 justify-center scale-75 md:scale-100">
+                        <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/fantasy-book-covers-design-template-33a3a687f72644b97c7e09dab35ed031_screen.jpg?ts=1699945232"
+                            class="book-3d w-[300px] h-[400px] object-cover rounded-md shadow-2xl" alt="Featured Book">
+                    </div>
+                </div>
+
+                <!-- Popular Now -->
+                <div class="space-y-8">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-2xl font-black tracking-tight">Phổ biến hiện nay</h3>
+                        <div class="flex gap-2">
+                            <button
+                                class="size-10 rounded-full border border-gray-200 dark:border-white/10 flex items-center justify-center hover:bg-white dark:hover:bg-white/5 transition-all">
+                                <span class="material-symbols-outlined">arrow_back</span>
+                            </button>
+                            <button
+                                class="size-10 rounded-full border border-gray-200 dark:border-white/10 flex items-center justify-center hover:bg-white dark:hover:bg-white/5 transition-all">
+                                <span class="material-symbols-outlined">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-8 overflow-x-auto no-scrollbar pb-8 -mx-4 px-4 snap-x">
+                        <!-- Book Card 1 -->
+                        <div class="book-card min-w-[180px] md:min-w-[220px] snap-start">
+                            <div class="aspect-[3/4] rounded-3xl overflow-hidden book-shadow mb-6">
+                                <img src="https://images.openai.com/static-rsc-1/Mw2l1Cx9iSe6V3cighsoqbD2kfcNOaRbiqYp9ODv4jcWhSanNtPZR8YF5J9uPhXdWbbcOn5FEPlDL3YDT-qpLOeIFt5Lqa2gZDa1UWskEe4tDTWW_E0AqoDpWMaae1eYH6FngbpHEgvQ8yjnFMCDVh928yRtPlEjJU00llWmyjOnyOdlVtbER7nFczHuxBx70izndjgWWKA0dCZluHg9FLN8preTZ8O2M6kCPBgPmvOq2_ILAuKABMIFJbkEur6K"
+                                    class="w-full h-full object-cover">
+                            </div>
+                            <h4 class="font-black text-sm md:text-base tracking-tight mb-1 truncate">The World of Ice
+                                and Fire</h4>
+                            <p class="text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-widest">George
+                                R.R Martin</p>
+                        </div>
+                        <!-- Book Card 2 -->
+                        <div class="book-card min-w-[180px] md:min-w-[220px] snap-start">
+                            <div class="aspect-[3/4] rounded-3xl overflow-hidden book-shadow mb-6">
+                                <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/monster-horror-book-cover-design-template-1a24b4401bc7bffa36b2f30ad5460243_screen.jpg?ts=1740675037"
+                                    class="w-full h-full object-cover">
+                            </div>
+                            <h4 class="font-black text-sm md:text-base tracking-tight mb-1 truncate">Fantastic Beasts
+                            </h4>
+                            <p class="text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-widest">J.K
+                                Rowling</p>
+                        </div>
+                        <!-- Book Card 3 -->
+                        <div class="book-card min-w-[180px] md:min-w-[220px] snap-start">
+                            <div class="aspect-[3/4] rounded-3xl overflow-hidden book-shadow mb-6">
+                                <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/kindle-book-cover-design-template-3d59ab725ef74c03a7f2e299c62013df_screen.jpg?ts=1737134427"
+                                    class="w-full h-full object-cover">
+                            </div>
+                            <h4 class="font-black text-sm md:text-base tracking-tight mb-1 truncate">Game of Thrones
+                            </h4>
+                            <p class="text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-widest">George
+                                R.R Martin</p>
+                        </div>
+                        <!-- Book Card 4 -->
+                        <div class="book-card min-w-[180px] md:min-w-[220px] snap-start">
+                            <div class="aspect-[3/4] rounded-3xl overflow-hidden book-shadow mb-6">
+                                <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?auto=format&fit=crop&q=80&w=800"
+                                    class="w-full h-full object-cover">
+                            </div>
+                            <h4 class="font-black text-sm md:text-base tracking-tight mb-1 truncate">The Wise Man's Fear
+                            </h4>
+                            <p class="text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-widest">Patrick
+                                Rothfuss</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- New Series Collection -->
+                <div class="space-y-6 pt-4">
+                    <h3 class="text-2xl font-black tracking-tight">Bộ sưu tập mới</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div
+                            class="flex items-center gap-6 p-6 rounded-[2rem] bg-white dark:bg-white/5 border border-gray-100 dark:border-white/5 hover:translate-x-2 transition-transform">
+                            <div class="size-16 rounded-xl overflow-hidden shadow-md">
+                                <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/fantasy-book-covers-design-template-33a3a687f72644b97c7e09dab35ed031_screen.jpg?ts=1699945232"
+                                    class="w-full h-full object-cover">
+                            </div>
+                            <div class="flex-grow">
+                                <h5 class="font-black text-sm mb-1">A Legend of Ice and Fire</h5>
+                                <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">8 chương mỗi
+                                    tập</p>
+                            </div>
+                            <span class="text-[10px] font-black text-primary">2 tập</span>
+                        </div>
+                        <div
+                            class="flex items-center gap-6 p-6 rounded-[2rem] bg-white dark:bg-white/5 border border-gray-100 dark:border-white/5 hover:translate-x-2 transition-transform">
+                            <div class="size-16 rounded-xl overflow-hidden shadow-md">
+                                <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&q=80&w=400"
+                                    class="w-full h-full object-cover">
+                            </div>
+                            <div class="flex-grow">
+                                <h5 class="font-black text-sm mb-1">The Art of War</h5>
+                                <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">13 chương</p>
+                            </div>
+                            <span class="text-[10px] font-black text-primary">1 tập</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN (30%) -->
+            <div class="lg:w-[32%] space-y-12">
+
+                <!-- Schedule Reading -->
+                <div class="space-y-8">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-xl font-black tracking-tight">Lịch đọc sách</h3>
+                        <div class="flex gap-1">
+                            <span
+                                class="material-symbols-outlined text-gray-300 pointer-events-none">chevron_left</span>
+                            <span
+                                class="material-symbols-outlined cursor-pointer hover:text-primary">chevron_right</span>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-between items-center text-center">
+                        <div class="space-y-2 p-2 px-3">
+                            <p class="text-[10px] uppercase font-bold text-gray-400">CN</p>
+                            <p class="text-xs font-black">11</p>
+                            <div class="calendar-dot mx-auto"></div>
+                        </div>
+                        <div class="space-y-2 p-2 px-3">
+                            <p class="text-[10px] uppercase font-bold text-gray-400">T2</p>
+                            <p class="text-xs font-black">12</p>
+                            <div class="calendar-dot mx-auto"></div>
+                        </div>
+                        <div class="space-y-2 p-2 px-3 active-day">
+                            <p class="text-[10px] uppercase font-bold text-primary">T3</p>
+                            <p class="text-xs font-black">13</p>
+                            <div class="calendar-dot mx-auto"></div>
+                        </div>
+                        <div class="space-y-2 p-2 px-3">
+                            <p class="text-[10px] uppercase font-bold text-gray-400">T4</p>
+                            <p class="text-xs font-black">14</p>
+                            <div class="calendar-dot mx-auto"></div>
+                        </div>
+                        <div class="space-y-2 p-2 px-3">
+                            <p class="text-[10px] uppercase font-bold text-gray-400">T5</p>
+                            <p class="text-xs font-black">15</p>
+                            <div class="calendar-dot mx-auto"></div>
+                        </div>
+                        <div class="space-y-2 p-2 px-3">
+                            <p class="text-[10px] uppercase font-bold text-gray-400">T6</p>
+                            <p class="text-xs font-black">16</p>
+                            <div class="calendar-dot mx-auto"></div>
+                        </div>
+                        <div class="space-y-2 p-2 px-3">
+                            <p class="text-[10px] uppercase font-bold text-gray-400">T7</p>
+                            <p class="text-xs font-black">17</p>
+                            <div class="calendar-dot mx-auto"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reader Friends -->
+                <div class="space-y-8">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-xl font-black tracking-tight">Học viên đang xem</h3>
+                        <span class="material-symbols-outlined text-gray-400">more_horiz</span>
+                    </div>
+
+                    <div class="space-y-8 relative">
+                        <!-- Vertical Line -->
+                        <div
+                            class="absolute left-6 top-8 bottom-8 w-[1px] bg-gray-100 dark:bg-white/5 border-dashed border-l">
+                        </div>
+
+                        <!-- Friend 1 -->
+                        <div class="relative flex gap-6 group">
+                            <div
+                                class="size-12 rounded-full border-4 border-[#FDFBF7] dark:border-[#0B1A14] overflow-hidden z-10 shrink-0 shadow-md">
+                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Roberto"
+                                    class="w-full h-full object-cover">
+                            </div>
+                            <div class="pt-1">
+                                <h4 class="font-black text-sm mb-2">Roberto Jordan</h4>
+                                <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed font-medium mb-3">
+                                    Thật là một chương sách kỳ diệu và đầy mê hoặc! Nó thực sự đưa người đọc vào thế
+                                    giới phù thủy...
+                                </p>
+                                <div class="flex items-center gap-2 text-[10px] font-black">
+                                    <span class="text-primary flex items-center gap-1">
+                                        <span class="material-symbols-outlined text-sm">done_all</span> Chương 5: Hẻm
+                                        Xéo
+                                    </span>
+                                    <span class="text-gray-300">2 phút trước</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Friend 2 -->
+                        <div class="relative flex gap-6 group">
+                            <div
+                                class="size-12 rounded-full border-4 border-[#FDFBF7] dark:border-[#0B1A14] overflow-hidden z-10 shrink-0 shadow-md">
+                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Anna"
+                                    class="w-full h-full object-cover">
+                            </div>
+                            <div class="pt-1">
+                                <h4 class="font-black text-sm mb-2">Anna Henry</h4>
+                                <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed font-medium">
+                                    Tôi đã đọc xong chương này vào tối qua và nó thực sự rất ấn tượng...
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Featured Story Quote -->
+                <div
+                    class="bg-lib-card dark:bg-white/5 p-8 rounded-[2.5rem] border border-gray-100 dark:border-white/5 relative overflow-hidden group">
+                    <div
+                        class="absolute -top-10 -right-10 size-32 bg-primary/10 rounded-full blur-3xl group-hover:bg-primary/20 transition-all">
+                    </div>
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="size-12 rounded-full overflow-hidden border-2 border-primary/20">
+                            <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&q=80&w=200"
+                                class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-black text-xs uppercase tracking-widest">George RR Martin</h4>
+                            <p class="text-[9px] font-bold text-gray-400">Tác giả</p>
+                        </div>
+                    </div>
+                    <p class="text-xs md:text-sm font-medium italic text-gray-600 dark:text-gray-400 leading-relaxed">
+                        "Fire and Blood" kể về câu chuyện của triều đại Targaryen ở Westeros, ghi lại cuộc chinh phục
+                        Bảy Vương quốc bởi Nhà Targaryen.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Consistency -->
+    <footer class="bg-[#0b1a14] text-white border-t border-white/10 mt-auto">
+        <div
+            class="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-24 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 text-left">
+            <div class="space-y-4">
+                <div class="flex items-center gap-2 md:gap-3">
+                    <div class="size-12 border border-white/30 flex items-center justify-center p-1">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Logo_dhktdn.png"
+                            alt="Academy logo" class="w-full h-full object-contain" />
+                    </div>
+                    <div>
+                        <p class="text-xs uppercase tracking-[0.5em] text-white/60">Nền tảng giáo dục</p>
+                        <h3 class="text-lg font-semibold tracking-[0.3em] uppercase">Đại học Kiến trúc Đà Nẵng</h3>
+                    </div>
+                </div>
+                <p class="text-sm text-white/70 italic">© 2025 TheDung Academy · Đồng hành cùng bạn trên con đường chinh
+                    phục tri thức</p>
+            </div>
+            <div>
+                <h4 class="text-sm uppercase tracking-[0.4em] text-primary mb-4">Lĩnh vực chính</h4>
+                <ul class="space-y-3 text-sm text-white/70">
+                    <li>Công nghệ Phần mềm & Lập trình</li>
+                    <li>Digital Marketing & Thương hiệu</li>
+                    <li>Thiết kế Đồ họa & UI/UX</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-sm uppercase tracking-[0.4em] text-primary mb-4">Hỗ trợ</h4>
+                <ul class="space-y-3 text-sm text-white/70 font-bold">
+                    <li>Tư vấn miễn phí 24/7</li>
+                    <li>Tài liệu độc quyền</li>
+                    <li>Cộng đồng 50.000+ học viên</li>
+                </ul>
+            </div>
+            <div class="space-y-3 text-sm text-white/70">
+                <h4 class="text-sm uppercase tracking-[0.4em] text-primary mb-4">Liên hệ</h4>
+                <p>459 Trần Đại Nghĩa, Ngũ Hành Sơn, Đà Nẵng</p>
+                <p>Hotline: +84 33 202 9410</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Bottom Nav -->
+    <div class="bottom-nav lg:hidden">
+        <a href="index.html" class="nav-item text-gray-400"><span class="material-symbols-outlined">home</span></a>
+        <a href="courses.html" class="nav-item text-gray-400"><span class="material-symbols-outlined">explore</span></a>
+        <a href="library.html" class="nav-item text-primary"><span
+                class="material-symbols-outlined">local_library</span></a>
+        <a href="profile.html" class="nav-item text-gray-400"><span class="material-symbols-outlined">person</span></a>
+    </div>
+
+    <script src="auth_ui.js"></script>
+    <script>
+        // Logic Header & Dữ liệu Thư viện
+        function initLibrary() {
+            const user = JSON.parse(localStorage.getItem('user') || '{}');
+            const profileInfo = JSON.parse(localStorage.getItem('userProfileInfo') || '{}');
+            const name = profileInfo.name || user.name || 'Học viên';
+            const studentId = user.studentId || 'hocvien';
+
+            document.getElementById('welcome-name').textContent = name;
+            document.getElementById('user-name-display').textContent = name;
+
+            const avatar = profileInfo.avatar || `https://api.dicebear.com/7.x/avataaars/svg?seed=${studentId}`;
+            document.getElementById('header-avatar').src = avatar;
+        }
+
+        document.addEventListener('DOMContentLoaded', initLibrary);
+    </script>
+</body>
+
+</html>

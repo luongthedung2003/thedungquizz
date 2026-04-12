@@ -420,8 +420,8 @@
                         class="flex items-center gap-6 md:gap-8 lg:mx-auto justify-center w-full lg:w-auto text-[9px] md:text-[11px] uppercase tracking-[0.2em] md:tracking-[0.45em] overflow-x-auto no-scrollbar whitespace-nowrap px-0 lg:px-4 border-t border-white/5 lg:border-none pt-3 lg:pt-0">
                         <a class="hover:text-primary transition-colors" href="index.html#overview">TRANG CHỦ</a>
                         <a class="text-primary font-bold" href="courses.html">KHÓA HỌC</a>
-                        <a class="hover:text-primary transition-colors" href="index.html#cuisine">THƯ VIỆN</a>
-                        <a class="hover:text-primary transition-colors" href="index.html#destinations">TIN TỨC</a>
+                        <a class="hover:text-primary transition-colors" href="library.html">THƯ VIỆN</a>
+                        <a class="hover:text-primary transition-colors" href="news.html">TIN TỨC</a>
                         <a class="hover:text-primary transition-colors" href="index.html#gallery">LIÊN HỆ</a>
                     </nav>
 
@@ -2112,12 +2112,22 @@
             let score = 0;
             state.questions.forEach((q, i) => {
                 const userAns = state.userAnswers[i];
-                if (q.type === 'essay') {
-                    if (userAns && userAns.trim() !== '') score++;
-                } else if (userAns && q.correct && userAns.toUpperCase() === q.correct.toUpperCase()) {
+                if (userAns && q.correct && userAns.toUpperCase() === q.correct.toUpperCase()) {
                     score++;
                 }
             });
+
+            // Save to History
+            const history = JSON.parse(localStorage.getItem('quizHistory') || '[]');
+            history.unshift({
+                id: Date.now(),
+                title: state.quizTitle,
+                score: score,
+                total: state.questions.length,
+                date: new Date().toLocaleString('vi-VN'),
+                timestamp: Date.now()
+            });
+            localStorage.setItem('quizHistory', JSON.stringify(history.slice(0, 50))); // Keep last 50
 
             setState({
                 isSubmitted: true,

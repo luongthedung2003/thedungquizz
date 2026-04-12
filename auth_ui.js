@@ -27,9 +27,9 @@ function updateHeaderAuthUI() {
                         <span class="material-symbols-outlined text-[8px] md:text-[10px]">logout</span> Đăng xuất
                     </button>
                 </div>
-                <div class="size-7 md:size-10 rounded-full border border-white/20 bg-white/10 flex items-center justify-center overflow-hidden shrink-0">
-                    <span class="material-symbols-outlined text-base md:text-xl">person</span>
-                </div>
+                <a href="profile.html" class="size-7 md:size-10 rounded-full border border-white/20 bg-white/10 flex items-center justify-center overflow-hidden shrink-0 hover:border-primary transition-all">
+                    <span class="material-symbols-outlined text-base md:text-xl transform scale-110">person</span>
+                </a>
             </div>
         `;
 
@@ -50,5 +50,25 @@ function handleLogout() {
     window.location.reload();
 }
 
-// Make sure handleLogout is globally accessible
-window.handleLogout = handleLogout;
+
+// --- Unified Theme Logic ---
+function initTheme() {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    if (savedTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+    } else {
+        document.documentElement.classList.remove('dark');
+    }
+}
+
+function toggleTheme() {
+    const isDark = document.documentElement.classList.toggle('dark');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+}
+
+// Call initTheme immediately
+initTheme();
+
+// Make globally accessible
+window.toggleTheme = toggleTheme;
+window.initTheme = initTheme;
