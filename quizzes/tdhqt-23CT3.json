@@ -1,0 +1,242 @@
+[
+    {
+        "question": "Quy trình phù hợp RPA cần:",
+        "A": "Có quy tắc rõ ràng",
+        "B": "Ngẫu nhiên",
+        "C": "Sáng tạo",
+        "D": "Phức tạp",
+        "correct": "A"
+    },
+    {
+        "question": "Python là ngôn ngữ:",
+        "A": "Biên dịch hoàn toàn",
+        "B": "Máy cấp thấp",
+        "C": "Không có thư viện",
+        "D": "Thông dịch",
+        "correct": "D"
+    },
+    {
+        "question": "Bảo mật trong RPA quan trọng vì:",
+        "A": "Không cần thiết",
+        "B": "Giảm tốc độ",
+        "C": "Không liên quan",
+        "D": "Xử lý dữ liệu nhạy cảm",
+        "correct": "D"
+    },
+    {
+        "question": "Một lợi ích của RPA là:",
+        "A": "Giảm tốc độ",
+        "B": "Giảm sai sót",
+        "C": "Tăng nhân lực",
+        "D": "Tăng lỗi",
+        "correct": "B"
+    },
+    {
+        "question": "Dễ xóa dữ liệu thiếu trong Pandas dùng",
+        "A": "dropna()",
+        "B": "remove()",
+        "C": "delete()",
+        "D": "fillna()",
+        "correct": "A"
+    },
+    {
+        "question": "Bot RPA có thể làm việc:",
+        "A": "Chỉ ban ngày",
+        "B": "Chỉ online",
+        "C": "24/7 không nghỉ",
+        "D": "Chỉ khi có người",
+        "correct": "C"
+    },
+    {
+        "question": "Câu lệnh nào tạo vòng lặp trong Python?",
+        "A": "for",
+        "B": "def",
+        "C": "if",
+        "D": "try",
+        "correct": "A"
+    },
+    {
+        "question": "Trong Python, return trong hàm dùng để:",
+        "A": "Lặp",
+        "B": "In dữ liệu",
+        "C": "So sánh",
+        "D": "Trả về giá trị",
+        "correct": "D"
+    },
+    {
+        "question": "RPA khác tự động hóa truyền thống ở điểm:",
+        "A": "Không cần phần mềm",
+        "B": "Không cần kiểm thử",
+        "C": "Không cần dữ liệu",
+        "D": "Không cần thay đổi hệ thống cũ",
+        "correct": "D"
+    },
+    {
+        "question": "Trong Python, except dùng để:",
+        "A": "Xử lý lỗi",
+        "B": "So sánh",
+        "C": "Lặp",
+        "D": "Gán giá trị",
+        "correct": "A"
+    },
+    {
+        "question": "Đọc Excel bằng Pandas dùng:",
+        "A": "load_excel()",
+        "B": "read_csv()",
+        "C": "open_excel()",
+        "D": "read_excel()",
+        "correct": "D"
+    },
+    {
+        "question": "Trong Python, kiểu dữ liệu set khác list ở điểm:",
+        "A": "Có thứ tự",
+        "B": "Có index",
+        "C": "Không trùng lặp phần tử",
+        "D": "Có key",
+        "correct": "C"
+    },
+    {
+        "question": "RPA là viết tắt của cụm từ gì?",
+        "A": "Robotic Process Automation",
+        "B": "Robotic Programming Analysis",
+        "C": "Remote Process Automation",
+        "D": "Rapid Process Algorithm",
+        "correct": "A"
+    },
+    {
+        "question": "Toán tử “or” trong Python nghĩa là:",
+        "A": "Hoặc",
+        "B": "So sánh",
+        "C": "Gán",
+        "D": "Và",
+        "correct": "A"
+    },
+    {
+        "question": "Thư viện nào dùng xử lý dữ liệu?",
+        "A": "Requests",
+        "B": "Flask",
+        "C": "Selenium",
+        "D": "Pandas",
+        "correct": "D"
+    },
+    {
+        "question": "Một lỗi phổ biến khi dùng RPA là:",
+        "A": "Phụ thuộc giao diện thay đổi",
+        "B": "Giảm dữ liệu",
+        "C": "Nhanh hơn",
+        "D": "Tăng độ chính xác",
+        "correct": "A"
+    },
+    {
+        "question": "Trong Python, continue trong vòng lặp dùng để:",
+        "A": "Lặp vô hạn",
+        "B": "Bỏ qua bước hiện tại",
+        "C": "Dừng chương trình",
+        "D": "Thoát vòng lặp",
+        "correct": "B"
+    },
+    {
+        "question": "Kiểu dữ liệu nào lưu cặp key-value?",
+        "A": "list",
+        "B": "tuple",
+        "C": "set",
+        "D": "dictionary",
+        "correct": "D"
+    },
+    {
+        "question": "Thư viện nào trong Python dùng để phân tích HTML?",
+        "A": "Tkinter",
+        "B": "BeautifulSoup",
+        "C": "Pandas",
+        "D": "NumPy",
+        "correct": "B"
+    },
+    {
+        "question": "Selenium khác BeautifulSoup ở:",
+        "A": "Có thể tương tác web (click, nhập)",
+        "B": "Không đọc HTML",
+        "C": "Không có thư viện",
+        "D": "Không dùng Python",
+        "correct": "A"
+    },
+    {
+        "question": "Pandas hỗ trợ:",
+        "A": "Vẽ game",
+        "B": "Thiết kế UI",
+        "C": "Lập trình mạng",
+        "D": "Phân tích dữ liệu",
+        "correct": "D"
+    },
+    {
+        "question": "Trong Python, elif dùng khi:",
+        "A": "Có nhiều điều kiện",
+        "B": "Chỉ 1 điều kiện",
+        "C": "Không cần if",
+        "D": "Không có điều kiện",
+        "correct": "A"
+    },
+    {
+        "question": "Một lợi ích lớn của Python trong RPA là:",
+        "A": "Không chạy được automation",
+        "B": "Khó học",
+        "C": "Không có thư viện",
+        "D": "Hệ sinh thái thư viện phong phú",
+        "correct": "D"
+    },
+    {
+        "question": "Biến trong Python có thể:",
+        "A": "Chỉ chứa số",
+        "B": "Không thay đổi",
+        "C": "Chứa nhiều kiểu dữ liệu khác nhau",
+        "D": "Chỉ là chuỗi",
+        "correct": "C"
+    },
+    {
+        "question": "Toán tử '!=' nghĩa là:",
+        "A": "Gán",
+        "B": "Lớn hơn",
+        "C": "Bằng",
+        "D": "Khác",
+        "correct": "D"
+    },
+    {
+        "question": "Hàm input() trong Python dùng để:",
+        "A": "Gửi dữ liệu",
+        "B": "Xóa dữ liệu",
+        "C": "Nhập dữ liệu từ người dùng",
+        "D": "In dữ liệu",
+        "correct": "C"
+    },
+    {
+        "question": "RPA thường được triển khai ở đâu?",
+        "A": "Phần mềm",
+        "B": "Phần cứng",
+        "C": "Thiết bị IoT",
+        "D": "Mạng vật lý",
+        "correct": "A"
+    },
+    {
+        "question": "Class trong Python là:",
+        "A": "Hàm",
+        "B": "Biến",
+        "C": "Khuôn mẫu tạo object",
+        "D": "Toán tử",
+        "correct": "C"
+    },
+    {
+        "question": "Tham số (Parameter) trong Python là:",
+        "A": "Hàm",
+        "B": "Biến trong định nghĩa của hàm",
+        "C": "Giá trị truyền vào",
+        "D": "Lớp",
+        "correct": "B"
+    },
+    {
+        "question": "Thuộc tính (Attribute) trong OOP là:",
+        "A": "Thuộc tính của đối tượng",
+        "B": "Điều kiện",
+        "C": "Vòng lặp",
+        "D": "Hàm",
+        "correct": "A"
+    }
+]
