@@ -15,6 +15,7 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
         rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js"></script>
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -123,6 +124,113 @@
             background: rgba(11, 26, 20, 0.9);
             border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
+
+        /* PageFlip Styles */
+        #book-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(15px);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        #book-modal.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .book-container {
+            width: 90vw;
+            height: 90vh;
+            max-width: 1200px;
+            max-height: 800px;
+            position: relative;
+        }
+
+        #book {
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .page {
+            background-color: white;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: inset 3px 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .page img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .page-content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 40px;
+            background: #fff;
+        }
+
+        .close-book {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            items: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 16px;
+            border-radius: 99px;
+            transition: all 0.3s;
+        }
+
+        .close-book:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .book-controls {
+            position: absolute;
+            bottom: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            color: white;
+        }
+
+        .control-btn {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            items: center;
+            gap: 8px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .control-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
     </style>
 </head>
 
@@ -215,14 +323,14 @@
                             Ồ! Bạn đang khám phá những bí mật sâu thẳm của thế giới phù thủy. Hãy tiếp tục hành trình và
                             đắm mình vào những trang sách thú vị nhé!
                         </p>
-                        <button
+                        <button onclick="openBook('it')"
                             class="bg-black text-white dark:bg-white dark:text-black mt-4 px-8 py-4 rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] flex items-center gap-3 hover:scale-105 transition-all group">
                             Bắt đầu đọc ngay <span
                                 class="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">north_east</span>
                         </button>
                     </div>
                     <div class="hidden md:flex md:w-1/2 justify-center scale-75 md:scale-100">
-                        <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/fantasy-book-covers-design-template-33a3a687f72644b97c7e09dab35ed031_screen.jpg?ts=1699945232"
+                        <img src="https://lic.haui.edu.vn/media/88/t88943.jpg"
                             class="book-3d w-[300px] h-[400px] object-cover rounded-md shadow-2xl" alt="Featured Book">
                     </div>
                 </div>
@@ -245,9 +353,9 @@
 
                     <div class="flex gap-8 overflow-x-auto no-scrollbar pb-8 -mx-4 px-4 snap-x">
                         <!-- Book Card 1 -->
-                        <div class="book-card min-w-[180px] md:min-w-[220px] snap-start">
-                            <div class="aspect-[3/4] rounded-3xl overflow-hidden book-shadow mb-6">
-                                <img src="https://images.openai.com/static-rsc-1/Mw2l1Cx9iSe6V3cighsoqbD2kfcNOaRbiqYp9ODv4jcWhSanNtPZR8YF5J9uPhXdWbbcOn5FEPlDL3YDT-qpLOeIFt5Lqa2gZDa1UWskEe4tDTWW_E0AqoDpWMaae1eYH6FngbpHEgvQ8yjnFMCDVh928yRtPlEjJU00llWmyjOnyOdlVtbER7nFczHuxBx70izndjgWWKA0dCZluHg9FLN8preTZ8O2M6kCPBgPmvOq2_ILAuKABMIFJbkEur6K"
+                        <div class="book-card min-w-[180px] md:min-w-[220px] snap-start cursor-pointer group" onclick="openBook('icefire')">
+                            <div class="aspect-[3/4] rounded-3xl overflow-hidden book-shadow mb-6 group-hover:scale-[1.02] transition-transform duration-500">
+                                <img src="books/icefire_cover.png"
                                     class="w-full h-full object-cover">
                             </div>
                             <h4 class="font-black text-sm md:text-base tracking-tight mb-1 truncate">The World of Ice
@@ -256,9 +364,9 @@
                                 R.R Martin</p>
                         </div>
                         <!-- Book Card 2 -->
-                        <div class="book-card min-w-[180px] md:min-w-[220px] snap-start">
-                            <div class="aspect-[3/4] rounded-3xl overflow-hidden book-shadow mb-6">
-                                <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/monster-horror-book-cover-design-template-1a24b4401bc7bffa36b2f30ad5460243_screen.jpg?ts=1740675037"
+                        <div class="book-card min-w-[180px] md:min-w-[220px] snap-start cursor-pointer group" onclick="openBook('beasts')">
+                            <div class="aspect-[3/4] rounded-3xl overflow-hidden book-shadow mb-6 group-hover:scale-[1.02] transition-transform duration-500">
+                                <img src="books/beasts_cover.png"
                                     class="w-full h-full object-cover">
                             </div>
                             <h4 class="font-black text-sm md:text-base tracking-tight mb-1 truncate">Fantastic Beasts
@@ -267,9 +375,9 @@
                                 Rowling</p>
                         </div>
                         <!-- Book Card 3 -->
-                        <div class="book-card min-w-[180px] md:min-w-[220px] snap-start">
-                            <div class="aspect-[3/4] rounded-3xl overflow-hidden book-shadow mb-6">
-                                <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/kindle-book-cover-design-template-3d59ab725ef74c03a7f2e299c62013df_screen.jpg?ts=1737134427"
+                        <div class="book-card min-w-[180px] md:min-w-[220px] snap-start cursor-pointer group" onclick="openBook('got')">
+                            <div class="aspect-[3/4] rounded-3xl overflow-hidden book-shadow mb-6 group-hover:scale-[1.02] transition-transform duration-500">
+                                <img src="books/got_cover.png"
                                     class="w-full h-full object-cover">
                             </div>
                             <h4 class="font-black text-sm md:text-base tracking-tight mb-1 truncate">Game of Thrones
@@ -278,9 +386,9 @@
                                 R.R Martin</p>
                         </div>
                         <!-- Book Card 4 -->
-                        <div class="book-card min-w-[180px] md:min-w-[220px] snap-start">
-                            <div class="aspect-[3/4] rounded-3xl overflow-hidden book-shadow mb-6">
-                                <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?auto=format&fit=crop&q=80&w=800"
+                        <div class="book-card min-w-[180px] md:min-w-[220px] snap-start cursor-pointer group" onclick="openBook('kingkiller')">
+                            <div class="aspect-[3/4] rounded-3xl overflow-hidden book-shadow mb-6 group-hover:scale-[1.02] transition-transform duration-500">
+                                <img src="books/kingkiller_cover.png"
                                     class="w-full h-full object-cover">
                             </div>
                             <h4 class="font-black text-sm md:text-base tracking-tight mb-1 truncate">The Wise Man's Fear
@@ -295,10 +403,10 @@
                 <div class="space-y-6 pt-4">
                     <h3 class="text-2xl font-black tracking-tight">Bộ sưu tập mới</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div
-                            class="flex items-center gap-6 p-6 rounded-[2rem] bg-white dark:bg-white/5 border border-gray-100 dark:border-white/5 hover:translate-x-2 transition-transform">
-                            <div class="size-16 rounded-xl overflow-hidden shadow-md">
-                                <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/fantasy-book-covers-design-template-33a3a687f72644b97c7e09dab35ed031_screen.jpg?ts=1699945232"
+                        <div onclick="openBook('icefire')"
+                            class="flex items-center gap-6 p-6 rounded-[2rem] bg-white dark:bg-white/5 border border-gray-100 dark:border-white/5 hover:translate-x-2 transition-transform cursor-pointer group">
+                            <div class="size-16 rounded-xl overflow-hidden shadow-md group-hover:scale-110 transition-transform">
+                                <img src="books/icefire_cover.png"
                                     class="w-full h-full object-cover">
                             </div>
                             <div class="flex-grow">
@@ -308,10 +416,10 @@
                             </div>
                             <span class="text-[10px] font-black text-primary">2 tập</span>
                         </div>
-                        <div
-                            class="flex items-center gap-6 p-6 rounded-[2rem] bg-white dark:bg-white/5 border border-gray-100 dark:border-white/5 hover:translate-x-2 transition-transform">
-                            <div class="size-16 rounded-xl overflow-hidden shadow-md">
-                                <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&q=80&w=400"
+                        <div onclick="openBook('war')"
+                            class="flex items-center gap-6 p-6 rounded-[2rem] bg-white dark:bg-white/5 border border-gray-100 dark:border-white/5 hover:translate-x-2 transition-transform cursor-pointer group">
+                            <div class="size-16 rounded-xl overflow-hidden shadow-md group-hover:scale-110 transition-transform">
+                                <img src="books/war_cover.png"
                                     class="w-full h-full object-cover">
                             </div>
                             <div class="flex-grow">
@@ -507,6 +615,27 @@
         <a href="profile.html" class="nav-item text-gray-400"><span class="material-symbols-outlined">person</span></a>
     </div>
 
+    <!-- Book Modal -->
+    <div id="book-modal">
+        <div class="book-container">
+            <div class="close-book" onclick="closeBook()">
+                <span class="material-symbols-outlined">close</span> Đóng
+            </div>
+            <div id="book">
+                <!-- Pages will be injected here -->
+            </div>
+            <div class="book-controls">
+                <div class="control-btn" onclick="pageFlip.flipPrev()">
+                    <span class="material-symbols-outlined">chevron_left</span> TRANG TRƯỚC
+                </div>
+                <div id="page-num" class="bg-primary/20 px-4 py-2 rounded-lg font-bold">1 / 10</div>
+                <div class="control-btn" onclick="pageFlip.flipNext()">
+                    TRANG TIẾP <span class="material-symbols-outlined">chevron_right</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="auth_ui.js"></script>
     <script>
         // Logic Header & Dữ liệu Thư viện
@@ -521,6 +650,83 @@
 
             const avatar = profileInfo.avatar || `https://api.dicebear.com/7.x/avataaars/svg?seed=${studentId}`;
             document.getElementById('header-avatar').src = avatar;
+        }
+
+        // Book Flip Logic
+        let pageFlip;
+        const booksData = {
+            it: {
+                pages: ['books/cover.png', 'books/page1.png', 'books/page2.png', 'books/page3.png', 'books/page4.png']
+            },
+            icefire: {
+                pages: ['books/icefire_cover.png', 'books/fantasy_page.png', 'books/fantasy_page.png', 'books/fantasy_page.png']
+            },
+            beasts: {
+                pages: ['books/beasts_cover.png', 'books/fantasy_page.png', 'books/fantasy_page.png', 'books/fantasy_page.png']
+            },
+            got: {
+                pages: ['books/got_cover.png', 'books/fantasy_page.png', 'books/fantasy_page.png', 'books/fantasy_page.png']
+            },
+            kingkiller: {
+                pages: ['books/kingkiller_cover.png', 'books/fantasy_page.png', 'books/fantasy_page.png', 'books/fantasy_page.png']
+            },
+            war: {
+                pages: ['books/war_cover.png', 'books/scroll_page.png', 'books/scroll_page.png', 'books/scroll_page.png']
+            }
+        };
+
+        function openBook(bookId = 'it') {
+            const modal = document.getElementById('book-modal');
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+
+            if (pageFlip) {
+                // If it's the same book, don't reinit
+                // Actually, always reinit to clear old state if needed, but for simplicity:
+                pageFlip.destroy();
+                pageFlip = null;
+            }
+            initBook(bookId);
+        }
+
+        function closeBook() {
+            const modal = document.getElementById('book-modal');
+            modal.classList.remove('show');
+            document.body.style.overflow = '';
+        }
+
+        function initBook(bookId) {
+            const bookElement = document.getElementById('book');
+            bookElement.innerHTML = '';
+            
+            const book = booksData[bookId] || booksData.it;
+            const pages = book.pages;
+
+            pages.forEach((src, index) => {
+                const page = document.createElement('div');
+                page.className = 'page';
+                page.innerHTML = `<img src="${src}" alt="Page ${index + 1}">`;
+                bookElement.appendChild(page);
+            });
+
+            pageFlip = new St.PageFlip(bookElement, {
+                width: 550,
+                height: 733,
+                size: "stretch",
+                minWidth: 315,
+                maxWidth: 1000,
+                minHeight: 420,
+                maxHeight: 1350,
+                maxShadowOpacity: 0.5,
+                showCover: true,
+                mobileScrollSupport: false
+            });
+
+            pageFlip.loadFromHTML(document.querySelectorAll('.page'));
+
+            pageFlip.on('flip', (e) => {
+                document.getElementById('page-num').innerText = `${e.data + 1} / ${pages.length}`;
+            });
         }
 
         document.addEventListener('DOMContentLoaded', initLibrary);
